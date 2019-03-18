@@ -1,0 +1,7 @@
+com\wt\myspringcloud\user\UserApplication.class
+com\wt\myspringcloud\user\service\UserService.class
+com\wt\myspringcloud\user\feign\ListenerFeign.class
+com\wt\myspringcloud\user\interceptor\UserExceptionHandler.class
+com\wt\myspringcloud\user\mapper\UserMapper.class
+com\wt\myspringcloud\user\controller\UserController.class
+com\wt\myspringcloud\user\service\impl\UserServiceImpl.class

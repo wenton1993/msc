@@ -1,0 +1,13 @@
+com\wt\myspringcloud\common\vo\RemoteVo.class
+com\wt\myspringcloud\common\dto\QueueMessage.class
+com\wt\myspringcloud\common\vo\UserVo.class
+com\wt\myspringcloud\common\entity\User.class
+com\wt\myspringcloud\common\api\ListenerApi.class
+com\wt\myspringcloud\common\core\JsonResult.class
+com\wt\myspringcloud\common\util\MyUtils.class
+com\wt\myspringcloud\common\core\BaseController.class
+com\wt\myspringcloud\common\core\BaseRemoteReq.class
+com\wt\myspringcloud\common\exception\UserException.class
+com\wt\myspringcloud\common\api\UserServiceApi.class
+com\wt\myspringcloud\common\core\BaseReq.class
+com\wt\myspringcloud\common\core\ResultCode.class
