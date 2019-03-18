@@ -14,8 +14,8 @@ public class BaseController {
      *
      * @return result
      */
-    protected JsonResult<T> renderSuccess() {
-        JsonResult<T> result = new JsonResult<>();
+    protected JsonResult renderSuccess() {
+        JsonResult result = new JsonResult();
         result.setSuccess(true);
         result.setCode(ResultCode.SUCCESS.getCode());
         result.setResponseTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
@@ -28,8 +28,8 @@ public class BaseController {
      * @param msg 需要返回的信息
      * @return result
      */
-    protected JsonResult<T> renderSuccess(String msg) {
-        JsonResult<T> result = renderSuccess();
+    protected JsonResult renderSuccess(String msg) {
+        JsonResult result = renderSuccess();
         result.setMessage(msg);
         result.setResponseTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
         return result;
