@@ -1,4 +1,0 @@
-com\wt\myspringcloud\listener\ListenerApplication.class
-com\wt\myspringcloud\listener\configuration\RabbitConfig.class
-com\wt\myspringcloud\listener\controller\SendMessageController.class
-com\wt\myspringcloud\listener\listener\UserListener.class

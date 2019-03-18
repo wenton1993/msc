@@ -1,7 +1,0 @@
-D:\Users\WenTong\Documents\MyDocument\Java\project\myspringcloud\myspringcloud-user\src\main\java\com\wt\myspringcloud\user\UserApplication.java
-D:\Users\WenTong\Documents\MyDocument\Java\project\myspringcloud\myspringcloud-user\src\main\java\com\wt\myspringcloud\user\service\UserService.java
-D:\Users\WenTong\Documents\MyDocument\Java\project\myspringcloud\myspringcloud-user\src\main\java\com\wt\myspringcloud\user\interceptor\UserExceptionHandler.java
-D:\Users\WenTong\Documents\MyDocument\Java\project\myspringcloud\myspringcloud-user\src\main\java\com\wt\myspringcloud\user\controller\UserController.java
-D:\Users\WenTong\Documents\MyDocument\Java\project\myspringcloud\myspringcloud-user\src\main\java\com\wt\myspringcloud\user\service\impl\UserServiceImpl.java
-D:\Users\WenTong\Documents\MyDocument\Java\project\myspringcloud\myspringcloud-user\src\main\java\com\wt\myspringcloud\user\feign\ListenerFeign.java
-D:\Users\WenTong\Documents\MyDocument\Java\project\myspringcloud\myspringcloud-user\src\main\java\com\wt\myspringcloud\user\mapper\UserMapper.java
