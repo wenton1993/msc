@@ -13,7 +13,7 @@ public class SimpleStack {
         stackPointer++;
     }
 
-    public int read() {
+    public int pop() {
         stackPointer--;
         if (stackPointer >= 0) {
             return stack[stackPointer];
