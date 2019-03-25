@@ -21,7 +21,6 @@ public class SimpleStack {
             stackPointer = 0;
             return 0;
         }
-        
     }
 
 }
