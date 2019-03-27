@@ -7,10 +7,14 @@ public interface InterfaceDemo {
 
     public static final int A = 1;
 
-    default void play() {
-        System.out.print("This is a default method.");
-    }
+    public abstract void aMethod();
 
-    void shoot();
+    public default void dMethod() {
+        System.out.print("This is a default method.");
+    };
+
+    public static void sMethod() {
+        System.out.print("This is a static method.");
+    }
     
 }
