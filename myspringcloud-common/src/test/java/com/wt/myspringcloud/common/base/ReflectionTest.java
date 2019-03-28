@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.common;
+package com.wt.myspringcloud.common.base;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;

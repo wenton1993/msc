@@ -1,11 +1,9 @@
-package com.wt.myspringcloud.common;
+package com.wt.myspringcloud.common.base;
 
 import org.junit.Test;
 
-import java.text.Format;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collection;
 
 public class TestAlgorithm extends BaseTest {
 

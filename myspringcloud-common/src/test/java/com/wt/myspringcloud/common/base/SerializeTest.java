@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.common;
+package com.wt.myspringcloud.common.base;
 
 import com.wt.myspringcloud.common.entity.User;
 import org.junit.Test;
