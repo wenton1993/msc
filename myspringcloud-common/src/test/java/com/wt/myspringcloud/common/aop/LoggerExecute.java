@@ -17,14 +17,13 @@ public class LoggerExecute implements MethodInterceptor {
     }
 
     public static void main(String[] args) {
-        // 创建目标对象
+        // 创建要被代理的目标对象
         Target target = new Target();
         ProxyFactory pf = new ProxyFactory();
         pf.addAdvice(new LoggerExecute());
         pf.setTarget(target);
         Target proxy = (Target) pf.getProxy();
         proxy.execute("代理执行");
-
     }
 
 }
