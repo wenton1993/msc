@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.Date;
 
+@SuppressWarnings("rawtypes")
 public class BaseController {
 
 	protected final Logger logger = LoggerFactory.getLogger(BaseController.class);
@@ -34,6 +35,17 @@ public class BaseController {
         result.setResponseTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
         return result;
     }
+
+	protected JsonResult renderSuccess(String code, String msg) {
+		JsonResult result = renderSuccess();
+		result.setCode(code);
+		result.setMessage(msg);
+		return result;
+	}
+
+	protected JsonResult renderSuccess(ResultCode resultCode) {
+		return renderSuccess(resultCode.getCode(), resultCode.getMsg());
+	}
 
     /**
      * 渲染成功数据（带数据）
