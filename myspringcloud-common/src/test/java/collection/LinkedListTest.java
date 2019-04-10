@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.common.collection;
+package collection;
 
 import java.util.LinkedList;
 import java.util.List;
