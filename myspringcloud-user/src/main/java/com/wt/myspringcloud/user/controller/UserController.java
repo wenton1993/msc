@@ -6,13 +6,14 @@ import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.dto.QueueMessage;
 import com.wt.myspringcloud.common.entity.User;
 import com.wt.myspringcloud.common.exception.UserException;
+import com.wt.myspringcloud.common.feign.ListenerFeign;
 import com.wt.myspringcloud.common.vo.UserVo;
-import com.wt.myspringcloud.user.feign.ListenerFeign;
 import com.wt.myspringcloud.user.service.UserService;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 @RestController
 public class UserController extends BaseController implements UserServiceApi {
@@ -23,7 +24,6 @@ public class UserController extends BaseController implements UserServiceApi {
     @Autowired
     private ListenerFeign listenerFeign;
 
-    @ApiOperation(value = "获取用户信息")
     @Override
     public JsonResult<User> getUserById(@RequestBody UserVo userVo) {
         if (4 == userVo.getId()) {

@@ -1,24 +1,18 @@
-spring:
-  application:
-    name: user
-  # DataSource Config
-  datasource:
-    driver-class-name: org.h2.Driver
-    schema: classpath:db/schema-h2.sql
-    data: classpath:db/data-h2.sql
-    url: jdbc:h2:mem:test
-    username: root
-    password: test
-
 server:
-  port: 8010
+  # listen port for incoming HTTP requests
+  port: 8766
 
 eureka:
   instance:
-    hostname: ${spring.cloud.client.ipAddress}
-    prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
-    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
+    # Use its IP Address rather than its hostname to registers with eureka.
+    preferIpAddress: true
   client:
     serviceUrl:
-      defaultZone: http://localhost:8000/eureka/
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: user
+  datasource:
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql

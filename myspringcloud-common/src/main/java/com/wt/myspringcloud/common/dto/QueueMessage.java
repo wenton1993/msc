@@ -1,12 +1,8 @@
 package com.wt.myspringcloud.common.dto;
 
-import io.swagger.annotations.ApiModelProperty;
-
 public class QueueMessage<T> {
 
-    @ApiModelProperty("队列名称")
     private String name;
-    @ApiModelProperty("队列消息内容对象")
     private T message;
 
     public QueueMessage() {}

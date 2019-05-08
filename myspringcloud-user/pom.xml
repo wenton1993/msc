@@ -12,32 +12,32 @@
     <artifactId>myspringcloud-user</artifactId>
 
     <dependencies>
+        <!-- other modules -->
         <dependency>
             <artifactId>myspringcloud-common</artifactId>
             <groupId>com.wt.myspringcloud</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!-- dependencies-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-feign</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <!-- database -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.0.2</version>
         </dependency>
+        <!-- test -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>

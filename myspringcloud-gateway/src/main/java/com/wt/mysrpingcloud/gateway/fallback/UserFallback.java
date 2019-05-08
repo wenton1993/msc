@@ -1,8 +1,10 @@
 package com.wt.mysrpingcloud.gateway.fallback;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.cloud.netflix.zuul.filters.route.ZuulFallbackProvider;
+import com.alibaba.fastjson.JSON;
+import com.netflix.hystrix.exception.HystrixTimeoutException;
+import com.wt.myspringcloud.common.core.JsonResult;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,41 +16,60 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Component
-public class UserFallback implements ZuulFallbackProvider {
+@Slf4j
+public class UserFallback implements FallbackProvider {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserFallback.class);
-
+    // The route the fallback will be used for.
     @Override
     public String getRoute() {
-        return "user";
+        return "*";
     }
 
+    // Provides a fallback response.
     @Override
     public ClientHttpResponse fallbackResponse() {
+        return response(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    // Provides a fallback response based on the cause of the failed execution.
+    @Override
+    public ClientHttpResponse fallbackResponse(Throwable cause) {
+        if (cause instanceof HystrixTimeoutException) {
+            return response(HttpStatus.GATEWAY_TIMEOUT);
+        } else {
+            return fallbackResponse();
+        }
+    }
+
+    private ClientHttpResponse response(final HttpStatus status) {
         return new ClientHttpResponse() {
             @Override
             public HttpStatus getStatusCode() throws IOException {
-                return HttpStatus.OK;
+                return status;
             }
 
             @Override
             public int getRawStatusCode() throws IOException {
-                return 200;
+                return status.value();
             }
 
             @Override
             public String getStatusText() throws IOException {
-                return "OK";
+                return status.getReasonPhrase();
             }
 
             @Override
             public void close() {
-
             }
 
+            // Return the body of the message as an input stream.
             @Override
             public InputStream getBody() throws IOException {
-                return new ByteArrayInputStream("The service is unavailable.".getBytes());
+                JsonResult jsonResult = new JsonResult();
+                jsonResult.setSuccess(false);
+                jsonResult.setCode(String.valueOf(this.getRawStatusCode()));
+                jsonResult.setMessage("当前您请求的服务不可用！");
+                return new ByteArrayInputStream(JSON.toJSONString(jsonResult).getBytes());
             }
 
             @Override
@@ -60,10 +81,4 @@ public class UserFallback implements ZuulFallbackProvider {
         };
     }
 
-    public ClientHttpResponse fallbackResponse(Throwable throwable) {
-        if (null!=throwable) {
-            logger.error("Exception", throwable);
-        }
-        return  fallbackResponse();
-    }
 }
