@@ -1,7 +1,7 @@
 package com.wt.myspringcloud.listener.listener;
 
 import com.alibaba.fastjson.JSON;
-import com.wt.myspringcloud.common.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

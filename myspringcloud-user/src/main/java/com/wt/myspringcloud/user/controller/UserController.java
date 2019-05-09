@@ -3,17 +3,15 @@ package com.wt.myspringcloud.user.controller;
 import com.wt.myspringcloud.common.api.UserServiceApi;
 import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
-import com.wt.myspringcloud.common.dto.QueueMessage;
-import com.wt.myspringcloud.common.entity.User;
+import com.wt.myspringcloud.common.pojo.dto.QueueMessage;
+import com.wt.myspringcloud.common.pojo.entity.User;
 import com.wt.myspringcloud.common.exception.UserException;
 import com.wt.myspringcloud.common.feign.ListenerFeign;
-import com.wt.myspringcloud.common.vo.UserVo;
+import com.wt.myspringcloud.common.pojo.vo.UserVo;
 import com.wt.myspringcloud.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 @RestController
 public class UserController extends BaseController implements UserServiceApi {

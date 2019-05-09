@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.common.entity;
+package com.wt.myspringcloud.common.pojo.entity;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

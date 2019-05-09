@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.wt.myspringcloud.common.api.ListenerApi;
 import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
-import com.wt.myspringcloud.common.dto.QueueMessage;
+import com.wt.myspringcloud.common.pojo.dto.QueueMessage;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

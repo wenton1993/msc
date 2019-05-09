@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.common.dto;
+package com.wt.myspringcloud.common.pojo.dto;
 
 public class QueueMessage<T> {
 

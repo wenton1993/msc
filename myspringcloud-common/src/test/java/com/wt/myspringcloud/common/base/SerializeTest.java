@@ -1,6 +1,6 @@
 package com.wt.myspringcloud.common.base;
 
-import com.wt.myspringcloud.common.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.User;
 import org.junit.Test;
 
 import java.io.*;

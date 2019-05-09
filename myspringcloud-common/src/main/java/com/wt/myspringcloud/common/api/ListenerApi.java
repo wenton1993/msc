@@ -1,7 +1,7 @@
 package com.wt.myspringcloud.common.api;
 
 import com.wt.myspringcloud.common.core.JsonResult;
-import com.wt.myspringcloud.common.dto.QueueMessage;
+import com.wt.myspringcloud.common.pojo.dto.QueueMessage;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

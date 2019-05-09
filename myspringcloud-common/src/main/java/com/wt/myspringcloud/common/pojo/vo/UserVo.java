@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.common.vo;
+package com.wt.myspringcloud.common.pojo.vo;
 
 import com.wt.myspringcloud.common.core.BaseReq;
 
