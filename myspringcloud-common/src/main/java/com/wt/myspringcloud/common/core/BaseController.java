@@ -1,25 +1,33 @@
 package com.wt.myspringcloud.common.core;
 
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.Date;
 
-@SuppressWarnings("rawtypes")
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class BaseController {
 
 	protected final Logger logger = LoggerFactory.getLogger(BaseController.class);
+
+	private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+
+	private JsonResult<Void> getJsonResult(boolean success) {
+		JsonResult<Void> result = new JsonResult<>();
+		result.setSuccess(success);
+		result.setResponseTime(dtf.format(LocalDateTime.now()));
+		return result;
+	}
 
     /**
      * 渲染成功数据
      *
      * @return result
      */
-    protected JsonResult renderSuccess() {
-        JsonResult result = new JsonResult();
-        result.setSuccess(true);
+    protected JsonResult<Void> renderSuccess() {
+        JsonResult<Void> result = getJsonResult(true);
         result.setCode(ResultCode.SUCCESS.getCode());
-        result.setResponseTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
+        result.setMessage(ResultCode.SUCCESS.getMsg());
         return result;
     }
 
@@ -29,21 +37,21 @@ public class BaseController {
      * @param msg 需要返回的信息
      * @return result
      */
-    protected JsonResult renderSuccess(String msg) {
-        JsonResult result = renderSuccess();
+    protected JsonResult<Void> renderSuccess(String msg) {
+        JsonResult<Void> result = getJsonResult(true);
+		result.setCode(ResultCode.SUCCESS.getCode());
         result.setMessage(msg);
-        result.setResponseTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
         return result;
     }
 
-	protected JsonResult renderSuccess(String code, String msg) {
-		JsonResult result = renderSuccess();
+	protected JsonResult<Void> renderSuccess(String code, String msg) {
+		JsonResult<Void> result = getJsonResult(true);
 		result.setCode(code);
 		result.setMessage(msg);
 		return result;
 	}
 
-	protected JsonResult renderSuccess(ResultCode resultCode) {
+	protected JsonResult<Void> renderSuccess(ResultCode resultCode) {
 		return renderSuccess(resultCode.getCode(), resultCode.getMsg());
 	}
 
@@ -54,9 +62,12 @@ public class BaseController {
      * @return result
      */
     protected <T> JsonResult<T> renderSuccessWithData(T t) {
-        JsonResult<T> result = this.renderSuccess();
+        JsonResult<T> result = new JsonResult<>();
+        result.setSuccess(true);
+        result.setCode(ResultCode.SUCCESS.getCode());
+        result.setMessage(ResultCode.SUCCESS.getMsg());
         result.setData(t);
-        result.setResponseTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
+        result.setResponseTime(dtf.format(LocalDateTime.now()));
         return result;
     }
 
@@ -65,11 +76,10 @@ public class BaseController {
 	 *
 	 * @return result
 	 */
-	protected JsonResult renderError() {
-		JsonResult result = new JsonResult();
-		result.setSuccess(false);
+	protected JsonResult<Void> renderError() {
+		JsonResult<Void> result = getJsonResult(false);
 		result.setCode(ResultCode.ERROR.getCode());
-		result.setResponseTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
+		result.setMessage(ResultCode.ERROR.getMsg());
 		return result;
 	}
 
@@ -80,26 +90,24 @@ public class BaseController {
 	 *            需要返回的消息
 	 * @return result
 	 */
-	protected JsonResult renderError(String msg) {
-		JsonResult result = renderError();
+	protected JsonResult<Void> renderError(String msg) {
+		JsonResult<Void> result = getJsonResult(false);
+		result.setCode(ResultCode.ERROR.getCode());
 		result.setMessage(msg);
-		result.setResponseTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
 		return result;
 	}
 
 	/**
 	 * 渲染失败数据（带状态码和消息）
 	 *
-	 * @param status
-	 * @param msg
+	 * @param status 状态
+	 * @param msg 消息
 	 * @return result
 	 */
-	protected JsonResult renderError(String status, String msg) {
-		JsonResult result = new JsonResult();
-		result.setSuccess(false);
+	protected JsonResult<Void> renderError(String status, String msg) {
+		JsonResult<Void> result = getJsonResult(false);
 		result.setCode(status);
 		result.setMessage(msg);
-		result.setResponseTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
 		return result;
 	}
 	
@@ -109,7 +117,7 @@ public class BaseController {
 	 * @param result 错误信息对象
 	 * @return result
 	 */
-	protected JsonResult renderError(ResultCode result) {
+	protected JsonResult<Void> renderError(ResultCode result) {
 		return renderError(result.getCode(), result.getMsg());
 	}
 
