@@ -1,5 +1,6 @@
 package com.wt.myspringcloud.user.controller;
 
+import com.wt.myspringcloud.common.annotation.ClassPreamble;
 import com.wt.myspringcloud.common.api.UserServiceApi;
 import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
@@ -13,6 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@ClassPreamble(
+        author = "文通",
+        date = "2019/5/18",
+        reviewers = {"文通"}
+)
 @RestController
 public class UserController extends BaseController implements UserServiceApi {
 
