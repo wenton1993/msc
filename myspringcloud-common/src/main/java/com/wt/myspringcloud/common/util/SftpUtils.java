@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
@@ -57,27 +59,50 @@ public class SftpUtils {
     public void download(String remoteFilePath, String localDirectory) throws SftpException, IOException {
         String fileName = Paths.get(remoteFilePath).getFileName().toString();
         String localFilePath = Paths.get(localDirectory, fileName).toString();
-        logger.info("downloading {} to {} successfully.", remoteFilePath, localFilePath);
+        logger.info("Download {} to {}.", remoteFilePath, localFilePath);
+        if (Files.notExists(Paths.get(localDirectory))) {
+            Files.createDirectories(Paths.get(localDirectory));
+        }
         try (InputStream inputStream = this.channel.get(remoteFilePath);
              FileOutputStream fileOutputStream = new FileOutputStream(localFilePath)) {
             int c;
             while ((c = inputStream.read()) != -1) {
                 fileOutputStream.write(c);
             }
-            logger.info("download {} to {} successfully.", remoteFilePath, localFilePath);
+            logger.info("Download {} to {} successfully.", remoteFilePath, localFilePath);
         }
+    }
+
+    public void upload(String localFilePath, String remoteDirectory) throws SftpException, IOException {
+        Path remoteDirectoryPath = Paths.get(remoteDirectory);
+        this.channel.cd("/");
+        for (int i = 0; i < remoteDirectoryPath.getNameCount(); i++) {
+            try {
+                this.channel.cd(remoteDirectoryPath.getName(i).toString());
+            } catch (SftpException e) {
+                this.channel.mkdir(remoteDirectoryPath.getName(i).toString());
+                this.channel.cd(remoteDirectoryPath.getName(i).toString());
+            }
+        }
+        this.channel.put(localFilePath, remoteDirectory);
+        this.channel.cd(remoteDirectory);
     }
 
     public static void main(String[] args) {
         SftpUtils sftpUtils = new SftpUtils("192.168.20.2", 20622, "hjb", "hjb");
         try {
             sftpUtils.connect();
-            sftpUtils.download("/home/hjb/apps/bank/20190517/hjb_bos_transfer_20190517_result_FINI.txt", "D:\\wento\\Desktop");
-        } catch (JSchException | SftpException | IOException e) {
+            // sftpUtils.download("/home/hjb/apps/bank/20190517/hjb_bos_transfer_20190517_result_FINI.txt", "D:\\wento\\Desktop\\test3\\1\\2\\3");
+            sftpUtils.upload("D:\\wento\\Desktop\\test.zip", "/home/hjb/apps/bank/test/1/2/3");
+        } catch (JSchException | SftpException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             sftpUtils.disconnect();
         }
     }
+
+
 
 }

@@ -1,6 +1,6 @@
 server:
   # listen port for incoming HTTP requests
-  port: 8766
+  port: 0
 
 eureka:
   instance:
