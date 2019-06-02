@@ -1,9 +1,6 @@
 package com.wt.myspringcloud.common.util;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Enumeration;
@@ -26,12 +23,12 @@ public class FileCompressionUtils {
      * @throws IOException
      */
     public static void compressToZip(List<String> filePathList, String zipFilePath) throws IOException {
-        try (ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(zipFilePath))) {
+        try (ZipOutputStream zipOutputStream = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFilePath)))) {
             for (String filePath : filePathList) {
-                try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
+                try (BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(filePath))) {
                     zipOutputStream.putNextEntry(new ZipEntry(Paths.get(filePath).getFileName().toString()));
                     int i;
-                    while ((i = fileInputStream.read()) != -1) {
+                    while ((i = inputStream.read()) != -1) {
                         zipOutputStream.write(i);
                     }
                 }
@@ -45,19 +42,19 @@ public class FileCompressionUtils {
      * @param zipFilePath zip 文件路径
      */
     public static void extractFormZip(String zipFilePath) throws IOException {
-        final String directory = zipFilePath.substring(0, zipFilePath.lastIndexOf("."));
+        String directory = zipFilePath.substring(0, zipFilePath.lastIndexOf("."));
         if (Files.notExists(Paths.get(directory))) {
             Files.createDirectory(Paths.get(directory));
         }
         ZipFile zipFile = new ZipFile(zipFilePath);
         Enumeration<? extends ZipEntry> entries = zipFile.entries();
         while (entries.hasMoreElements()) {
-            final ZipEntry entry = entries.nextElement();
-            try (final InputStream inputStream = zipFile.getInputStream(entry);
-                 final FileOutputStream fileOutputStream = new FileOutputStream(Paths.get(directory, entry.getName()).toString())) {
+            ZipEntry entry = entries.nextElement();
+            try (BufferedInputStream inputStream = new BufferedInputStream(zipFile.getInputStream(entry));
+                 BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(Paths.get(directory, entry.getName()).toString()))) {
                 int i;
                 while ((i = inputStream.read()) != -1) {
-                    fileOutputStream.write(i);
+                    outputStream.write(i);
                 }
             }
         }

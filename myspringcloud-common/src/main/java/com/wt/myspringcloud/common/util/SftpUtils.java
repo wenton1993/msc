@@ -4,9 +4,7 @@ import com.jcraft.jsch.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -63,11 +61,11 @@ public class SftpUtils {
         if (Files.notExists(Paths.get(localDirectory))) {
             Files.createDirectories(Paths.get(localDirectory));
         }
-        try (InputStream inputStream = this.channel.get(remoteFilePath);
-             FileOutputStream fileOutputStream = new FileOutputStream(localFilePath)) {
+        try (BufferedInputStream inputStream = new BufferedInputStream(this.channel.get(remoteFilePath));
+             BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(localFilePath))) {
             int c;
             while ((c = inputStream.read()) != -1) {
-                fileOutputStream.write(c);
+                outputStream.write(c);
             }
             logger.info("Download {} to {} successfully.", remoteFilePath, localFilePath);
         }
