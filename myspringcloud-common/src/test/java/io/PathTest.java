@@ -13,7 +13,6 @@ public class PathTest {
     public static void main(String[] args) {
         Path path = Paths.get("C:\\Users\\wento\\Project\\Wentong\\myspringcloud\\myspringcloud-common\\src\\test\\resources\\io\\source.txt");
         System.out.println("result:" + Files.exists(path));
-
     }
 
 }

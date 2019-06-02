@@ -15,14 +15,14 @@ public class BaseController {
 	// 调用接口成功
     protected <T> JsonResult<T> renderSuccess() {
         JsonResult<T> result = getJsonResult(true);
-        result.setCode(ResultCode.SUCCESS.getCode());
-        result.setMessage(ResultCode.SUCCESS.getMsg());
+        result.setCode(CommonResultCode.SUCCESS.getCode());
+        result.setMessage(CommonResultCode.SUCCESS.getMessage());
         return result;
     }
 
     protected <T> JsonResult<T> renderSuccess(String msg) {
         JsonResult<T> result = getJsonResult(true);
-		result.setCode(ResultCode.SUCCESS.getCode());
+		result.setCode(CommonResultCode.SUCCESS.getCode());
         result.setMessage(msg);
         return result;
     }
@@ -34,8 +34,8 @@ public class BaseController {
 		return result;
 	}
 
-	protected <T> JsonResult<T> renderSuccess(ResultCode resultCode) {
-		return renderSuccess(resultCode.getCode(), resultCode.getMsg());
+	protected <T> JsonResult<T> renderSuccess(IResultCode resultCode) {
+		return renderSuccess(resultCode.getCode(), resultCode.getMessage());
 	}
 
     protected <T> JsonResult<T> renderSuccessWithData(T t) {
@@ -47,14 +47,14 @@ public class BaseController {
     // 调用接口失败
 	protected <T> JsonResult<T> renderError() {
 		JsonResult<T> result = getJsonResult(false);
-		result.setCode(ResultCode.ERROR.getCode());
-		result.setMessage(ResultCode.ERROR.getMsg());
+		result.setCode(CommonResultCode.ERROR.getCode());
+		result.setMessage(CommonResultCode.ERROR.getMessage());
 		return result;
 	}
 
 	protected <T> JsonResult<T> renderError(String msg) {
 		JsonResult<T> result = getJsonResult(false);
-		result.setCode(ResultCode.ERROR.getCode());
+		result.setCode(CommonResultCode.ERROR.getCode());
 		result.setMessage(msg);
 		return result;
 	}
@@ -66,8 +66,8 @@ public class BaseController {
 		return result;
 	}
 
-	protected <T> JsonResult<T> renderError(ResultCode result) {
-		return renderError(result.getCode(), result.getMsg());
+	protected <T> JsonResult<T> renderError(IResultCode resultCode) {
+		return renderError(resultCode.getCode(), resultCode.getMessage());
 	}
 
 	private <T> JsonResult<T> getJsonResult(boolean success) {
