@@ -1,6 +1,7 @@
 package com.wt.myspringcloud.common.base;
 
 import com.wt.myspringcloud.common.pojo.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.UserBuilder;
 import org.junit.Test;
 
 import java.io.*;
@@ -13,7 +14,7 @@ public class SerializeTest extends BaseTest {
     public void test() throws IOException {
         FileOutputStream fs = new FileOutputStream(filePath);
         ObjectOutputStream os = new ObjectOutputStream(fs);
-        os.writeObject(new User(1L, "欧敏娜", 3));
+        os.writeObject(new UserBuilder().setId(1L).setName("欧敏娜").setAge(3).createUser());
         os.close();
     }
 

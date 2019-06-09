@@ -1,7 +1,7 @@
 package collection;
 
-import com.alibaba.fastjson.JSONObject;
 import com.wt.myspringcloud.common.pojo.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.UserBuilder;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,14 +16,14 @@ public class StreamTest {
         List<User> userList = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            User user = new User();
+            User user = new UserBuilder().createUser();
             user.setId(Integer.valueOf(i).longValue());
             user.setName("user" + i);
             user.setAge(i);
             userList.add(user);
         }
 
-        User user = new User();
+        User user = new UserBuilder().createUser();
         user.setId(4L);
         user.setName("user4");
         user.setAge(2);

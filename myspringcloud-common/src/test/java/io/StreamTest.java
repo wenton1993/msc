@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamTest {
@@ -22,6 +23,9 @@ public class StreamTest {
         String s = stringOptional.orElseGet(Locale.getDefault()::getDisplayName);
         stringOptional.ifPresent(System.out::println);
         System.out.println(s);*/
+
+        Stream<Integer> integerStream = Stream.of(1, 2, 3);
+        integerStream.filter(i -> i.compareTo(5) > 0).collect(Collectors.toList());
     }
 
 }
