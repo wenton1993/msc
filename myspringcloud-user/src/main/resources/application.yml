@@ -1,7 +1,3 @@
-server:
-  # listen port for incoming HTTP requests
-  port: 8765
-
 spring:
   application:
     name: user
@@ -10,6 +6,10 @@ spring:
   datasource:
     schema: classpath:db/schema-h2.sql
     data: classpath:db/data-h2.sql
+
+server:
+  # listen port for incoming HTTP requests
+  port: 8765
 
 eureka:
   instance:

@@ -13,10 +13,14 @@
     <artifactId>myspringcloud-eureka</artifactId>
 
     <dependencies>
+        <!-- other modules -->
+        <!-- spring cloud dependencies -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
+        <!-- spring boot dependencies -->
+        <!-- test dependencies -->
     </dependencies>
 
 </project>
