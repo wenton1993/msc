@@ -1,9 +1,6 @@
 package lamda;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -13,12 +10,16 @@ import java.util.stream.Stream;
 public class StreamTest {
 
     public static void main(String[] args) {
-        List<String> stringList = Arrays.asList("Hello", "World", "Java");
+        /*List<String> stringList = Arrays.asList("Hello", "World", "Java");
         stringList.sort(Comparator.comparingInt(String::length));
         // Function<接收 ? super String, 返回 ? extends String>
         stringList.sort(Comparator.comparing(e -> e.substring(1, 2)));
+        stringList.stream().reduce();
 
-        Stream<String> stringStream = Stream.of("Hello", "World", "Java");
+        Stream<String> stringStream = Stream.of("Hello", "World", "Java");*/
+
+        Optional<Integer> reduce = Stream.of(1, 2, 3).reduce(Integer::sum);
+        System.out.println("使用 reduce 求和: " + reduce.get());
 
     }
 }
