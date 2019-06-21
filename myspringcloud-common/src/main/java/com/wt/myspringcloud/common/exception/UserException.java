@@ -4,7 +4,7 @@ import com.wt.myspringcloud.common.core.CommonResultCode;
 
 public class UserException extends RuntimeException {
 
-    private String code;
+    private int code;
 
     public UserException() {}
 
@@ -12,7 +12,7 @@ public class UserException extends RuntimeException {
         super(message);
     }
 
-    public UserException(String code, String message) {
+    public UserException(int code, String message) {
         super(message);
         this.code = code;
     }

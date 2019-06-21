@@ -1,18 +1,18 @@
 package com.wt.myspringcloud.common.core;
 
 public enum CommonResultCode implements IResultCode {
-	SUCCESS("200", "成功"),
-	ERROR("500", "未知系统异常");
+	SUCCESS(200, "成功"),
+	ERROR(500, "未知系统异常");
 
-	private String code;
+	private int code;
 	private String message;
 
-	CommonResultCode(String code, String message) {
+	CommonResultCode(int code, String message) {
 		this.code = code;
 		this.message = message;
 	}
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 

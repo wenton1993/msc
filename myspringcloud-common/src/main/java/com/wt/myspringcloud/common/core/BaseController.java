@@ -27,7 +27,7 @@ public class BaseController {
         return result;
     }
 
-	protected <T> JsonResult<T> renderSuccess(String code, String msg) {
+	protected <T> JsonResult<T> renderSuccess(int code, String msg) {
 		JsonResult<T> result = getJsonResult(true);
 		result.setCode(code);
 		result.setMessage(msg);
@@ -59,7 +59,7 @@ public class BaseController {
 		return result;
 	}
 
-	protected <T> JsonResult<T> renderError(String status, String msg) {
+	protected <T> JsonResult<T> renderError(int status, String msg) {
 		JsonResult<T> result = getJsonResult(false);
 		result.setCode(status);
 		result.setMessage(msg);
@@ -73,7 +73,7 @@ public class BaseController {
 	private <T> JsonResult<T> getJsonResult(boolean success) {
 		JsonResult<T> result = new JsonResult<>();
 		result.setSuccess(success);
-		result.setResponseTime(dtf.format(LocalDateTime.now()));
+		result.setResponseDateTime(dtf.format(LocalDateTime.now()));
 		return result;
 	}
 }

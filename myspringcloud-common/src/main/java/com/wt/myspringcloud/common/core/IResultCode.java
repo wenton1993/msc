@@ -6,8 +6,7 @@ package com.wt.myspringcloud.common.core;
  */
 public interface IResultCode {
 
-    String getCode();
+    int getCode();
 
     String getMessage();
-
 }
