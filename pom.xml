@@ -21,6 +21,7 @@
         <module>myspringcloud-user</module>
         <module>myspringcloud-listener</module>
         <module>myspringcloud-gateway</module>
+        <module>myspringcloud-web</module>
     </modules>
 
     <dependencyManagement>
