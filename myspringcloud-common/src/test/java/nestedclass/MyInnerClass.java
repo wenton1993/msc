@@ -1,4 +1,4 @@
-package innerclass;
+package nestedclass;
 
 /**
  * @author 文通
