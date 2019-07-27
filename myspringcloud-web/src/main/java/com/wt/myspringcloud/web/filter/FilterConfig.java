@@ -17,6 +17,6 @@ public class FilterConfig {
     public FilterRegistrationBean testFilter() {
         FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
         filterRegistrationBean.setFilter(new TestFilter());
-        filterRegistrationBean.setEnabled();
+        return filterRegistrationBean;
     }
 }
