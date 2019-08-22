@@ -17,5 +17,4 @@ public class UserExceptionHandler extends BaseController {
         logger.error(e.getMessage(), e);
         return renderError("用户模块发生异常");
     }
-
 }

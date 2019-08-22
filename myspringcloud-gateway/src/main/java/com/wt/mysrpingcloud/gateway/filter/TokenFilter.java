@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * pre 过滤器 - 检查请求中是否包含 Token
+ */
 @Component
 public class TokenFilter extends ZuulFilter {
 
@@ -34,19 +37,14 @@ public class TokenFilter extends ZuulFilter {
     public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest httpServletRequest = requestContext.getRequest();
-        logger.info("TokenFilter {}, {}", httpServletRequest.getMethod(), httpServletRequest.getRequestURL().toString());
+        logger.info("TokenFilter: {} - {}", httpServletRequest.getMethod(), httpServletRequest.getRequestURL().toString());
         String token = httpServletRequest.getParameter("token");
         if (StringUtils.isBlank(token)) {
             requestContext.setSendZuulResponse(false);
             requestContext.setResponseStatusCode(FilterConstants.SEND_FORWARD_FILTER_ORDER);
             requestContext.setResponseBody("token is empty");
             requestContext.set("isSuccess", false);
-            return null;
         }
         return null;
-        /* else {
-            requestContext.setSendZuulResponse(true);
-            return null;
-        }*/
     }
 }

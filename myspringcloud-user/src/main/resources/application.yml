@@ -9,7 +9,7 @@ spring:
 
 server:
   # listen port for incoming HTTP requests
-  port: 8765
+  port: 8771
 
 eureka:
   instance:

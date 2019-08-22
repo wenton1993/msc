@@ -26,8 +26,22 @@ public class UserController extends BaseController implements UserServiceApi {
     public JsonResult<User> getUserById(@RequestBody UserVo userVo) {
         if (4 == userVo.getId()) {
             throw new UserException("用户模块异常");
+        } else if (9 == userVo.getId()) {
+            throw new RuntimeException("UserId 异常！");
         }
         User user = null;
+        try {
+            user = userService.getById(userVo.getId());
+        } catch (Exception e) {
+            logger.error("获取用户信息时发生异常", e);
+            return renderError("获取用户信息时发生异常");
+        }
+        return renderSuccessWithData(user);
+    }
+
+    @Override
+    public JsonResult<User> queryUserById(UserVo userVo) {
+        User user;
         try {
             user = userService.getById(userVo.getId());
         } catch (Exception e) {

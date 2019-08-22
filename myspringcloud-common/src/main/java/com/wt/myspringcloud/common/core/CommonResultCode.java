@@ -2,7 +2,10 @@ package com.wt.myspringcloud.common.core;
 
 public enum CommonResultCode implements IResultCode {
 	SUCCESS(200, "成功"),
-	ERROR(500, "未知系统异常");
+	ERROR(509, "未知系统异常"),
+	SERVICE_DISABLED(500, "您请求的服务不可用！"),
+
+	;
 
 	private int code;
 	private String message;
