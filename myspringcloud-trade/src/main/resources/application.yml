@@ -1,15 +1,5 @@
-spring:
-  application:
-    name: user
-  profiles:
-    active: dev
-  datasource:
-    schema: classpath:db/schema-h2.sql
-    data: classpath:db/data-h2.sql
-
 server:
-  # listen port for incoming HTTP requests
-  port: 8771
+  port: 8772
 
 eureka:
   instance:
@@ -20,6 +10,9 @@ eureka:
       # defaultZone: http://localhost:8761/eureka/
       defaultZone: http://eureka.didispace.com/eureka/
 
+spring:
+  application:
+    name: trade
 feign:
   client:
     config:

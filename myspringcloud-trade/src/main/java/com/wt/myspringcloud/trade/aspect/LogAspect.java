@@ -1,6 +1,5 @@
-package com.wt.myspringcloud.user.aspect;
+package com.wt.myspringcloud.trade.aspect;
 
-import org.apache.coyote.Constants;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -45,8 +44,6 @@ public class LogAspect {
         HttpServletRequest request = attributes.getRequest();
         // 记录下请求内容
         logger.info("URL : " + request.getRequestURL().toString());
-        logger.info("TraceId: " + request.getHeader("X-B3-TraceId"));
-        logger.info("SpanId: " + request.getHeader("X-B3-SpanId"));
         logger.info("HTTP_METHOD : " + request.getMethod());
         logger.info("IP : " + request.getRemoteAddr());
         logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
@@ -59,4 +56,5 @@ public class LogAspect {
         logger.info("RESPONSE : " + ret);
         logger.info("response time in milliseconds: " + (System.currentTimeMillis() - startTime.get()));
     }
+
 }

@@ -1,16 +1,19 @@
 server:
-  port: 8766
+  port: 8767
 
 eureka:
   instance:
-    preferIpAddress: true
+    prefer-ip-address: true
   client:
     serviceUrl:
       # defaultZone: http://localhost:8761/eureka/
-      # 程序员DD的Eureka
       defaultZone: http://eureka.didispace.com/eureka/
 
 spring:
   application:
-    name: gateway
-
+    name: stream
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
