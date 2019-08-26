@@ -1,0 +1,31 @@
+server:
+  port: 8768
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      # defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka.didispace.com/eureka/
+
+spring:
+  application:
+    name: stream
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: user
+        output:
+          destination: user
+        outputOrder:
+          destination: order
+        inputOrder:
+          destination: order
+          group: order

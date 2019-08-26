@@ -22,6 +22,7 @@
         <module>myspringcloud-trade</module>
         <module>myspringcloud-stream</module>
         <module>myspringcloud-gateway</module>
+        <module>myspringcloud-stream-2</module>
     </modules>
 
     <dependencyManagement>
@@ -35,5 +36,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>

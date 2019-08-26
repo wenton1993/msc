@@ -17,3 +17,27 @@ spring:
     port: 5672
     username: guest
     password: guest
+  cloud:
+    stream:
+      rabbit:
+        bindings:
+          inputOrder:
+            consumer:
+              # 消费失败的消息会被发送到 Dead Letter Queue
+              # auto-bind-dlq: true
+              # 消费失败后将消息重新发送到队列，直到消费成功
+              requeue-rejected: true
+      bindings:
+#        input:
+#          destination: user
+#        output:
+#          destination: user
+        outputOrder:
+          destination: order
+        inputOrder:
+          consumer:
+            # max-attempts = 最大重试次数+1
+            max-attempts: 1
+          # destination.group 确定一个 queue
+          destination: order
+          group: order

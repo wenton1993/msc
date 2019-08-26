@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.listener;
+package com.wt.myspringcloud.stream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
