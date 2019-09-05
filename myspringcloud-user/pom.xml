@@ -25,11 +25,6 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <!-- database -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.1.1</version>
-        </dependency>
         <!-- test dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

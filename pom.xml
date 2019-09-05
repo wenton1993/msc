@@ -22,8 +22,12 @@
         <module>myspringcloud-trade</module>
         <module>myspringcloud-stream</module>
         <module>myspringcloud-gateway</module>
-        <module>myspringcloud-stream-2</module>
     </modules>
+
+    <properties>
+        <mybatis-plus-boot-starter.version>3.2.0</mybatis-plus-boot-starter.version>
+        <mybatis-plus-generator.version>3.2.0</mybatis-plus-generator.version>
+    </properties>
 
     <dependencyManagement>
         <dependencies>

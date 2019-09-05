@@ -2,27 +2,27 @@ package com.wt.myspringcloud.common.exception;
 
 import com.wt.myspringcloud.common.core.CommonResultCode;
 
-public class UserException extends RuntimeException {
+public class BusinessException extends RuntimeException {
 
     private int code;
 
-    public UserException() {}
+    public BusinessException() {}
 
-    public UserException(String message) {
+    public BusinessException(String message) {
         super(message);
     }
 
-    public UserException(int code, String message) {
+    public BusinessException(int code, String message) {
         super(message);
         this.code = code;
     }
 
-    public UserException(CommonResultCode commonResultCode) {
+    public BusinessException(CommonResultCode commonResultCode) {
         super(commonResultCode.getMessage());
         this.code = commonResultCode.getCode();
     }
 
-    public UserException(CommonResultCode commonResultCode, String message) {
+    public BusinessException(CommonResultCode commonResultCode, String message) {
         super(message);
         this.code = commonResultCode.getCode();
     }

@@ -25,3 +25,7 @@ feign:
     config:
       default:
         loggerLevel: full
+
+mybatis-plus:
+  mapper-locations:
+    - mapper/*Mapper.xml

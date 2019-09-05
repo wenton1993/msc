@@ -17,6 +17,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         System.out.println("UserServiceImpl::UserServiceImpl");
     }
 
+    @Override
+    public User queryOne() {
+        return baseMapper.queryOne();
+    }
+
+    @Override
+    public User queryOneById(Long id) {
+        return baseMapper.queryOneById(id);
+    }
+
     // perform certain actions upon initialization and destruction a bean.
     @Override
     public void afterPropertiesSet() throws Exception {

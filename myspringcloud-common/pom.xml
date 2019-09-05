@@ -30,6 +30,8 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+        <!-- spring cloud dependencies end -->
+
         <!-- spring boot dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,6 +41,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus-boot-starter.version}</version>
+        </dependency>
+        <!-- spring boot dependencies end -->
+
         <!-- other dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -71,6 +80,8 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
+        <!-- other dependencies end -->
+
         <!-- test dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -80,9 +91,10 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
-            <version>3.1.1</version>
+            <version>${mybatis-plus-generator.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- test dependencies end -->
     </dependencies>
 
 </project>

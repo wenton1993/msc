@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 
 public class UserReq extends BaseReq {
 
-    private Integer id;
+    private Long id;
 
     @Override
     public String toString() {
@@ -15,11 +15,11 @@ public class UserReq extends BaseReq {
                 .toString();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

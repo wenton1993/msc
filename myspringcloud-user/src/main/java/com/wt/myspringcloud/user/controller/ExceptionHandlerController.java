@@ -1,20 +1,22 @@
-package com.wt.myspringcloud.user.interceptor;
+package com.wt.myspringcloud.user.controller;
 
 import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.exception.BusinessException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+/**
+ * @author 文通
+ * @since 2019/9/2
+ */
 @ControllerAdvice
-public class UserExceptionHandler extends BaseController {
+@RestController
+public class ExceptionHandlerController extends BaseController {
 
     @ExceptionHandler(value = BusinessException.class)
-    public JsonResult handleUserException(@RequestBody BusinessException e) {
-        logger.error(e.getMessage(), e);
-        return renderError("用户模块发生异常");
+    public JsonResult<Void> handleBusinessException() {
+        return renderError("业务异常");
     }
 }
