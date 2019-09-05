@@ -15,16 +15,4 @@ public interface UserServiceApi {
 
     @PostMapping("/queryUserById")
     JsonResult<User> queryUserById(@RequestBody UserReq userReq);
-
-    @PostMapping("/queryOne")
-    JsonResult<User> queryOne();
-
-    @PostMapping("/queryOneById")
-    JsonResult<User> queryOneById(@RequestBody UserReq req);
-
-    @PostMapping("/queryUserByModel")
-    JsonResult<User> queryUserByModel();
-
-    @PostMapping("/sendMessage")
-    JsonResult sendMessage(@RequestBody UserReq userReq);
 }

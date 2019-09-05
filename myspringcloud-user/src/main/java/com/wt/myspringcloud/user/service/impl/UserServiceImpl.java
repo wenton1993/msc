@@ -18,13 +18,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public User queryOne() {
-        return baseMapper.queryOne();
+    public User queryUser() {
+        return baseMapper.queryUser();
     }
 
     @Override
-    public User queryOneById(Long id) {
-        return baseMapper.queryOneById(id);
+    public User queryUserById(Long id) {
+        return baseMapper.queryUserById(id);
     }
 
     // perform certain actions upon initialization and destruction a bean.

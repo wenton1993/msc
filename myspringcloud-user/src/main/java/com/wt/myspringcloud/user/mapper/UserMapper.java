@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper extends BaseMapper<User> {
 
-    User queryOne();
+    User queryUser();
 
-    User queryOneById(@Param("id") Long id);
+    User queryUserById(@Param("id") Long id);
 }
