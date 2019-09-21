@@ -8,6 +8,7 @@ import com.wt.myspringcloud.common.pojo.entity.User;
 import com.wt.myspringcloud.common.pojo.req.UserReq;
 import com.wt.myspringcloud.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +31,7 @@ public class UserController extends BaseController implements UserServiceApi {
     }
 
     @Override
+    @Transactional
     public JsonResult<User> queryUserById(@RequestBody UserReq userReq) {
         if (8 == userReq.getId()) {
             throw new BusinessException("queryUserById 发生异常！");
@@ -38,6 +40,9 @@ public class UserController extends BaseController implements UserServiceApi {
         }
         User user;
         try {
+            System.out.println("queryUserById: " + userService.queryUserById(userReq.getId()));
+            System.out.println("queryUserById: " + userService.queryUserById(5L));
+            System.out.println("queryUserById: " + userService.queryUserById(userReq.getId()));
             user = userService.queryUserById(userReq.getId());
         } catch (Exception e) {
             logger.error("获取用户信息时发生异常", e);

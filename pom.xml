@@ -19,7 +19,7 @@
         <module>myspringcloud-eureka</module>
         <module>myspringcloud-common</module>
         <module>myspringcloud-user</module>
-        <module>myspringcloud-trade</module>
+        <module>myspringcloud-test</module>
         <module>myspringcloud-stream</module>
         <module>myspringcloud-gateway</module>
     </modules>

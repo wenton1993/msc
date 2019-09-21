@@ -8,9 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringCloudApplication
-// @ComponentScan(basePackages = "com.wt.myspringcloud.common.aspect")// 不起作用，而且还导致了别的问题
 @EnableFeignClients(basePackages = {"com.wt.myspringcloud.common.feign.stream", "com.wt.myspringcloud.common.feign.user"})
-public class TradeApplication {
+public class TestApplication {
 
     @LoadBalanced
     @Bean
@@ -19,6 +18,6 @@ public class TradeApplication {
     };
 
     public static void main(String[] args) {
-        SpringApplication.run(TradeApplication.class, args);
+        SpringApplication.run(TestApplication.class, args);
     }
 }

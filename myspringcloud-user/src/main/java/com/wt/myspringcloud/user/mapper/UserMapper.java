@@ -9,4 +9,6 @@ public interface UserMapper extends BaseMapper<User> {
     User queryUser();
 
     User queryUserById(@Param("id") Long id);
+
+    User queryUserById2(@Param("id") Long id);
 }
