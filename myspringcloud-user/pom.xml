@@ -18,13 +18,22 @@
             <groupId>com.wt.myspringcloud</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!-- other modules end -->
         <!-- spring cloud dependencies -->
+
         <!-- spring boot dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus-boot-starter.version}</version>
+        </dependency>
+
         <!-- database -->
+
         <!-- test dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

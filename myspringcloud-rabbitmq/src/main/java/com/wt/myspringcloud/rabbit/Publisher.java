@@ -2,6 +2,7 @@ package com.wt.myspringcloud.rabbit;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
  * @author 文通
  * @since 2019/9/22
  */
+@Component
 public class Publisher {
 
     @Autowired

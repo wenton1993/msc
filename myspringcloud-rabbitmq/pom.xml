@@ -13,8 +13,8 @@
     <dependencies>
         <!-- other modules -->
         <dependency>
-            <artifactId>myspringcloud-common</artifactId>
             <groupId>com.wt.myspringcloud</groupId>
+            <artifactId>myspringcloud-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- other modules end -->
