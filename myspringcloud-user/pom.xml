@@ -19,20 +19,17 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- other modules end -->
+
         <!-- spring cloud dependencies -->
+        <!-- spring cloud dependencies end -->
 
         <!-- spring boot dependencies -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
-
-        <!-- database -->
+        <!-- spring boot dependencies end -->
 
         <!-- test dependencies -->
         <dependency>
@@ -45,6 +42,7 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- test dependencies end -->
     </dependencies>
 
     <build>

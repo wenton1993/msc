@@ -32,7 +32,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- test dependencies -->
+        <!-- test dependencies end -->
     </dependencies>
 
     <build>

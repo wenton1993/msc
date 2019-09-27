@@ -9,10 +9,12 @@ import org.springframework.context.annotation.Configuration;
  * @since 2019/9/22
  */
 @Configuration
-public class RabbitMQConfig {
+public class DirectPatternConfig {
+
+    private final String HELLO_QUEUE = "helloQueue";
 
     @Bean
     public Queue helloQueue() {
-        return new Queue("hello");
+        return new Queue(HELLO_QUEUE);
     }
 }

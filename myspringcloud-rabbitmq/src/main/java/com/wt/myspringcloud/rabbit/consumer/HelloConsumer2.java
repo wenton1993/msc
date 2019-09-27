@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.rabbit;
+package com.wt.myspringcloud.rabbit.consumer;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
  * @since 2019/9/22
  */
 @Component
-@RabbitListener(queues = "hello")
-public class Consumer {
+@RabbitListener(queues = "helloQueue")
+public class HelloConsumer2 {
 
     @RabbitHandler
-    public void process(String hello) {
-        System.out.println("Receiver : " + hello);
+    public void process(String message) {
+        System.out.println("HelloConsumer2: " + message);
     }
 }

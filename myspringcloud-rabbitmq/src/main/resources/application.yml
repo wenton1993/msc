@@ -1,13 +1,13 @@
 server:
   port: 8768
 
-#eureka:
-#  instance:
-#    prefer-ip-address: true
-#  client:
-#    serviceUrl:
-#      # defaultZone: http://localhost:8761/eureka/
-#      defaultZone: http://eureka.didispace.com/eureka/
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      # defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka.didispace.com/eureka/
 
 spring:
   application:
@@ -17,3 +17,7 @@ spring:
     port: 5672
     username: guest
     password: guest
+    # 开启消费者确认机制 - 接收Exchange路由成功后发送的确认消息，触发RabbitTemplate.ConfirmCallback。默认false
+    publisher-confirms: true
+    # 开启消费者返回机制 - 接受Exchange返回的无法路由的消息，触发RabbitTemplate.ReturnCallback。默认false，无法路由时直接丢弃消息
+    publisher-returns: true
