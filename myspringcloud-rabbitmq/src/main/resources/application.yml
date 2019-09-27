@@ -17,7 +17,7 @@ spring:
     port: 5672
     username: guest
     password: guest
-    # 开启消费者确认机制 - 接收Exchange路由成功后发送的确认消息，触发RabbitTemplate.ConfirmCallback。默认false
+    # 开启消费者确认机制 - 接收确认消息，触发 RabbitTemplate.ConfirmCallback。默认 false
     publisher-confirms: true
-    # 开启消费者返回机制 - 接受Exchange返回的无法路由的消息，触发RabbitTemplate.ReturnCallback。默认false，无法路由时直接丢弃消息
+    # 开启消费者返回机制 - 接受 Exchange 返回的无法路由的消息，触发 RabbitTemplate.ReturnCallback。默认 false，无法路由时直接丢弃消息。
     publisher-returns: true

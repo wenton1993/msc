@@ -21,8 +21,10 @@ public class RabbitTemplateConfig implements RabbitTemplate.ConfirmCallback, Rab
     @Bean
     RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory){
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        // 当exchange没有将消息路由到队列时，调用basic.return，将消息返回给消费者
+        // 当 mandatory = true，只有消息发送到队列才会接收到 ack = true
+        // 当 mandatory = false，只要消息发送到 exchange 就会接收到 ack = true，包括能找到 exchange 但是找不到队列的情况
         rabbitTemplate.setMandatory(true);
+        // rabbitTemplate.setMandatory(false);
         // 指定一个ConfirmCallback的实现类，处理exchange返回的路由消息到队列的结果
         rabbitTemplate.setConfirmCallback(this);
         // 指定一个ReturnCallback的实现类，处理exchange返回的路由失败的消息
