@@ -23,6 +23,7 @@
         <module>myspringcloud-stream</module>
         <module>myspringcloud-gateway</module>
         <module>myspringcloud-rabbitmq</module>
+        <module>mysrpingcloud-batch</module>
     </modules>
 
     <properties>

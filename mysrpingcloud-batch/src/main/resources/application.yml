@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: user
+  profiles:
+    active: dev
+
+server:
+  # listen port for incoming HTTP requests
+  port: 8776
+
+eureka:
+  instance:
+    # Use its IP Address rather than its hostname to registers with eureka.
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      # defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka.didispace.com/eureka/
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
