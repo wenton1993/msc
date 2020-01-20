@@ -3,4 +3,4 @@ spring:
     active: dev
   batch:
     job:
-      enabled: false
+      enabled: true
