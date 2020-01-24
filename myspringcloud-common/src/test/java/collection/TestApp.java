@@ -1,7 +1,9 @@
 package collection;
 
+import org.apache.commons.io.output.WriterOutputStream;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
+import java.io.OutputStreamWriter;
 import java.util.*;
 
 /**
@@ -22,7 +24,7 @@ public class TestApp {
         List<CollectionTest.Color> sublist = list.subList(0, list.size() - 2);
 
         List<CollectionTest.Color> sublist2 = list.subList(0, list.size() - 3);
-        // 修改
+        // 修改初始化，你好
         /*Iterator<CollectionTest.Color> iterator = sublist.iterator();
         iterator.next();
         iterator.remove();*/
