@@ -11,8 +11,9 @@ import java.sql.SQLException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BaseTest {
+public class BaseTester {
 
+    // 检查测试类是否能够正常运行
     @Test
     public void test() {
         System.out.println("Hello!");

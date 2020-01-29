@@ -1,11 +1,9 @@
 package com.wt.myspringcloud.user.jdbc;
 
-import com.wt.myspringcloud.common.pojo.entity.User;
-import com.wt.myspringcloud.user.BaseTest;
+import com.wt.myspringcloud.user.BaseTester;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -15,7 +13,7 @@ import java.sql.*;
  * @author 文通
  * @since 2019/9/5
  */
-public class JdbcTest extends BaseTest {
+public class JdbcTest extends BaseTester {
 
     /**
      * 自动注入数据源

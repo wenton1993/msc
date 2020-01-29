@@ -41,9 +41,9 @@ public class RabbitTemplateConfig implements RabbitTemplate.ConfirmCallback, Rab
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
         if (ack) {
-            log.info("消息发送到队列成功，message：{}", correlationData);
+            log.info("消息发送到交换器成功，message：{}", correlationData);
         } else {
-            log.info("消息发送到队列失败，message：{}，cause：{}", correlationData, cause);
+            log.info("消息发送到交换器失败，message：{}，cause：{}", correlationData, cause);
         }
     }
 

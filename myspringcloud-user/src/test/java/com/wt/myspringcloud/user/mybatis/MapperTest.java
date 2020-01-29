@@ -3,21 +3,17 @@ package com.wt.myspringcloud.user.mybatis;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.common.pojo.entity.User;
-import com.wt.myspringcloud.user.BaseTest;
+import com.wt.myspringcloud.user.BaseTester;
 import com.wt.myspringcloud.user.mapper.UserMapper;
 import com.wt.myspringcloud.user.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * @author 文通
  * @since 2019/9/9
  */
-public class MapperTest extends BaseTest {
+public class MapperTest extends BaseTester {
 
     @Autowired
     private UserMapper userMapper;
