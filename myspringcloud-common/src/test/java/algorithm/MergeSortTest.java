@@ -3,6 +3,7 @@ package algorithm;
 import java.util.Arrays;
 
 /**
+ * 归并排序
  * MergeSortTest 步骤: 1. 分解; 2. 合并.
  */
 public class MergeSortTest {
