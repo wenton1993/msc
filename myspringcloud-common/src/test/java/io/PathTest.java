@@ -14,7 +14,8 @@ public class PathTest {
 
     public static void main(String[] args) throws IOException {
         Path path = Paths.get("D:\\wento\\Desktop\\bank\\localDirectory");
-        try (final Stream<Path> list = Files.list(path)) {
+        Path path2 = Paths.get("D:\\wento\\Desktop\\bank\\localDirectory\\test.txt");
+        /*try (final Stream<Path> list = Files.list(path)) {
            // list.forEach(e -> System.out.println(e.getFileName()));
             list.forEach(e -> {
                 try {
@@ -24,7 +25,10 @@ public class PathTest {
                 }
             });
         }
-        System.out.println("End");
+        System.out.println("End");*/
+        // 测试subpath
+        System.out.println(path.subpath(0, path.getNameCount() - 1).toString());
+        System.out.println(path2.subpath(0, path2.getNameCount() - 1).toString());
     }
 
 }
