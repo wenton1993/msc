@@ -2,7 +2,7 @@ package com.wt.myspringcloud.stream.controller;
 
 import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
-import com.wt.myspringcloud.common.pojo.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.stream.channel.OrderSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
@@ -23,7 +23,7 @@ public class SenderController extends BaseController {
     private OrderSource orderSource;
 
     @PostMapping("/sendMessage")
-    public JsonResult<Void> sendMessage(@RequestBody User user) {
+    public JsonResult<Void> sendMessage(@RequestBody WtUser user) {
         orderSource.output().send(MessageBuilder.withPayload(user).build());
         return renderSuccess();
     }

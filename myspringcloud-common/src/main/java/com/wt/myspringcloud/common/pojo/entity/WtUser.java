@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class User extends Model<User> {
+public class WtUser extends Model<WtUser> {
 
     @TableId
     private Long id;
@@ -12,9 +12,9 @@ public class User extends Model<User> {
     private Integer age;
     private String email;
 
-    public User() {}
+    public WtUser() {}
 
-    public User(Long id, String name, Integer age) {
+    public WtUser(Long id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;

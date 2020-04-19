@@ -1,6 +1,6 @@
 package com.wt.myspringcloud.user.model;
 
-import com.wt.myspringcloud.common.pojo.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.user.BaseTester;
 import org.junit.Test;
 
@@ -12,6 +12,6 @@ public class ModelTest extends BaseTester {
 
     @Test
     public void testSelect() {
-        System.out.println(new User().selectById(3));
+        System.out.println(new WtUser().selectById(3));
     }
 }

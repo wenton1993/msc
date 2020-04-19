@@ -1,6 +1,6 @@
 package com.wt.myspringcloud.common.base;
 
-import com.wt.myspringcloud.common.pojo.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import org.junit.Test;
 
 import java.io.*;
@@ -21,7 +21,7 @@ public class SerializeTest extends BaseTest {
     public void test2() throws IOException, ClassNotFoundException {
         FileInputStream fs = new FileInputStream(filePath);
         ObjectInputStream os = new ObjectInputStream(fs);
-        User user = (User) os.readObject();
+        WtUser user = (WtUser) os.readObject();
         os.close();
         System.out.println(user.toString());
     }

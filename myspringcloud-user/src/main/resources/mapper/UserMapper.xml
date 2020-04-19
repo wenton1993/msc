@@ -2,16 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wt.myspringcloud.user.mapper.UserMapper">
 
-    <select id="queryUser" resultType="com.wt.myspringcloud.common.pojo.entity.User">
+    <select id="queryUser" resultType="com.wt.myspringcloud.common.pojo.entity.WtUser">
         select * from user where id = 4
     </select>
 
-    <select id="queryUserById" resultType="com.wt.myspringcloud.common.pojo.entity.User">
+    <select id="queryUserById" resultType="com.wt.myspringcloud.common.pojo.entity.WtUser">
         select * from user where id = #{id}
     </select>
 
-    <select id="queryUserById2" resultType="com.wt.myspringcloud.common.pojo.entity.User">
+    <select id="queryUserById2" resultType="com.wt.myspringcloud.common.pojo.entity.WtUser">
         select * from user where id = ${id}
     </select>
+
+    <resultMap id="userOrder" type="com.wt.myspringcloud.user.pojo.UserOrder">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="amount" column="amount"/>
+        <collection property="orders" ofType="com.wt.myspringcloud.user.pojo.WtOrder" column="user_id">
+            <id property="id" column="order_id"/>
+            <result property="userId" column="user_id"/>
+        </collection>
+    </resultMap>
+    <select id="queryUserOrder" resultMap="userOrder">
+        select u2.id, u2.name, a2.amount, o2.id as order_id, o2.user_id
+        from user u2
+          left join wt_order o2
+            on o2.user_id = u2.id
+          left join (select u.id, count(o.id) amount
+                     from user u
+                       left join wt_order o
+                         on o.user_id = u.id
+                     group by u.id) a2
+            on a2.id = u2.id
+    </select>
+
 
 </mapper>

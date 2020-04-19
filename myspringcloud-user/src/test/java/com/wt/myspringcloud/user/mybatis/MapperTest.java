@@ -2,12 +2,15 @@ package com.wt.myspringcloud.user.mybatis;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.wt.myspringcloud.common.pojo.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.user.BaseTester;
 import com.wt.myspringcloud.user.mapper.UserMapper;
+import com.wt.myspringcloud.user.pojo.UserOrder;
 import com.wt.myspringcloud.user.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * @author 文通
@@ -40,8 +43,14 @@ public class MapperTest extends BaseTester {
      */
     @Test
     public void testQueryUserById3() {
-        IPage<User> userIPage = userMapper.selectPage(new Page<>(2L, 2L), null);
+        IPage<WtUser> userIPage = userMapper.selectPage(new Page<>(2L, 2L), null);
         // IPage<User> page1 = userService.page(page);
         userIPage.getRecords().forEach(System.out::println);
+    }
+
+    @Test
+    public void testQueryUserOrder() {
+        List<UserOrder> userOrders = userMapper.queryUserOrder();
+        userOrders.forEach(System.out::println);
     }
 }

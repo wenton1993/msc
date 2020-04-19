@@ -1,14 +1,19 @@
 package com.wt.myspringcloud.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wt.myspringcloud.common.pojo.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.WtUser;
+import com.wt.myspringcloud.user.pojo.UserOrder;
 import org.apache.ibatis.annotations.Param;
 
-public interface UserMapper extends BaseMapper<User> {
+import java.util.List;
 
-    User queryUser();
+public interface UserMapper extends BaseMapper<WtUser> {
 
-    User queryUserById(@Param("id") Long id);
+    WtUser queryUser();
 
-    User queryUserById2(@Param("id") Long id);
+    WtUser queryUserById(@Param("id") Long id);
+
+    WtUser queryUserById2(@Param("id") Long id);
+
+    List<UserOrder> queryUserOrder();
 }

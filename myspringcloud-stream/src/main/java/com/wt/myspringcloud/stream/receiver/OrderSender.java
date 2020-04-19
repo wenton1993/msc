@@ -1,18 +1,12 @@
 package com.wt.myspringcloud.stream.receiver;
 
-import com.wt.myspringcloud.common.pojo.entity.User;
+import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.stream.channel.OrderProcessor;
 import com.wt.myspringcloud.stream.channel.OrderSink;
-import com.wt.myspringcloud.stream.channel.OrderSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.context.annotation.Bean;
-import org.springframework.integration.annotation.InboundChannelAdapter;
-import org.springframework.integration.annotation.Poller;
-import org.springframework.integration.core.MessageSource;
-import org.springframework.messaging.support.GenericMessage;
 
 /**
  * @author 文通
@@ -35,7 +29,7 @@ public class OrderSender {
     }*/
 
     @StreamListener(OrderSink.INPUT)
-    public void receiveOrder(User user) {
+    public void receiveOrder(WtUser user) {
         logger.info("receiveOrder: " + user.toString());
         throw new RuntimeException("RuntimeException: receiveOrder");
     }
