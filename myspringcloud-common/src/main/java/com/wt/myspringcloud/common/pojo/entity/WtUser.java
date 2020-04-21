@@ -1,10 +1,12 @@
 package com.wt.myspringcloud.common.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class WtUser extends Model<WtUser> {
+@TableName("wt_user")
+public class WtUser {
 
     @TableId
     private Long id;
