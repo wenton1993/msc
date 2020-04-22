@@ -3,7 +3,6 @@ package com.wt.myspringcloud.user.pojo;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.io.Serializable;
 import java.util.StringJoiner;
@@ -16,17 +15,12 @@ import java.util.StringJoiner;
  * @since 2020/4/18
  */
 @TableName(value = "wt_order")
-public class WtOrder extends Model<WtOrder> {
+public class WtOrder implements Serializable{
 
     @TableId
     private Long id;
     @TableField("user_id")
     private Integer userId;
-
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
-    }
 
     @Override
     public String toString() {

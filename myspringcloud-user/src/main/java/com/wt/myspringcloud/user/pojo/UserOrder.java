@@ -1,5 +1,6 @@
 package com.wt.myspringcloud.user.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -10,7 +11,7 @@ import java.util.StringJoiner;
  * @author 文通
  * @since 2020/4/18
  */
-public class UserOrder {
+public class UserOrder implements Serializable {
 
     private Long id;
     private String name;

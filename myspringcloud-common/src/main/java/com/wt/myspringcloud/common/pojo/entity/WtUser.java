@@ -2,11 +2,12 @@ package com.wt.myspringcloud.common.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.io.Serializable;
+
 @TableName("wt_user")
-public class WtUser {
+public class WtUser implements Serializable {
 
     @TableId
     private Long id;

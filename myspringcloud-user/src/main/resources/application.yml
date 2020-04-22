@@ -28,6 +28,6 @@ feign:
 
 mybatis-plus:
   mapper-locations:
-    - mapper/*Mapper.xml
+    - classpath:/mapper/*Mapper.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
