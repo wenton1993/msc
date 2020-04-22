@@ -16,3 +16,15 @@ INSERT INTO wt_order (id, user_id) VALUES
 (6, 2),
 (7, 3),
 (8, 5);
+
+delete from wt_menu;
+INSERT INTO wt_menu (menu_id, parent_menu_id) VALUES
+(1, 0),
+(2, 1),
+(3, 1),
+(4, 2),
+(5, 2),
+(6, 3),
+(7, 4),
+(8, 7),
+(9, 8);

@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS wt_user;
 DROP TABLE IF EXISTS wt_order;
+DROP TABLE IF EXISTS wt_menu;
 
 CREATE TABLE wt_user
 (
@@ -15,4 +16,11 @@ CREATE TABLE wt_order
 	id BIGINT(20) NOT NULL COMMENT '主键ID',
 	user_id BIGINT(20) NOT NULL COMMENT '用户ID',
 	PRIMARY KEY (id)
+);
+
+create table wt_menu
+(
+    menu_id BIGINT(20) NOT NULL COMMENT '菜单ID',
+	parent_menu_id BIGINT(20) COMMENT '父菜单ID',
+	PRIMARY KEY (menu_id)
 );

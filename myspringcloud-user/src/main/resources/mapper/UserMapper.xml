@@ -14,15 +14,7 @@
         select * from user where id = ${id}
     </select>
 
-    <resultMap id="userOrder" type="com.wt.myspringcloud.user.pojo.UserOrder">
-        <id property="id" column="id"/>
-        <result property="name" column="name"/>
-        <result property="amount" column="amount"/>
-        <collection property="orders" ofType="com.wt.myspringcloud.user.pojo.WtOrder">
-            <id property="id" column="order_id"/>
-            <result property="userId" column="user_id"/>
-        </collection>
-    </resultMap>
+    <!-- 测试嵌套查询 -->
     <select id="queryUserOrder" resultMap="userOrder">
         select u2.id, u2.name, a2.amount, o2.id as order_id, o2.user_id
         from wt_user u2
@@ -35,6 +27,45 @@
                      group by u.id) a2
             on a2.id = u2.id
     </select>
+    <resultMap id="userOrder" type="com.wt.myspringcloud.user.pojo.UserOrder">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="amount" column="amount"/>
+        <collection property="orders" ofType="com.wt.myspringcloud.user.pojo.WtOrder">
+            <id property="id" column="order_id"/>
+            <result property="userId" column="user_id"/>
+        </collection>
+    </resultMap>
+
+    <!-- 测试属性结构查询 -->
+    <select id="queryMenu" resultMap="queryMenu">
+        select m.menu_id, m2.menu_id menu_id2, m3.menu_id menu_id3, m4.menu_id menu_id4, m5.menu_id menu_id5, m6.menu_id menu_id6
+        from wt_menu m
+        left join wt_menu m2 on m2.parent_menu_id = m.menu_id
+        left join wt_menu m3 on m3.parent_menu_id = m2.menu_id
+        left join wt_menu m4 on m4.parent_menu_id = m3.menu_id
+        left join wt_menu m5 on m5.parent_menu_id = m4.menu_id
+        left join wt_menu m6 on m6.parent_menu_id = m5.menu_id
+        where m.menu_id = 1
+    </select>
+    <resultMap id="queryMenu" type="com.wt.myspringcloud.user.pojo.WtMenu">
+        <id column="menu_id" property="menuId"/>
+        <collection property="childrenMenu" ofType="com.wt.myspringcloud.user.pojo.WtMenu">
+            <id column="menu_id2" property="menuId"/>
+            <collection property="childrenMenu" ofType="com.wt.myspringcloud.user.pojo.WtMenu">
+                <id column="menu_id3" property="menuId"/>
+                <collection property="childrenMenu" ofType="com.wt.myspringcloud.user.pojo.WtMenu">
+                    <id column="menu_id4" property="menuId"/>
+                    <collection property="childrenMenu" ofType="com.wt.myspringcloud.user.pojo.WtMenu">
+                        <id column="menu_id5" property="menuId"/>
+                        <collection property="childrenMenu" ofType="com.wt.myspringcloud.user.pojo.WtMenu">
+                            <id column="menu_id6" property="menuId"/>
+                        </collection>
+                    </collection>
+                </collection>
+            </collection>
+        </collection>
+    </resultMap>
 
 
 </mapper>

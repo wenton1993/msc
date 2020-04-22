@@ -6,6 +6,7 @@ import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.user.BaseTester;
 import com.wt.myspringcloud.user.mapper.UserMapper;
 import com.wt.myspringcloud.user.pojo.UserOrder;
+import com.wt.myspringcloud.user.pojo.WtMenu;
 import com.wt.myspringcloud.user.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +49,21 @@ public class MapperTest extends BaseTester {
         userIPage.getRecords().forEach(System.out::println);
     }
 
+    /**
+     * Mybatis 嵌套查询
+     */
     @Test
     public void testQueryUserOrder() {
         List<UserOrder> userOrders = userMapper.queryUserOrder();
         userOrders.forEach(System.out::println);
+    }
+
+    /**
+     * 测试 Mybatis 树形结构查询
+     */
+    @Test
+    public void queryMenu() {
+        List<WtMenu> menus = userMapper.queryMenu();
+        System.out.println("End");
     }
 }
