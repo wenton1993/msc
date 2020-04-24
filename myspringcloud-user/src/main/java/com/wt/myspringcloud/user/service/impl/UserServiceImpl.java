@@ -11,36 +11,5 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, WtUser> implements UserService, InitializingBean {
-
-    public UserServiceImpl() {
-        System.out.println("UserServiceImpl::UserServiceImpl");
-    }
-
-    @Override
-    public WtUser queryUser() {
-        return baseMapper.queryUser();
-    }
-
-    @Override
-    public WtUser queryUserById(Long id) {
-        return baseMapper.queryUserById(id);
-    }
-
-    // perform certain actions upon initialization and destruction a bean.
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("UserServiceImpl::afterPropertiesSet");
-    }
-
-    // 作用与 InitializingBean 相同, 但是用法更加时尚
-    @PostConstruct
-    private void init() {
-        System.out.println("UserServiceImpl::init");
-    }
-
-    @PreDestroy
-    private void destroy() {
-        System.out.println("UserServiceImpl::destroy");
-    }
+public class UserServiceImpl extends ServiceImpl<UserMapper, WtUser> implements UserService {
 }

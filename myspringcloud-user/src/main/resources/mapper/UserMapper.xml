@@ -67,5 +67,9 @@
         </collection>
     </resultMap>
 
+    <!-- 测试[XML自定义分页] -->
+    <select id="mySelectPage" resultType="com.wt.myspringcloud.common.pojo.entity.WtUser">
+        select * from wt_user where name = #{params.name}
+    </select>
 
 </mapper>

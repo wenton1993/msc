@@ -6,7 +6,7 @@ import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.exception.BusinessException;
 import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.common.pojo.req.UserReq;
-import com.wt.myspringcloud.user.service.UserService;
+import com.wt.myspringcloud.user.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController extends BaseController implements UserServiceApi {
 
     @Autowired
-    private UserService userService;
+    private UserMapper userMapper;
 
     @Override
     public JsonResult<WtUser> getUserById(UserReq userReq) {
         WtUser user;
         try {
-            user = userService.queryUser();
+            user = userMapper.queryUser();
         } catch (Exception e) {
             logger.error("获取用户信息时发生异常", e);
             return renderError("获取用户信息时发生异常");
@@ -40,10 +40,10 @@ public class UserController extends BaseController implements UserServiceApi {
         }
         WtUser user;
         try {
-            System.out.println("queryUserById: " + userService.queryUserById(userReq.getId()));
-            System.out.println("queryUserById: " + userService.queryUserById(5L));
-            System.out.println("queryUserById: " + userService.queryUserById(userReq.getId()));
-            user = userService.queryUserById(userReq.getId());
+            System.out.println("queryUserById: " + userMapper.queryUserById(userReq.getId()));
+            System.out.println("queryUserById: " + userMapper.queryUserById(5L));
+            System.out.println("queryUserById: " + userMapper.queryUserById(userReq.getId()));
+            user = userMapper.queryUserById(userReq.getId());
         } catch (Exception e) {
             logger.error("获取用户信息时发生异常", e);
             return renderError("获取用户信息时发生异常");

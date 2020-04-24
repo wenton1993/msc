@@ -3,7 +3,7 @@ package com.wt.myspringcloud.user.mybatis;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.common.pojo.entity.WtUser;
-import com.wt.myspringcloud.user.BaseTester;
+import com.wt.myspringcloud.user.BaseTest;
 import com.wt.myspringcloud.user.mapper.UserMapper;
 import com.wt.myspringcloud.user.pojo.UserOrder;
 import com.wt.myspringcloud.user.pojo.WtMenu;
@@ -17,7 +17,7 @@ import java.util.List;
  * @author 文通
  * @since 2019/9/9
  */
-public class MapperTest extends BaseTester {
+public class MapperTest extends BaseTest {
 
     @Autowired
     private UserMapper userMapper;

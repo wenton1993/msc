@@ -1,6 +1,6 @@
 package com.wt.myspringcloud.user.jdbc;
 
-import com.wt.myspringcloud.user.BaseTester;
+import com.wt.myspringcloud.user.BaseTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import java.sql.*;
  * @author 文通
  * @since 2019/9/5
  */
-public class JdbcTest extends BaseTester {
+public class JdbcTest extends BaseTest {
 
     /**
      * 自动注入数据源
