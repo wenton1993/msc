@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.user.BaseTest;
 import com.wt.myspringcloud.user.mapper.UserMapper;
-import com.wt.myspringcloud.user.pojo.UserOrder;
+import com.wt.myspringcloud.user.pojo.WtUserOrderVo;
 import com.wt.myspringcloud.user.pojo.WtMenu;
 import com.wt.myspringcloud.user.service.UserService;
 import org.junit.Test;
@@ -50,12 +50,21 @@ public class MapperTest extends BaseTest {
     }
 
     /**
-     * Mybatis 嵌套查询
+     * 测试[嵌套结果映射]
      */
     @Test
     public void testQueryUserOrder() {
-        List<UserOrder> userOrders = userMapper.queryUserOrder();
-        userOrders.forEach(System.out::println);
+        List<WtUserOrderVo> userOrderVos = userMapper.queryUserOrder();
+        userOrderVos.forEach(System.out::println);
+    }
+
+    /**
+     * 测试[嵌套查询]
+     */
+    @Test
+    public void testQueryUserOrder2() {
+        List<WtUserOrderVo> userOrderVos = userMapper.queryUserOrder2();
+        System.out.println("打断点查看结果");
     }
 
     /**
@@ -64,6 +73,6 @@ public class MapperTest extends BaseTest {
     @Test
     public void queryMenu() {
         List<WtMenu> menus = userMapper.queryMenu();
-        System.out.println("End");
+        System.out.println("打断点查看结果");
     }
 }

@@ -17,17 +17,30 @@ import java.util.StringJoiner;
 @TableName(value = "wt_order")
 public class WtOrder implements Serializable{
 
-    @TableId
+    @TableId("id")
     private Long id;
+
     @TableField("user_id")
-    private Integer userId;
+    private Long userId;
+
+    @TableField("amount")
+    private Long amount;
 
     @Override
     public String toString() {
         return new StringJoiner(", ", WtOrder.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("userId=" + userId)
+                .add("amount=" + amount)
                 .toString();
+    }
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
     public Long getId() {
@@ -38,11 +51,11 @@ public class WtOrder implements Serializable{
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 }

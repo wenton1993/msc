@@ -2,9 +2,8 @@ package com.wt.myspringcloud.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.common.pojo.entity.WtUser;
-import com.wt.myspringcloud.user.pojo.UserOrder;
+import com.wt.myspringcloud.user.pojo.WtUserOrderVo;
 import com.wt.myspringcloud.user.pojo.WtMenu;
 import org.apache.ibatis.annotations.Param;
 
@@ -18,7 +17,10 @@ public interface UserMapper extends BaseMapper<WtUser> {
 
     WtUser queryUserById2(@Param("id") Long id);
 
-    List<UserOrder> queryUserOrder();
+    /**
+     * 嵌套结果映射
+     */
+    List<WtUserOrderVo> queryUserOrder();
 
     List<WtMenu> queryMenu();
 
@@ -28,4 +30,9 @@ public interface UserMapper extends BaseMapper<WtUser> {
      *   1.参数顺序不能改变，IPage必须放在最前面
      */
     IPage<WtUser> mySelectPage(IPage<?> page, @Param("params") WtUser params);
+
+    /**
+     * 嵌套查询
+     */
+    List<WtUserOrderVo> queryUserOrder2();
 }

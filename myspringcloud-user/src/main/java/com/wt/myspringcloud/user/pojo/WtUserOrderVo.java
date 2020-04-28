@@ -1,5 +1,8 @@
 package com.wt.myspringcloud.user.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.StringJoiner;
@@ -11,29 +14,31 @@ import java.util.StringJoiner;
  * @author 文通
  * @since 2020/4/18
  */
-public class UserOrder implements Serializable {
+@ApiModel("用户订单信息")
+public class WtUserOrderVo implements Serializable {
 
-    private Long id;
+    @ApiModelProperty("用户ID")
+    private Long userId;
+    @ApiModelProperty("用户姓名")
     private String name;
-    private Integer amount;
+    @ApiModelProperty("用户订单")
     private List<WtOrder> orders;
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", UserOrder.class.getSimpleName() + "[", "]")
-                .add("id=" + id)
+        return new StringJoiner(", ", WtUserOrderVo.class.getSimpleName() + "[", "]")
+                .add("id=" + userId)
                 .add("name='" + name + "'")
-                .add("amount=" + amount)
                 .add("orders=" + orders)
                 .toString();
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -42,14 +47,6 @@ public class UserOrder implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
     }
 
     public List<WtOrder> getOrders() {

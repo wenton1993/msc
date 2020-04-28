@@ -13,18 +13,18 @@ insert into wt_user (id, name, age, email) values
 (11, 'Test', 11, 'test@baomidou.com');
 
 delete from wt_order;
-insert into wt_order (id, user_id) values
-(1, 1),
-(2, 1),
-(3, 2),
-(4, 2),
-(5, 2),
-(6, 2),
-(7, 3),
-(8, 5);
+insert into wt_order (id, user_id, amount) values
+(1, 1, 10),
+(2, 1, 10),
+(3, 2, 10),
+(4, 2, 10),
+(5, 2, 10),
+(6, 2, 10),
+(7, 3, 10),
+(8, 5, 10);
 
 delete from wt_menu;
-insert into wt_menu (menu_id, parent_menu_id) values
+insert into wt_menu (id, parent_id) values
 (1, 0),
 (2, 1),
 (3, 1),

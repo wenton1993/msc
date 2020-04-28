@@ -14,9 +14,9 @@
         select * from user where id = ${id}
     </select>
 
-    <!-- 测试嵌套查询 -->
+    <!-- [嵌套结果映射]，SQL和resultMap -->
     <select id="queryUserOrder" resultMap="userOrder">
-        select u2.id, u2.name, a2.amount, o2.id as order_id, o2.user_id
+        select u2.id, u2.name, a2.amount, o2.id order_id, o2.user_id
         from wt_user u2
           left join wt_order o2
             on o2.user_id = u2.id
@@ -27,15 +27,34 @@
                      group by u.id) a2
             on a2.id = u2.id
     </select>
-    <resultMap id="userOrder" type="com.wt.myspringcloud.user.pojo.UserOrder">
-        <id property="id" column="id"/>
+    <resultMap id="userOrder" type="com.wt.myspringcloud.user.pojo.WtUserOrderVo">
+        <id property="userId" column="id"/>
         <result property="name" column="name"/>
-        <result property="amount" column="amount"/>
         <collection property="orders" ofType="com.wt.myspringcloud.user.pojo.WtOrder">
             <id property="id" column="order_id"/>
             <result property="userId" column="user_id"/>
         </collection>
     </resultMap>
+    <!-- 嵌套结果映射，结束 -->
+
+    <!-- [嵌套查询]，SQL和resultMap -->
+    <select id="queryUserOrder2" resultMap="queryUserOrder2Map">
+        select id, name
+        from wt_user
+    </select>
+    <resultMap id="queryUserOrder2Map" type="com.wt.myspringcloud.user.pojo.WtUserOrderVo">
+        <id property="userId" column="id"/>
+        <result property="name" column="name"/>
+        <!-- collection中的column定义的字段值，取自上面的select，然后传给下面的select作参数 -->
+        <!-- 可以使用column="{prop1=col1,prop2=col2}"来指定多个传递给嵌套 Select 查询语句的列名 -->
+        <collection property="orders" select="queryOrderByUserId" column="id"/>
+    </resultMap>
+    <select id="queryOrderByUserId" resultType="com.wt.myspringcloud.user.pojo.WtOrder">
+        select id, user_id userId, amount
+        from wt_order
+        where user_id = #{id}
+    </select>
+    <!-- 嵌套查询，结束 -->
 
     <!-- 测试属性结构查询 -->
     <select id="queryMenu" resultMap="queryMenu">
