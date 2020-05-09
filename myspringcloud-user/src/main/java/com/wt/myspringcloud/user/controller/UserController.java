@@ -7,11 +7,15 @@ import com.wt.myspringcloud.common.exception.BusinessException;
 import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.common.pojo.req.UserReq;
 import com.wt.myspringcloud.user.mapper.UserMapper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.models.HttpMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = "用户管理")
 @RestController
 public class UserController extends BaseController implements UserServiceApi {
 
@@ -29,6 +33,7 @@ public class UserController extends BaseController implements UserServiceApi {
         }
         return renderSuccessWithData(user);
     }
+
 
     @Override
     @Transactional

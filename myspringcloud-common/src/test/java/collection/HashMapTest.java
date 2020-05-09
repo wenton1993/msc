@@ -9,9 +9,11 @@ import java.util.Map;
 public class HashMapTest {
 
     public static void main(String[] args) {
-        Map<String, Object> map = new HashMap<>(20);
+        /*Map<String, Object> map = new HashMap<>(20);
         map.put("first", 1);
-        map.put("second", 2);
+        map.put("second", 2);*/
+        // 学习key.hashCode()
+        System.out.println("你好".hashCode());
     }
     
 }

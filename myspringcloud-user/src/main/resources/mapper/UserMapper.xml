@@ -3,15 +3,15 @@
 <mapper namespace="com.wt.myspringcloud.user.mapper.UserMapper">
 
     <select id="queryUser" resultType="com.wt.myspringcloud.common.pojo.entity.WtUser">
-        select * from user where id = 4
+        select * from wt_user where id = 4
     </select>
 
     <select id="queryUserById" resultType="com.wt.myspringcloud.common.pojo.entity.WtUser">
-        select * from user where id = #{id}
+        select * from wt_user where id = #{id}
     </select>
 
     <select id="queryUserById2" resultType="com.wt.myspringcloud.common.pojo.entity.WtUser">
-        select * from user where id = ${id}
+        select * from wt_user where id = ${id}
     </select>
 
     <!-- [嵌套结果映射]，SQL和resultMap -->

@@ -31,3 +31,11 @@ mybatis-plus:
     - classpath:/mapper/*Mapper.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# [Swagger配置]
+# 接口文档地址：http://localhost:{server.port}/swagger-ui.html
+swagger:
+  # 扫描哪些包
+  base-package: com.wt
+  # 显示哪些url
+  base-path: /**

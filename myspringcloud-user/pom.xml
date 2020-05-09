@@ -30,6 +30,11 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+            <version>${swagger-spring-boot-starter.version}</version>
+        </dependency>
         <!-- spring boot dependencies end -->
 
         <!-- test dependencies -->
