@@ -8,10 +8,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+
 // [Swagger配置]
 @EnableSwagger2Doc
 @SpringCloudApplication
-// @ComponentScan(basePackages = "com.wt.myspringcloud.common.aspect")// 不起作用，而且还导致了别的问题
+@ComponentScan(basePackages = "com.wt.myspringcloud.common.component")
+@ComponentScan(basePackages = "com.wt.myspringcloud.user")
 @EnableFeignClients(basePackages = {"com.wt.myspringcloud.common.feign.stream"})
 @MapperScan("com.wt.myspringcloud.user.mapper")
 public class UserApplication {

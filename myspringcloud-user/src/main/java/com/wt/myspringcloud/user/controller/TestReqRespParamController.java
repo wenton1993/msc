@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * 测试[接收请求参数]
  * 总结：
@@ -26,7 +28,7 @@ public class TestReqRespParamController extends BaseController {
      *   3.@JsonFormat 可以将 Date 和 LocalDateTime 按格式反序列化成 String
      */
     @PostMapping("/testReqResp")
-    public JsonResult<TestReqRespParam> testReqResp(@RequestBody TestReqRespParam reqRespParam) {
+    public JsonResult<TestReqRespParam> testReqResp(@RequestBody @Valid TestReqRespParam reqRespParam) {
         System.out.println(reqRespParam.getDate());
         System.out.println(reqRespParam.getDate2());
         System.out.println(reqRespParam.getLocalDateTime());

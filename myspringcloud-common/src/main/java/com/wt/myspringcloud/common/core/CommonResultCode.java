@@ -5,6 +5,7 @@ public enum CommonResultCode implements IResultCode {
 	ERROR(509, "未知系统异常"),
 	SERVICE_DISABLED(500, "您请求的服务不可用！"),
 
+	PARAM_ERROR(401, "请求参数有问题"),
 	;
 
 	private int code;

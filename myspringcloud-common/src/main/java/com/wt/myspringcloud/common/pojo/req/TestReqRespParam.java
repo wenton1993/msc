@@ -3,6 +3,7 @@ package com.wt.myspringcloud.common.pojo.req;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,6 +14,8 @@ import java.util.StringJoiner;
  */
 public class TestReqRespParam implements Serializable {
 
+    @NotBlank(message = "ID不能为空")
+    private String id;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8:00")
@@ -25,11 +28,20 @@ public class TestReqRespParam implements Serializable {
     @Override
     public String toString() {
         return new StringJoiner(", ", TestReqRespParam.class.getSimpleName() + "[", "]")
+                .add("id='" + id + "'")
                 .add("date=" + date)
                 .add("date2=" + date2)
                 .add("localDateTime=" + localDateTime)
                 .add("localDateTime2=" + localDateTime2)
                 .toString();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getDate2() {
