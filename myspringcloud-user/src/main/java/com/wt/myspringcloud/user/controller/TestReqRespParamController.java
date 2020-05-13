@@ -2,11 +2,9 @@ package com.wt.myspringcloud.user.controller;
 
 import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
-import com.wt.myspringcloud.common.pojo.req.TestReqRespParam;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.wt.myspringcloud.common.pojo.req.TestReqRespParams;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -28,7 +26,7 @@ public class TestReqRespParamController extends BaseController {
      *   3.@JsonFormat 可以将 Date 和 LocalDateTime 按格式反序列化成 String
      */
     @PostMapping("/testReqResp")
-    public JsonResult<TestReqRespParam> testReqResp(@RequestBody @Valid TestReqRespParam reqRespParam) {
+    public JsonResult<TestReqRespParams> testReqResp(@RequestBody @Valid TestReqRespParams reqRespParam) {
         System.out.println(reqRespParam.getDate());
         System.out.println(reqRespParam.getDate2());
         System.out.println(reqRespParam.getLocalDateTime());
@@ -44,11 +42,20 @@ public class TestReqRespParamController extends BaseController {
      *   3.@JsonFormat 无法反序列化时间信息到 Date 或 LocalDateTime
      */
     @PostMapping("/testReqResp2")
-    public JsonResult<TestReqRespParam> testReqResp2(TestReqRespParam reqRespParam) {
+    public JsonResult<TestReqRespParams> testReqResp2(TestReqRespParams reqRespParam) {
         System.out.println(reqRespParam.getDate());
         System.out.println(reqRespParam.getDate2());
         System.out.println(reqRespParam.getLocalDateTime());
         System.out.println(reqRespParam.getLocalDateTime2());
         return renderSuccessWithData(reqRespParam);
+    }
+
+    @PostMapping("/testParamsCheck")
+    public JsonResult<Void> testParamsCheck(@RequestBody TestReqRespParams params, BindingResult bindingResult) {
+        System.out.println("testParamsCheck - start");
+        if (bindingResult.hasFieldErrors()) {
+            System.out.println(bindingResult.getAllErrors().get(0).toString());
+        }
+        return renderSuccess();
     }
 }

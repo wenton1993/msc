@@ -23,7 +23,7 @@
         <module>myspringcloud-stream</module>
         <module>myspringcloud-gateway</module>
         <module>myspringcloud-rabbitmq</module>
-        <module>mysrpingcloud-batch</module>
+        <module>myspringcloud-batch</module>
     </modules>
 
     <properties>
@@ -36,7 +36,7 @@
         <mybatis-plus-boot-starter.version>${mybatis-plus.version}</mybatis-plus-boot-starter.version>
         <mybatis-plus-generator.version>${mybatis-plus.version}</mybatis-plus-generator.version>
 
-        <swagger-spring-boot-starter.version>1.9.1.RELEASE</swagger-spring-boot-starter.version>
+        <swagger-spring-boot-starter.version>2.1.0.RELEASE</swagger-spring-boot-starter.version>
     </properties>
 
     <dependencyManagement>

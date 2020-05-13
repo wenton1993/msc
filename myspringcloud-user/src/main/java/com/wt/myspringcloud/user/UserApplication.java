@@ -2,20 +2,19 @@ package com.wt.myspringcloud.user;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;
-import com.spring4all.swagger.EnableSwagger2Doc;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 // [Swagger配置]
-@EnableSwagger2Doc
+@EnableSwagger2
 @SpringCloudApplication
 @ComponentScan(basePackages = "com.wt.myspringcloud.common.component")
 @ComponentScan(basePackages = "com.wt.myspringcloud.user")
-@EnableFeignClients(basePackages = {"com.wt.myspringcloud.common.feign.stream"})
+// @EnableFeignClients(basePackages = {"com.wt.myspringcloud.common.feign.stream"})
 @MapperScan("com.wt.myspringcloud.user.mapper")
 public class UserApplication {
 

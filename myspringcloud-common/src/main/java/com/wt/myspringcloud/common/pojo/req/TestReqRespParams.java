@@ -12,7 +12,7 @@ import java.util.StringJoiner;
 /**
  * 测试[接收请求参数]的对象
  */
-public class TestReqRespParam implements Serializable {
+public class TestReqRespParams implements Serializable {
 
     @NotBlank(message = "ID不能为空")
     private String id;
@@ -27,7 +27,7 @@ public class TestReqRespParam implements Serializable {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", TestReqRespParam.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", TestReqRespParams.class.getSimpleName() + "[", "]")
                 .add("id='" + id + "'")
                 .add("date=" + date)
                 .add("date2=" + date2)
