@@ -11,7 +11,7 @@ import java.util.StringJoiner;
 @ApiModel(description = "查询用户参数")
 public class UserReq extends BaseReq {
 
-    @ApiModelProperty(value = "用户ID")
+    @ApiModelProperty(value = "用户ID", example = "1")
     private Long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -21,6 +21,7 @@ public class UserReq extends BaseReq {
     public String toString() {
         return new StringJoiner(", ", UserReq.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
+                .add("dateTime=" + dateTime)
                 .toString();
     }
 
@@ -32,4 +33,11 @@ public class UserReq extends BaseReq {
         this.id = id;
     }
 
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
 }

@@ -17,7 +17,7 @@ import java.util.StringJoiner;
 @ApiModel("用户订单信息")
 public class WtUserOrderVo implements Serializable {
 
-    @ApiModelProperty("用户ID")
+    @ApiModelProperty(value = "用户ID", example = "1")
     private Long userId;
     @ApiModelProperty("用户姓名")
     private String name;
