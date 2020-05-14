@@ -12,26 +12,12 @@ public class BaseController {
 
 	private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 
-	// 调用接口成功
     protected <T> JsonResult<T> renderSuccess() {
-        JsonResult<T> result = getJsonResult(true);
-        result.setCode(CommonResultCode.SUCCESS.getCode());
-        result.setMessage(CommonResultCode.SUCCESS.getMessage());
-        return result;
+        return renderSuccess(CommonResultCode.SUCCESS.getCode(), CommonResultCode.SUCCESS.getMessage());
     }
 
     protected <T> JsonResult<T> renderSuccess(String msg) {
-        JsonResult<T> result = getJsonResult(true);
-		result.setCode(CommonResultCode.SUCCESS.getCode());
-        result.setMessage(msg);
-        return result;
-    }
-
-	protected <T> JsonResult<T> renderSuccess(int code, String msg) {
-		JsonResult<T> result = getJsonResult(true);
-		result.setCode(code);
-		result.setMessage(msg);
-		return result;
+		return renderSuccess(CommonResultCode.SUCCESS.getCode(), msg);
 	}
 
 	protected <T> JsonResult<T> renderSuccess(IResultCode resultCode) {
@@ -44,19 +30,23 @@ public class BaseController {
         return result;
     }
 
-    // 调用接口失败
-	protected <T> JsonResult<T> renderError() {
-		JsonResult<T> result = getJsonResult(false);
-		result.setCode(CommonResultCode.ERROR.getCode());
-		result.setMessage(CommonResultCode.ERROR.getMessage());
+	protected <T> JsonResult<T> renderSuccess(int code, String msg) {
+		JsonResult<T> result = getJsonResult(true);
+		result.setCode(code);
+		result.setMessage(msg);
 		return result;
 	}
 
+	protected <T> JsonResult<T> renderError() {
+		return renderError(CommonResultCode.ERROR.getCode(), CommonResultCode.ERROR.getMessage());
+	}
+
 	protected <T> JsonResult<T> renderError(String msg) {
-		JsonResult<T> result = getJsonResult(false);
-		result.setCode(CommonResultCode.ERROR.getCode());
-		result.setMessage(msg);
-		return result;
+		return renderError(CommonResultCode.ERROR.getCode(), msg);
+	}
+
+	protected <T> JsonResult<T> renderError(IResultCode resultCode) {
+		return renderError(resultCode.getCode(), resultCode.getMessage());
 	}
 
 	protected <T> JsonResult<T> renderError(int status, String msg) {
@@ -66,14 +56,18 @@ public class BaseController {
 		return result;
 	}
 
-	protected <T> JsonResult<T> renderError(IResultCode resultCode) {
-		return renderError(resultCode.getCode(), resultCode.getMessage());
-	}
-
+	/**
+	 * 获取已赋值结果和时间的 JsonResult 对象
+	 *
+	 * @param success 返回结果是否成功
+	 * @param <T> 返回数据类型
+	 * @return JsonResult 对象
+	 */
 	private <T> JsonResult<T> getJsonResult(boolean success) {
 		JsonResult<T> result = new JsonResult<>();
 		result.setSuccess(success);
 		result.setResponseDateTime(dtf.format(LocalDateTime.now()));
 		return result;
 	}
+
 }
