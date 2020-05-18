@@ -1,12 +1,15 @@
 package com.wt.myspringcloud.user.controller;
 
 import com.wt.myspringcloud.common.core.BaseController;
+import com.wt.myspringcloud.common.core.CommonResultCode;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.pojo.req.TestReqRespParams;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 /**
  * 测试[接收请求参数]
@@ -50,11 +53,22 @@ public class TestReqRespParamController extends BaseController {
         return renderSuccessWithData(reqRespParam);
     }
 
+    /**
+     * 检查请求参数
+     * @param params
+     * @param bindingResult
+     * @return
+     */
     @PostMapping("/testParamsCheck")
     public JsonResult<Void> testParamsCheck(@RequestBody TestReqRespParams params, BindingResult bindingResult) {
         System.out.println("testParamsCheck - start");
-        if (bindingResult.hasFieldErrors()) {
-            System.out.println(bindingResult.getAllErrors().get(0).toString());
+        if (bindingResult.hasErrors()) {
+            FieldError fieldError = bindingResult.getFieldError();
+            if (Objects.nonNull(fieldError)) {
+                return renderError(fieldError.getDefaultMessage());
+            } else {
+                return renderError(CommonResultCode.PARAM_ERROR);
+            }
         }
         return renderSuccess();
     }
