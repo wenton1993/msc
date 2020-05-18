@@ -29,9 +29,9 @@ spring:
               requeue-rejected: true
       bindings:
 #        input:
-#          destination: user
+#          destination: demo
 #        output:
-#          destination: user
+#          destination: demo
         outputOrder:
           destination: order
         inputOrder:

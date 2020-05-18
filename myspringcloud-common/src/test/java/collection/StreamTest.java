@@ -17,7 +17,7 @@ public class StreamTest {
         for (int i = 0; i < 3; i++) {
             WtUser user = new WtUser();
             user.setId(Integer.valueOf(i).longValue());
-            user.setName("user" + i);
+            user.setName("demo" + i);
             user.setAge(i);
             userList.add(user);
         }

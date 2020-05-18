@@ -26,12 +26,12 @@ public class UserSender {
     }*/
 
     /*@StreamListener(Sink.INPUT)
-    public void receiveUser(User user) {
-        logger.info("receiveUser: " + user.toString());
+    public void receiveUser(User demo) {
+        logger.info("receiveUser: " + demo.toString());
     }*/
 
     /*@StreamListener(Sink.INPUT)
-    public void receiveUser2(User user) {
-        logger.info("receiveUser2: " + user.toString());
+    public void receiveUser2(User demo) {
+        logger.info("receiveUser2: " + demo.toString());
     }*/
 }

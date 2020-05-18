@@ -35,8 +35,8 @@ public class OrderSender {
     }
 
     /*@StreamListener(OrderSink.INPUT)
-    public void receiveOrder2(User user) {
-        logger.info("receiveOrder2: " + user.toString());
+    public void receiveOrder2(User demo) {
+        logger.info("receiveOrder2: " + demo.toString());
     }*/
 
     /**
