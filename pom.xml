@@ -28,13 +28,9 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <mybatis-plus.version>3.2.0</mybatis-plus.version>
-        <mybatis-plus-boot-starter.version>${mybatis-plus.version}</mybatis-plus-boot-starter.version>
-        <mybatis-plus-generator.version>${mybatis-plus.version}</mybatis-plus-generator.version>
 
         <swagger-spring-boot-starter.version>2.1.0.RELEASE</swagger-spring-boot-starter.version>
     </properties>

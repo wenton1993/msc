@@ -25,11 +25,6 @@
         <!-- spring cloud dependencies end -->
 
         <!-- spring boot dependencies -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus-boot-starter.version}</version>
-        </dependency>
         <!-- spring boot dependencies end -->
 
         <!-- test dependencies -->

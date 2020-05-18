@@ -43,9 +43,8 @@
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus</artifactId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
-            <scope>compile</scope>
         </dependency>
         <!-- spring boot dependencies end -->
 
@@ -108,7 +107,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
-            <version>${mybatis-plus-generator.version}</version>
+            <version>${mybatis-plus.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- test dependencies end -->
