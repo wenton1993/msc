@@ -1,7 +1,15 @@
-spring:
-  profiles:
-    active: dev
 eureka:
   client:
     # 是否向 Eureka 注册自身
     register-with-eureka: false
+
+# 测试接收自定义属性
+custom:
+  wt:
+    id: 4
+    name: wentong
+    aList:
+      - wentong1
+      - wentong2
+      - wentong3
+    aMap: {id: name, name: 文通}
