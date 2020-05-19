@@ -1,9 +1,9 @@
 package com.wt.mysrpingcloud.gateway.fallback;
 
-import com.alibaba.fastjson.JSON;
 import com.netflix.hystrix.exception.HystrixTimeoutException;
 import com.wt.myspringcloud.common.core.CommonResultCode;
 import com.wt.myspringcloud.common.core.JsonResult;
+import com.wt.myspringcloud.common.util.JacksonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
@@ -69,7 +69,7 @@ public class CommonFallbackProvider implements FallbackProvider {
             public @NonNull
             InputStream getBody() throws IOException {
                 JsonResult result = new JsonResult(false, CommonResultCode.SERVICE_DISABLED);
-                return new ByteArrayInputStream(JSON.toJSONString(result).getBytes(StandardCharsets.UTF_8));
+                return new ByteArrayInputStream(JacksonUtils.getMapper().writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
             }
 
             @Override

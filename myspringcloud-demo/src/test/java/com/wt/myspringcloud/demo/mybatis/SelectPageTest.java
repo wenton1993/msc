@@ -6,7 +6,8 @@ import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.demo.BaseTest;
 import com.wt.myspringcloud.demo.mapper.UserMapper;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.Resource;
 
 /**
  * @author 文通
@@ -14,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class SelectPageTest extends BaseTest {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     /**
@@ -34,7 +35,7 @@ public class SelectPageTest extends BaseTest {
     /**
      * 测试[XML自定义分页]
      * 备注：
-     *   1.分页传入的对象与返回的对象最好是同一个
+     * 1.分页传入的对象与返回的对象最好是同一个
      */
     @Test
     public void testSelectPage2() {
@@ -51,6 +52,6 @@ public class SelectPageTest extends BaseTest {
         // 再次查询第3页，测试分页传入和返回的对象不同的情况
         IPage<WtUser> anotherPage3 = new Page<>(3, 2L);
         IPage<WtUser> newPage3 = userMapper.mySelectPage(anotherPage3, params);
-        System.out.println("End");
+        System.out.println("==== End ====");
     }
 }

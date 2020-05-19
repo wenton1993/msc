@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.demo.aspect;
+package com.wt.myspringcloud.common.component.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -21,7 +21,7 @@ import java.util.Arrays;
 @Aspect
 public class LogAspect {
 
-    private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
+    private Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
@@ -34,28 +34,27 @@ public class LogAspect {
      * (..)匹配方法中任意的参数
      */
     @Pointcut("execution(public * com.wt.myspringcloud.*.controller..*.*(..))")
-    public void log() {}
+    public void controllerMethod() {
+    }
 
-    @Before("log()")
+    @Before("controllerMethod()")
     public void doBefort(JoinPoint joinPoint) {
         startTime.set(System.currentTimeMillis());
         //获取请求
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         // 记录下请求内容
-        logger.info("URL : " + request.getRequestURL().toString());
-        logger.info("TraceId: " + request.getHeader("X-B3-TraceId"));
-        logger.info("SpanId: " + request.getHeader("X-B3-SpanId"));
-        logger.info("HTTP_METHOD : " + request.getMethod());
-        logger.info("IP : " + request.getRemoteAddr());
-        logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-        logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
+        logger.info("TraceId: {}, SpanId: {}, URL: {}", request.getRequestURL(), request.getHeader("X-B3-TraceId"), request.getHeader("X-B3-SpanId"));
+        // logger.info("HTTP_METHOD : " + request.getMethod());
+        // logger.info("IP : " + request.getRemoteAddr());
+        // logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+        // logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
     }
 
-    @AfterReturning(returning = "ret", pointcut = "log()")
+    @AfterReturning(returning = "ret", pointcut = "controllerMethod()")
     public void doAfterReturning(Object ret) throws Throwable {
         // 处理完请求，返回内容
-        logger.info("RESPONSE : " + ret);
+        // logger.info("RESPONSE : " + ret);
         logger.info("response time in milliseconds: " + (System.currentTimeMillis() - startTime.get()));
     }
 }

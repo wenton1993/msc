@@ -1,7 +1,5 @@
 package com.wt.myspringcloud.common.util;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
@@ -27,7 +25,7 @@ public class HttpUtils {
 
     private final static CloseableHttpClient httpclient = HttpClients.createDefault();
 
-    public static JSONObject sendGet(String uri, int timeout) throws IOException {
+    public static Map sendGet(String uri, int timeout) throws IOException {
         HttpGet httpGet = new HttpGet(uri);
         RequestConfig requestConfig = RequestConfig.custom()
                 // 连接超时时间
@@ -47,7 +45,7 @@ public class HttpUtils {
      * @return JSONObject
      * @throws IOException
      */
-    public static JSONObject sendPost(String uri, List<NameValuePair> nvps, int timeout) throws IOException {
+    public static Map sendPost(String uri, List<NameValuePair> nvps, int timeout) throws IOException {
         HttpPost httpPost = new HttpPost(uri);
         RequestConfig requestConfig = RequestConfig.custom()
                 // 连接超时时间
@@ -60,7 +58,7 @@ public class HttpUtils {
         return execute(httpPost);
     }
 
-    public static JSONObject sendPostWithJson(String uri, Map<String, Object> params, int timeout) throws IOException {
+    public static Map sendPostWithJson(String uri, Map<String, Object> params, int timeout) throws IOException {
         HttpPost httpPost = new HttpPost(uri);
         RequestConfig requestConfig = RequestConfig.custom()
                 // 连接超时时间
@@ -70,17 +68,17 @@ public class HttpUtils {
                 .build();
         httpPost.setConfig(requestConfig);
         httpPost.addHeader("Content-Type", "application/json");
-        String paramsString = JSON.toJSONString(params);
+        String paramsString = JacksonUtils.getMapper().writeValueAsString(params);
         httpPost.setEntity(new StringEntity(paramsString));
         return execute(httpPost);
     }
 
-    private static JSONObject execute(HttpUriRequest httpPost) throws IOException {
+    private static Map execute(HttpUriRequest httpPost) throws IOException {
         try (CloseableHttpResponse response = httpclient.execute(httpPost)) {
             HttpEntity entity = response.getEntity();
             String responseString = EntityUtils.toString(entity);
             EntityUtils.consume(entity);
-            return JSON.parseObject(responseString);
+            return JacksonUtils.getMapper().readValue(responseString, Map.class);
         }
     }
 
