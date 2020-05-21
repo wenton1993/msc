@@ -1,5 +1,7 @@
 eureka:
   client:
+    # 是否向 Eureka 获取其它服务的信息
+    fetch-registry: false
     # 是否向 Eureka 注册自身
     register-with-eureka: false
 

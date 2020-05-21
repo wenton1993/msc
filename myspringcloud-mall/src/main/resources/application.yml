@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: mall
+  profiles:
+    active: dev
+  datasource:
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
+
+server:
+  port: 8773
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+
+mybatis-plus:
+  mapper-locations:
+    - classpath:/mapper/*Mapper.xml
+  typeEnumsPackage: com.wt.myspringcloud.common.enumeration.ienum

@@ -1,21 +1,22 @@
-package com.wt.myspringcloud.demo;
+package com.wt.myspringcloud.mall;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.context.annotation.ComponentScan;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-// [Swagger配置]
 @EnableSwagger2
+
 @ComponentScan(basePackages = "com.wt.myspringcloud.common.component")
-@ComponentScan(basePackages = "com.wt.myspringcloud.demo")
+@ComponentScan(basePackages = "com.wt.myspringcloud.mall")
 @EnableConfigurationProperties
 @SpringCloudApplication
-public class DemoApplication {
+public class MallApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(MallApplication.class, args);
     }
 
 }
