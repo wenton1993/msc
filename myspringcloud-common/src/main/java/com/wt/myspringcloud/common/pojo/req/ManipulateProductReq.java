@@ -38,7 +38,4 @@ public class ManipulateProductReq implements Serializable {
     @ApiModelProperty(value = "销量")
     private Integer sale;
 
-    @ApiModelProperty(value = "更新操作时间戳")
-    private Timestamp updateTimestamp;
-
 }

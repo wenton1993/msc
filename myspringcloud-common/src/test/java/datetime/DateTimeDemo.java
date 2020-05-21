@@ -12,8 +12,13 @@ import java.util.Date;
 public class DateTimeDemo {
 
     public static void main(String[] args) {
+        System.out.println("==== 默认精度 ====");
+        System.out.println("LocalDateTime.now(): " + LocalDateTime.now());// 精确到毫秒
+        System.out.println("Instant.now(): " + Instant.now());// 精确到毫秒
+        System.out.println("new java.util.Date(): " + new Date());// 只展示到秒,但是精确到毫秒
+        System.out.println("new java.util.Date(): " + new Date().toInstant());// 精确到毫秒
+
         System.out.println("==== Instant ====");
-        
         System.out.println("起点时间：" + Instant.ofEpochSecond(0L));
         System.out.println("当前时间：" + Instant.now());
         System.out.println("计算时间偏移：" + Instant.now().plus(-3, ChronoUnit.DAYS));

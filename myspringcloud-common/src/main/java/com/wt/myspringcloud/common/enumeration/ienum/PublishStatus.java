@@ -2,12 +2,10 @@ package com.wt.myspringcloud.common.enumeration.ienum;
 
 import com.baomidou.mybatisplus.core.enums.IEnum;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-
-import java.io.Serializable;
 
 /**
+ * 产品上架状态
+ *
  * @author 文通
  * @since 2020/5/20
  */
@@ -25,10 +23,6 @@ public enum PublishStatus implements IEnum<Integer> {
     PublishStatus(Integer value, String desc) {
         this.value = value;
         this.desc = desc;
-    }
-
-    public String getDesc() {
-        return null;
     }
 
     @Override
