@@ -9,6 +9,7 @@ import com.wt.myspringcloud.common.pojo.entity.Product;
 import com.wt.myspringcloud.common.pojo.req.ManipulateProductReq;
 import com.wt.myspringcloud.mall.mapper.ProductMapper;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,7 @@ public class ProductController extends BaseController {
     @Resource
     private ProductMapper productMapper;
 
+    @ApiOperation(value = "查询产品列表")
     @PostMapping(path = "/queryProduct")
     public JsonResult<IPage<Product>> queryProduct(@RequestBody ManipulateProductReq req, Page<Product> page) {
         Product params = new Product();

@@ -30,4 +30,7 @@ public enum PublishStatus implements IEnum<Integer> {
         return this.value;
     }
 
+    public String getDesc() {
+        return desc;
+    }
 }

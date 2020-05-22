@@ -37,15 +37,15 @@ public class Product implements Serializable {
     @TableField(value = "publish_status")
     private PublishStatus publishStatus;
 
-    @ApiModelProperty(value = "商品价格(分)")
+    @ApiModelProperty(value = "商品价格(分)", example = "100")
     @TableField(value = "price")
     private Integer price;
 
-    @ApiModelProperty(value = "库存")
+    @ApiModelProperty(value = "库存", example = "100")
     @TableField(value = "stock")
     private Integer stock;
 
-    @ApiModelProperty(value = "销量")
+    @ApiModelProperty(value = "销量", example = "100")
     @TableField(value = "sale")
     private Integer sale;
 

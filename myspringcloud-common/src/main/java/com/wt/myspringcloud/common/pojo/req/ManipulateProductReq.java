@@ -8,7 +8,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  * @author 文通
@@ -29,13 +28,13 @@ public class ManipulateProductReq implements Serializable {
     @ApiModelProperty(value = "上架状态：0-未上架 1-上架")
     private PublishStatus publishStatus;
 
-    @ApiModelProperty(value = "商品价格(分)")
+    @ApiModelProperty(value = "商品价格(分)", example = "100")
     private Integer price;
 
-    @ApiModelProperty(value = "库存")
+    @ApiModelProperty(value = "库存", example = "100")
     private Integer stock;
 
-    @ApiModelProperty(value = "销量")
+    @ApiModelProperty(value = "销量", example = "100")
     private Integer sale;
 
 }
