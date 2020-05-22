@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
-import com.wt.myspringcloud.common.pojo.dto.ProductCategoryNode;
+import com.wt.myspringcloud.common.pojo.entity.Product;
 import com.wt.myspringcloud.common.pojo.entity.ProductCategory;
 import com.wt.myspringcloud.common.pojo.req.ProductCategoryReq;
 import com.wt.myspringcloud.mall.mapper.ProductCategoryMapper;
@@ -45,19 +45,19 @@ public class ProductCategoryController extends BaseController {
 
     @ApiOperation(value = "查询商品分类树")
     @PostMapping(path = "/queryProductCategoryTree")
-    public JsonResult<List<ProductCategoryNode>> queryProductCategoryTree() {
+    public JsonResult<List<Product.ProductCategoryNode>> queryProductCategoryTree() {
         List<ProductCategory> categoryList = productCategoryMapper.selectList(null);
-        List<ProductCategoryNode> nodeList = categoryList.stream()
+        List<Product.ProductCategoryNode> nodeList = categoryList.stream()
                 .filter(c -> c.getLevel() == 1)
                 .map(c -> covert(c, categoryList))
                 .collect(Collectors.toList());
         return renderSuccessWithData(nodeList);
     }
 
-    private ProductCategoryNode covert(ProductCategory category, List<ProductCategory> categoryList) {
-        ProductCategoryNode node = new ProductCategoryNode();
+    private Product.ProductCategoryNode covert(ProductCategory category, List<ProductCategory> categoryList) {
+        Product.ProductCategoryNode node = new Product.ProductCategoryNode();
         BeanUtils.copyProperties(category, node);
-        List<ProductCategoryNode> nodeList = categoryList.stream()
+        List<Product.ProductCategoryNode> nodeList = categoryList.stream()
                 .filter(c -> c.getParentId().equals(category.getId()))
                 .map(c -> covert(c, categoryList))
                 .collect(Collectors.toList());
