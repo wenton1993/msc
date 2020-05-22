@@ -49,20 +49,9 @@ public class ProductCategoryController extends BaseController {
         List<ProductCategory> categoryList = productCategoryMapper.selectList(null);
         List<Product.ProductCategoryNode> nodeList = categoryList.stream()
                 .filter(c -> c.getLevel() == 1)
-                .map(c -> covert(c, categoryList))
+                .map(c -> Product.ProductCategoryNode.covert(c, categoryList))
                 .collect(Collectors.toList());
         return renderSuccessWithData(nodeList);
-    }
-
-    private Product.ProductCategoryNode covert(ProductCategory category, List<ProductCategory> categoryList) {
-        Product.ProductCategoryNode node = new Product.ProductCategoryNode();
-        BeanUtils.copyProperties(category, node);
-        List<Product.ProductCategoryNode> nodeList = categoryList.stream()
-                .filter(c -> c.getParentId().equals(category.getId()))
-                .map(c -> covert(c, categoryList))
-                .collect(Collectors.toList());
-        node.setChildren(nodeList);
-        return node;
     }
 
 }

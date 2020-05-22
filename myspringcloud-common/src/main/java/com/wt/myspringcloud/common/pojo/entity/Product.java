@@ -10,10 +10,12 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 产品对象
@@ -63,5 +65,24 @@ public class Product implements Serializable {
 
         private List<ProductCategoryNode> children;
 
+        /**
+         * 递归查找一个分类下所有的子分类,并返回一个Node对象
+         *
+         * @param category 递归查找该分类下所有的子分类
+         * @param categoryList 所有分类的列表
+         * @return Node对象
+         */
+        public static ProductCategoryNode covert(ProductCategory category, List<ProductCategory> categoryList) {
+            ProductCategoryNode node = new ProductCategoryNode();
+            BeanUtils.copyProperties(category, node);
+            List<ProductCategoryNode> nodeList = categoryList.stream()
+                    .filter(c -> c.getParentId().equals(category.getId()))
+                    .map(c -> covert(c, categoryList))
+                    .collect(Collectors.toList());
+            node.setChildren(nodeList);
+            return node;
+        }
+
     }
+
 }
