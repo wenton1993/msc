@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.pojo.entity.Product;
-import com.wt.myspringcloud.common.pojo.req.ManipulateProductReq;
+import com.wt.myspringcloud.common.pojo.req.ProductReq;
 import com.wt.myspringcloud.mall.mapper.ProductMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,9 +32,10 @@ public class ProductController extends BaseController {
 
     @ApiOperation(value = "查询产品列表")
     @PostMapping(path = "/queryProduct")
-    public JsonResult<IPage<Product>> queryProduct(@RequestBody ManipulateProductReq req, Page<Product> page) {
+    public JsonResult<IPage<Product>> queryProduct(@RequestBody ProductReq req) {
         Product params = new Product();
         BeanUtils.copyProperties(req, params);
+        Page<Product> page = req.getPage();
         page = productMapper.selectPage(page, new QueryWrapper<>(params));
         return renderSuccessWithData(page);
     }

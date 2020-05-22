@@ -1,4 +1,4 @@
--- 用户表，测试基础查询功能
+-- 商品表
 DROP TABLE IF EXISTS product;
 CREATE TABLE product
 (
@@ -8,6 +8,18 @@ CREATE TABLE product
 	price BIGINT(16) NOT NULL COMMENT '产品价格',
 	stock BIGINT(16) DEFAULT 0 COMMENT '产品库存',
 	sale BIGINT(16) DEFAULT 0 COMMENT '产品销量',
-	update_timestamp TIMESTAMP NOT NULL COMMENT '产品销量',
+	create_datetime DATETIME NOT NULL COMMENT '创建日期和时间',
+	PRIMARY KEY (id)
+);
+
+-- 商品分类表
+DROP TABLE IF EXISTS product_category;
+CREATE TABLE product_category
+(
+	id int NOT NULL COMMENT '类别ID',
+	parent_id int NOT NULL COMMENT '父级类别',
+	name VARCHAR(32) NOT NULL COMMENT '类别名称',
+	level int NOT NULL COMMENT '级别',
+	desc VARCHAR(64) COMMENT '类别描述',
 	PRIMARY KEY (id)
 );

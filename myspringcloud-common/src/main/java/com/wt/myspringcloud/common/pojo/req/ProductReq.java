@@ -1,6 +1,8 @@
 package com.wt.myspringcloud.common.pojo.req;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.common.enumeration.ienum.PublishStatus;
+import com.wt.myspringcloud.common.pojo.entity.Product;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -17,7 +19,7 @@ import java.io.Serializable;
 @Setter
 @ToString
 @ApiModel(description = "操作产品的请求对象")
-public class ManipulateProductReq implements Serializable {
+public class ProductReq implements Serializable {
 
     @ApiModelProperty(value = "商品ID")
     private String id;
@@ -36,5 +38,8 @@ public class ManipulateProductReq implements Serializable {
 
     @ApiModelProperty(value = "销量", example = "100")
     private Integer sale;
+
+    @ApiModelProperty(value = "分页参数对象")
+    Page<Product> page;
 
 }

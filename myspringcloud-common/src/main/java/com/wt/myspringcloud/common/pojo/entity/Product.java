@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wt.myspringcloud.common.enumeration.ienum.PublishStatus;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * 产品对象
@@ -39,17 +40,18 @@ public class Product implements Serializable {
 
     @ApiModelProperty(value = "商品价格(分)", example = "100")
     @TableField(value = "price")
-    private Integer price;
+    private int price;
 
     @ApiModelProperty(value = "库存", example = "100")
     @TableField(value = "stock")
-    private Integer stock;
+    private int stock;
 
     @ApiModelProperty(value = "销量", example = "100")
     @TableField(value = "sale")
-    private Integer sale;
+    private int sale;
 
-    @ApiModelProperty(value = "更新操作时间戳")
-    @TableField(value = "update_timestamp")
-    private Timestamp updateTimestamp;
+    @ApiModelProperty(value = "创建日期和时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8:00")
+    @TableField(value = "create_datetime")
+    private LocalDateTime createDateTime;
 }

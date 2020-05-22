@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 /**
  * @author 文通
@@ -34,7 +35,7 @@ public class ProductRunner implements ApplicationRunner {
         product.setPublishStatus(PublishStatus.ON);
         product.setStock(1000);
         product.setSale(0);
-        product.setUpdateTimestamp(Timestamp.from(Instant.now()));
+        product.setCreateDateTime(LocalDateTime.now());
         for (int i = 1; i <= 100; i++) {
             product.setId(null);
             product.setName("榴莲" + i);
