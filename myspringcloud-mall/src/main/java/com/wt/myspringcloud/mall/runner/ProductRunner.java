@@ -7,15 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 /**
+ * 在开发环境下，生成用于测试的商品数据
+ *
  * @author 文通
  * @since 2020/5/21
  */

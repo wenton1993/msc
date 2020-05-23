@@ -1,4 +1,4 @@
-package lamda;
+package lambda;
 
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
