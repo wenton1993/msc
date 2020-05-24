@@ -1,4 +1,4 @@
-package lambda;
+package stream;
 
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;

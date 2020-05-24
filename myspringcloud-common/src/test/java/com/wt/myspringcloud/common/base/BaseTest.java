@@ -6,7 +6,7 @@ public class BaseTest implements InterfaceDemo {
 
     public static void main(String[] args) {
         BaseTest baseTest = new BaseTest();
-        baseTest.play("Ou Minna" , (s) -> System.out.println(s + " is a lambda expression."));
+        baseTest.play("Ou Minna" , (s) -> System.out.println(s + " is a stream expression."));
     }
 
     @Override

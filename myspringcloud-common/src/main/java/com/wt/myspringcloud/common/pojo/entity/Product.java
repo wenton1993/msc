@@ -37,21 +37,25 @@ public class Product implements Serializable {
     @TableId(value = "name")
     private String name;
 
+    @ApiModelProperty(value = "商品价格(分)", example = "100")
+    @TableField(value = "price")
+    private Integer price;
+
+    @ApiModelProperty(value = "商品分类ID", example = "1")
+    @TableField(value = "product_category_id")
+    private Integer productCategoryId;
+
     @ApiModelProperty(value = "上架状态：0-未上架 1-上架")
     @TableField(value = "publish_status")
     private PublishStatus publishStatus;
 
-    @ApiModelProperty(value = "商品价格(分)", example = "100")
-    @TableField(value = "price")
-    private int price;
-
     @ApiModelProperty(value = "库存", example = "100")
     @TableField(value = "stock")
-    private int stock;
+    private Integer stock;
 
     @ApiModelProperty(value = "销量", example = "100")
     @TableField(value = "sale")
-    private int sale;
+    private Integer sale;
 
     @ApiModelProperty(value = "创建日期和时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8:00")

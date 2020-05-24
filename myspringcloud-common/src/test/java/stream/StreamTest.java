@@ -1,4 +1,4 @@
-package lambda;
+package stream;
 
 import java.util.*;
 import java.util.stream.Stream;

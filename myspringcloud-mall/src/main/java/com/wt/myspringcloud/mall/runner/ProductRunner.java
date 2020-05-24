@@ -38,6 +38,7 @@ public class ProductRunner implements ApplicationRunner {
         for (int i = 1; i <= 100; i++) {
             product.setId(null);
             product.setName("榴莲" + i);
+            product.setProductCategoryId(1 + i % 5);
             productMapper.insert(product);
         }
         log.info("==== ProductRunner end ====");
