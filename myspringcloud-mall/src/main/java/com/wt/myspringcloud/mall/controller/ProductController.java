@@ -3,10 +3,10 @@ package com.wt.myspringcloud.mall.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.pojo.entity.Product;
 import com.wt.myspringcloud.common.pojo.req.ProductReq;
+import com.wt.myspringcloud.common.util.JsonResultUtils;
 import com.wt.myspringcloud.mall.mapper.ProductMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +25,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping(path = "/product")
 @Api(tags = "产品管理控制器")
-public class ProductController extends BaseController {
+public class ProductController {
 
     @Resource
     private ProductMapper productMapper;
@@ -37,7 +37,7 @@ public class ProductController extends BaseController {
         BeanUtils.copyProperties(req, params);
         Page<Product> page = req.getPage();
         page = productMapper.selectPage(page, new QueryWrapper<>(params));
-        return renderSuccessWithData(page);
+        return JsonResultUtils.successWithData(page);
     }
 
 }

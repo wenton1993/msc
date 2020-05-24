@@ -3,11 +3,11 @@ package com.wt.myspringcloud.mall.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.pojo.entity.Product;
 import com.wt.myspringcloud.common.pojo.entity.ProductCategory;
 import com.wt.myspringcloud.common.pojo.req.ProductCategoryReq;
+import com.wt.myspringcloud.common.util.JsonResultUtils;
 import com.wt.myspringcloud.mall.mapper.ProductCategoryMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(path = "/productCategory")
 @Api(tags = "产品类别管理控制器")
-public class ProductCategoryController extends BaseController {
+public class ProductCategoryController {
 
     @Resource
     private ProductCategoryMapper productCategoryMapper;
@@ -40,7 +40,7 @@ public class ProductCategoryController extends BaseController {
         BeanUtils.copyProperties(req, params);
         Page<ProductCategory> page = req.getPage();
         page = productCategoryMapper.selectPage(page, new QueryWrapper<>(params));
-        return renderSuccessWithData(page);
+        return JsonResultUtils.successWithData(page);
     }
 
     @ApiOperation(value = "查询商品分类树")
@@ -51,7 +51,7 @@ public class ProductCategoryController extends BaseController {
                 .filter(c -> c.getLevel() == 1)
                 .map(c -> Product.ProductCategoryNode.covert(c, categoryList))
                 .collect(Collectors.toList());
-        return renderSuccessWithData(nodeList);
+        return JsonResultUtils.successWithData(nodeList);
     }
 
 }

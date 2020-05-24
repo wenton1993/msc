@@ -1,14 +1,14 @@
 package com.wt.myspringcloud.common.core;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Slf4j
 public class BaseController {
-
-	protected static final Logger logger = LoggerFactory.getLogger(BaseController.class);
 
 	private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 
@@ -66,7 +66,6 @@ public class BaseController {
 	private <T> JsonResult<T> getJsonResult(boolean success) {
 		JsonResult<T> result = new JsonResult<>();
 		result.setSuccess(success);
-		result.setResponseDateTime(dtf.format(LocalDateTime.now()));
 		return result;
 	}
 
