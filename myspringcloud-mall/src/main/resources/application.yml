@@ -26,4 +26,4 @@ feign:
 mybatis-plus:
   mapper-locations:
     - classpath:/mapper/*Mapper.xml
-  typeEnumsPackage: com.wt.myspringcloud.common.enumeration.ienum
+  typeEnumsPackage: com.wt.myspringcloud.common.enumeration.field

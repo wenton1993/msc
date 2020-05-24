@@ -1,6 +1,6 @@
 package stream;
 
-import com.wt.myspringcloud.common.enumeration.ienum.PublishStatus;
+import com.wt.myspringcloud.common.enumeration.field.PublishStatus;
 import com.wt.myspringcloud.common.pojo.entity.Product;
 
 import java.time.LocalDateTime;

@@ -1,7 +1,7 @@
 package com.wt.myspringcloud.demo.controller;
 
 import com.wt.myspringcloud.common.core.BaseController;
-import com.wt.myspringcloud.common.core.CommonResultCode;
+import com.wt.myspringcloud.common.enumeration.result.CommonResultCode;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.pojo.req.TestReqRespParams;
 import org.springframework.validation.BindingResult;

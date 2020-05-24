@@ -1,6 +1,6 @@
 package com.wt.myspringcloud.common.component;
 
-import com.wt.myspringcloud.common.core.CommonResultCode;
+import com.wt.myspringcloud.common.enumeration.result.CommonResultCode;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.exception.BusinessException;
 import com.wt.myspringcloud.common.util.JsonResultUtils;

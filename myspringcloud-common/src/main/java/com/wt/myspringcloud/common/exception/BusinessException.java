@@ -1,6 +1,6 @@
 package com.wt.myspringcloud.common.exception;
 
-import com.wt.myspringcloud.common.core.CommonResultCode;
+import com.wt.myspringcloud.common.enumeration.result.CommonResultCode;
 
 public class BusinessException extends RuntimeException {
 

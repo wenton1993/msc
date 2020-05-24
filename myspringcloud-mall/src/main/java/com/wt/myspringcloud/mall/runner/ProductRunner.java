@@ -1,6 +1,6 @@
 package com.wt.myspringcloud.mall.runner;
 
-import com.wt.myspringcloud.common.enumeration.ienum.PublishStatus;
+import com.wt.myspringcloud.common.enumeration.field.PublishStatus;
 import com.wt.myspringcloud.common.pojo.entity.Product;
 import com.wt.myspringcloud.mall.mapper.ProductMapper;
 import lombok.extern.slf4j.Slf4j;

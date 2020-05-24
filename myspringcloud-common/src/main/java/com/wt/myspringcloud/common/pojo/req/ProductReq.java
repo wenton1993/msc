@@ -1,7 +1,7 @@
 package com.wt.myspringcloud.common.pojo.req;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.wt.myspringcloud.common.enumeration.ienum.PublishStatus;
+import com.wt.myspringcloud.common.enumeration.field.PublishStatus;
 import com.wt.myspringcloud.common.pojo.entity.Product;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

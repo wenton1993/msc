@@ -1,4 +1,6 @@
-package com.wt.myspringcloud.common.core;
+package com.wt.myspringcloud.common.enumeration.result;
+
+import com.wt.myspringcloud.common.core.IResultCode;
 
 /**
  * 公共错误码

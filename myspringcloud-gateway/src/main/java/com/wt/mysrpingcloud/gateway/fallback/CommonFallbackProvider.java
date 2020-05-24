@@ -1,7 +1,7 @@
 package com.wt.mysrpingcloud.gateway.fallback;
 
 import com.netflix.hystrix.exception.HystrixTimeoutException;
-import com.wt.myspringcloud.common.core.CommonResultCode;
+import com.wt.myspringcloud.common.enumeration.result.CommonResultCode;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.util.JacksonUtils;
 import org.slf4j.Logger;

@@ -31,7 +31,7 @@ public class QuoteServer {
             buf = "收到".getBytes();
             packet = new DatagramPacket(buf, buf.length, address, port);
             socket.send(packet);
-            System.out.println("response to client: " + new String(packet.getData()) + ", " + Arrays.toString(packet.getData()));
+            System.out.println("result to client: " + new String(packet.getData()) + ", " + Arrays.toString(packet.getData()));
         }
     }
 }

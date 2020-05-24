@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.common.enumeration.ienum;
+package com.wt.myspringcloud.common.enumeration.field;
 
 import com.baomidou.mybatisplus.core.enums.IEnum;
 import com.fasterxml.jackson.annotation.JsonValue;

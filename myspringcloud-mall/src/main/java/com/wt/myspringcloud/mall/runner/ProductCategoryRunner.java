@@ -1,7 +1,5 @@
 package com.wt.myspringcloud.mall.runner;
 
-import com.wt.myspringcloud.common.enumeration.ienum.PublishStatus;
-import com.wt.myspringcloud.common.pojo.entity.Product;
 import com.wt.myspringcloud.common.pojo.entity.ProductCategory;
 import com.wt.myspringcloud.mall.mapper.ProductCategoryMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +9,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
 
 /**
  * 在开发环境下，生成用于测试的商品分类数据

@@ -1,6 +1,6 @@
 package com.wt.myspringcloud.common.util;
 
-import com.wt.myspringcloud.common.core.CommonResultCode;
+import com.wt.myspringcloud.common.enumeration.result.CommonResultCode;
 import com.wt.myspringcloud.common.core.IResultCode;
 import com.wt.myspringcloud.common.core.JsonResult;
 
