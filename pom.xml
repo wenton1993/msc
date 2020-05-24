@@ -19,7 +19,6 @@
         <module>myspringcloud-eureka</module>
         <module>myspringcloud-common</module>
         <module>myspringcloud-demo</module>
-        <module>myspringcloud-test</module>
         <module>myspringcloud-stream</module>
         <module>myspringcloud-gateway</module>
         <module>myspringcloud-rabbitmq</module>
