@@ -23,7 +23,7 @@ import javax.annotation.Resource;
  * @since 2020/5/21
  */
 @RestController
-@RequestMapping(path = "/product")
+@RequestMapping(value = "/product")
 @Api(tags = "产品管理控制器")
 public class ProductController {
 
@@ -31,7 +31,7 @@ public class ProductController {
     private ProductMapper productMapper;
 
     @ApiOperation(value = "查询产品列表")
-    @PostMapping(path = "/queryProduct")
+    @PostMapping(value = "/queryProduct")
     public JsonResult<IPage<Product>> queryProduct(@RequestBody ProductReq req) {
         Product params = new Product();
         BeanUtils.copyProperties(req, params);

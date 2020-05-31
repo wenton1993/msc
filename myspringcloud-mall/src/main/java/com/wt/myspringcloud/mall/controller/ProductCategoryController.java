@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * @since 2020/5/21
  */
 @RestController
-@RequestMapping(path = "/productCategory")
+@RequestMapping(value = "/productCategory")
 @Api(tags = "产品类别管理控制器")
 public class ProductCategoryController {
 
@@ -34,7 +34,7 @@ public class ProductCategoryController {
     private ProductCategoryMapper productCategoryMapper;
 
     @ApiOperation(value = "查询产品分类列表")
-    @PostMapping(path = "/queryProductCategory")
+    @PostMapping(value = "/queryProductCategory")
     public JsonResult<IPage<ProductCategory>> queryProductCategory(@RequestBody ProductCategoryReq req) {
         ProductCategory params = new ProductCategory();
         BeanUtils.copyProperties(req, params);
@@ -44,7 +44,7 @@ public class ProductCategoryController {
     }
 
     @ApiOperation(value = "查询商品分类树")
-    @PostMapping(path = "/queryProductCategoryTree")
+    @PostMapping(value = "/queryProductCategoryTree")
     public JsonResult<List<Product.ProductCategoryNode>> queryProductCategoryTree() {
         List<ProductCategory> categoryList = productCategoryMapper.selectList(null);
         List<Product.ProductCategoryNode> nodeList = categoryList.stream()
