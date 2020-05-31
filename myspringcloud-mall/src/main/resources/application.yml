@@ -27,3 +27,9 @@ mybatis-plus:
   mapper-locations:
     - classpath:/mapper/*Mapper.xml
   typeEnumsPackage: com.wt.myspringcloud.common.enumeration.field
+
+# 自定义参数
+customProperty:
+  log:
+    appender: FILE
+    dir: /home/logs
