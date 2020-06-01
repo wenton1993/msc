@@ -25,11 +25,15 @@ feign:
 
 mybatis-plus:
   mapper-locations:
-    - classpath:/mapper/*Mapper.xml
+    - classpath:mapper/*Mapper.xml
   typeEnumsPackage: com.wt.myspringcloud.common.enumeration.field
 
-# 自定义参数
+
+logging:
+  config: classpath:logback-config.xml
+
+# 自定义参数，默认为dev环境
 customProperty:
   log:
-    appender: FILE
-    dir: /home/logs
+    appender: CONSOLE
+    dir: /home/logs/${spring.application.name}

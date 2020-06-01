@@ -3,19 +3,20 @@
     <!--引用-->
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <!--<include resource="org/springframework/boot/logging/logback/file-appender.xml"/>-->
     <!--Spring参数-->
+    <!--注意：如果配置文件命名为logback-spring.xml，会导致springProperty注入失败-->
     <springProperty scope="context" name="springAppName" source="spring.application.name"/>
     <springProperty scope="context" name="logAppender" source="customProperty.log.appender"/>
     <springProperty scope="context" name="logDir" source="customProperty.log.dir"/>
     <!--Logback参数-->
-    <property name="APP_NAME" value="${springAppName}"/>
-    <property name="LOG_DIR" value="${logDir}/${springAppName}"/>
-    <!--<contextName>${APP_NAME}</contextName>-->
-    <!--Appender配置-->
+    <!--<property name="APP_NAME" value="${springAppName}"/>-->
+    <contextName>${springAppName}</contextName>
+    <!--Appender配置：CONSOLE、FILE-->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_DIR}/current.log</file>
+        <file>${logDir}/current.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_DIR}/${APP_NAME}-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${logDir}/%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
@@ -25,9 +26,7 @@
     </appender>
     <!--打印级别-->
     <root level="INFO">
-        <!--<appender-ref ref="${logAppender}"/>--><!--报错-->
-        <appender-ref ref="CONSOLE"/>
-        <!--<appender-ref ref="FILE"/>-->
+        <appender-ref ref="${logAppender}"/>
     </root>
 
 </configuration>
