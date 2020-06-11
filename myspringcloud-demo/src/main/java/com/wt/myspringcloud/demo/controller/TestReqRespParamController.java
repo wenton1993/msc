@@ -3,7 +3,7 @@ package com.wt.myspringcloud.demo.controller;
 import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.enumeration.result.CommonResultCode;
 import com.wt.myspringcloud.common.core.JsonResult;
-import com.wt.myspringcloud.common.pojo.req.TestReqRespParams;
+import com.wt.myspringcloud.demo.pojo.req.TestReqRespParams;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -48,24 +48,7 @@ public class TestReqRespParamController extends BaseController {
      * 3.@JsonFormat 无法反序列化时间信息到 Date 或 LocalDateTime
      */
     @PostMapping("/testReqResp2")
-    public JsonResult<TestReqRespParams> testReqResp2(TestReqRespParams reqRespParam) {
-        System.out.println(reqRespParam.getDate());
-        System.out.println(reqRespParam.getDate2());
-        System.out.println(reqRespParam.getLocalDateTime());
-        System.out.println(reqRespParam.getLocalDateTime2());
-        return renderSuccessWithData(reqRespParam);
-    }
-
-    /**
-     * 检查请求参数
-     *
-     * @param params
-     * @param bindingResult
-     * @return
-     */
-    @PostMapping("/testParamsCheck")
-    public JsonResult<Void> testParamsCheck(@RequestBody TestReqRespParams params, BindingResult bindingResult) {
-        System.out.println("testParamsCheck - start");
+    public JsonResult<TestReqRespParams> testReqResp2(TestReqRespParams reqRespParam, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             FieldError fieldError = bindingResult.getFieldError();
             if (Objects.nonNull(fieldError)) {
@@ -74,6 +57,11 @@ public class TestReqRespParamController extends BaseController {
                 return renderError(CommonResultCode.PARAM_ERROR);
             }
         }
-        return renderSuccess();
+        System.out.println(reqRespParam.getDate());
+        System.out.println(reqRespParam.getDate2());
+        System.out.println(reqRespParam.getLocalDateTime());
+        System.out.println(reqRespParam.getLocalDateTime2());
+        return renderSuccessWithData(reqRespParam);
     }
+
 }

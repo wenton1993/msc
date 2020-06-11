@@ -24,6 +24,7 @@
         <module>myspringcloud-rabbitmq</module>
         <module>myspringcloud-batch</module>
         <module>myspringcloud-mall</module>
+        <module>myspringcloud-flowable</module>
     </modules>
 
     <properties>

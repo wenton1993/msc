@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: demo
+  profiles:
+    active: dev
+server:
+  port: 8774
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka.didispace.com/eureka/
+
+mybatis-plus:
+  mapper-locations:
+    - classpath:/mapper/*Mapper.xml
