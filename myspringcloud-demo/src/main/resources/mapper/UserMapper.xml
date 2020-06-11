@@ -59,25 +59,25 @@
     <!-- 测试属性结构查询 -->
     <select id="queryMenu" resultMap="queryMenu">
         select m.menu_id, m2.menu_id menu_id2, m3.menu_id menu_id3, m4.menu_id menu_id4, m5.menu_id menu_id5, m6.menu_id menu_id6
-        from wt_menu m
-        left join wt_menu m2 on m2.parent_menu_id = m.menu_id
-        left join wt_menu m3 on m3.parent_menu_id = m2.menu_id
-        left join wt_menu m4 on m4.parent_menu_id = m3.menu_id
-        left join wt_menu m5 on m5.parent_menu_id = m4.menu_id
-        left join wt_menu m6 on m6.parent_menu_id = m5.menu_id
+        from menu m
+        left join menu m2 on m2.parent_menu_id = m.menu_id
+        left join menu m3 on m3.parent_menu_id = m2.menu_id
+        left join menu m4 on m4.parent_menu_id = m3.menu_id
+        left join menu m5 on m5.parent_menu_id = m4.menu_id
+        left join menu m6 on m6.parent_menu_id = m5.menu_id
         where m.menu_id = 1
     </select>
-    <resultMap id="queryMenu" type="com.wt.myspringcloud.demo.pojo.WtMenu">
+    <resultMap id="queryMenu" type="com.wt.myspringcloud.demo.pojo.Menu">
         <id column="menu_id" property="menuId"/>
-        <collection property="childrenMenu" ofType="com.wt.myspringcloud.demo.pojo.WtMenu">
+        <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
             <id column="menu_id2" property="menuId"/>
-            <collection property="childrenMenu" ofType="com.wt.myspringcloud.demo.pojo.WtMenu">
+            <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
                 <id column="menu_id3" property="menuId"/>
-                <collection property="childrenMenu" ofType="com.wt.myspringcloud.demo.pojo.WtMenu">
+                <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
                     <id column="menu_id4" property="menuId"/>
-                    <collection property="childrenMenu" ofType="com.wt.myspringcloud.demo.pojo.WtMenu">
+                    <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
                         <id column="menu_id5" property="menuId"/>
-                        <collection property="childrenMenu" ofType="com.wt.myspringcloud.demo.pojo.WtMenu">
+                        <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
                             <id column="menu_id6" property="menuId"/>
                         </collection>
                     </collection>

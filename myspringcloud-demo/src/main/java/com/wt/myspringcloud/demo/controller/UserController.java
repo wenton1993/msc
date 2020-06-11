@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
-@Api(tags = "用户管理")
 @RestController
 public class UserController extends BaseController implements UserServiceApi {
 

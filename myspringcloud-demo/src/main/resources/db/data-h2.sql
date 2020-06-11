@@ -23,8 +23,8 @@ insert into wt_order (id, user_id, amount) values
 (7, 3, 10),
 (8, 5, 10);
 
-delete from wt_menu;
-insert into wt_menu (id, parent_id) values
+delete from menu;
+insert into menu (id, parent_id) values
 (1, 0),
 (2, 1),
 (3, 1),

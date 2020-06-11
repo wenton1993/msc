@@ -18,8 +18,8 @@ CREATE TABLE wt_order
 	PRIMARY KEY (id)
 );
 -- 菜单表，测试查询树形结构的数据
-DROP TABLE IF EXISTS wt_menu;
-create table wt_menu
+DROP TABLE IF EXISTS menu;
+create table menu
 (
     id BIGINT(8) NOT NULL COMMENT '菜单ID',
 	parent_id BIGINT(8) COMMENT '父菜单ID',

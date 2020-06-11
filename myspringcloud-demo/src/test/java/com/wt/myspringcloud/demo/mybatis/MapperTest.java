@@ -6,7 +6,7 @@ import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.demo.BaseTest;
 import com.wt.myspringcloud.demo.mapper.UserMapper;
 import com.wt.myspringcloud.demo.pojo.WtUserOrderVo;
-import com.wt.myspringcloud.demo.pojo.WtMenu;
+import com.wt.myspringcloud.demo.pojo.Menu;
 import com.wt.myspringcloud.demo.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +72,7 @@ public class MapperTest extends BaseTest {
      */
     @Test
     public void queryMenu() {
-        List<WtMenu> menus = userMapper.queryMenu();
+        List<Menu> menus = userMapper.queryMenu();
         System.out.println("打断点查看结果");
     }
 }

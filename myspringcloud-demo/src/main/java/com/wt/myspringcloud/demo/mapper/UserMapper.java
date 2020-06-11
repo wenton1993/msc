@@ -3,7 +3,7 @@ package com.wt.myspringcloud.demo.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.wt.myspringcloud.common.pojo.entity.WtUser;
-import com.wt.myspringcloud.demo.pojo.WtMenu;
+import com.wt.myspringcloud.demo.pojo.Menu;
 import com.wt.myspringcloud.demo.pojo.WtUserOrderVo;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,7 +22,7 @@ public interface UserMapper extends BaseMapper<WtUser> {
      */
     List<WtUserOrderVo> queryUserOrder();
 
-    List<WtMenu> queryMenu();
+    List<Menu> queryMenu();
 
     /**
      * 测试[XML自定义分页]

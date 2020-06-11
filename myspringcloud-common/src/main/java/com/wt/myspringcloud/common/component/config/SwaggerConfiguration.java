@@ -1,7 +1,6 @@
 package com.wt.myspringcloud.common.component.config;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -19,9 +18,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author 文通
  * @since 2020/5/13
  */
-@EnableSwagger2
 @Configuration
-public class Swagger2Configuration {
+@EnableSwagger2
+public class SwaggerConfiguration {
 
     @Bean
     public Docket createRestApi() {
@@ -37,8 +36,8 @@ public class Swagger2Configuration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Project APIs")
-                .description("接口文档")
+                .title("接口文档")
+                // .description("描述")
                 .build();
     }
 
