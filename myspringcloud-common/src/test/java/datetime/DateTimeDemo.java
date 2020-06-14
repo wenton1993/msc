@@ -37,6 +37,8 @@ public class DateTimeDemo {
         System.out.println("时间格式化输出：" + localDateTime.format(DateTimeFormatter.ISO_DATE_TIME));
         System.out.println("偏移时间：" + LocalDateTime.now().plus(1, ChronoUnit.DAYS));
         System.out.println("转Instant：" + localDateTime.toInstant(OffsetDateTime.now().getOffset()));
+        System.out.println("两年前的今天: " + LocalDateTime.now().minusYears(2));
+        System.out.println("两年前的第一天: " + LocalDateTime.now().minusYears(2).withDayOfYear(1));
 
         System.out.println("==== Date ====");
         System.out.println("Date转Instant：" + new Date().toInstant());

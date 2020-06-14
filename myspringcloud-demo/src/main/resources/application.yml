@@ -29,11 +29,15 @@ feign:
 mybatis-plus:
   mapper-locations:
     - classpath:/mapper/*Mapper.xml
-  #configuration:
-    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
-    #map-underscore-to-camel-case: true
-  global-config:
-    #驼峰下划线转换
-    db-column-underline: true
-    #mp2.3+ 全局表前缀 mp_
-    #table-prefix: mp_
+#  configuration:
+#    配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
+#    map-underscore-to-camel-case: true
+#  global-config:
+#    驼峰下划线转换
+#    db-column-underline: true
+#    mp2.3+ 全局表前缀 mp_
+#    table-prefix: mp_
+
+logging:
+  level:
+    com.wt.myspringcloud.demo.mapper: debug

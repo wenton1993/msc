@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -38,4 +39,10 @@ public class RespTestResp {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8:00")
     private LocalDateTime JsonLocalDateTime;
+
+    @ApiModelProperty(value = "当前日期时间(Date)")
+    private Date currentDate = new Date();
+
+    @ApiModelProperty(value = "当前日期时间(LocalDateTime)")
+    private LocalDateTime localDateTime = LocalDateTime.now();
 }
