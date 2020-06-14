@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.demo.pojo;
+package com.wt.myspringcloud.demo.pojo.entity;
 
 import lombok.Getter;
 import lombok.Setter;

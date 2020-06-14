@@ -1,5 +1,6 @@
-package com.wt.myspringcloud.demo.pojo;
+package com.wt.myspringcloud.demo.pojo.resp;
 
+import com.wt.myspringcloud.demo.pojo.entity.WtOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

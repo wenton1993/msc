@@ -27,10 +27,10 @@
                      group by u.id) a2
             on a2.id = u2.id
     </select>
-    <resultMap id="userOrder" type="com.wt.myspringcloud.demo.pojo.WtUserOrderVo">
+    <resultMap id="userOrder" type="com.wt.myspringcloud.demo.pojo.resp.WtUserOrderVo">
         <id property="userId" column="id"/>
         <result property="name" column="name"/>
-        <collection property="orders" ofType="com.wt.myspringcloud.demo.pojo.WtOrder">
+        <collection property="orders" ofType="com.wt.myspringcloud.demo.pojo.entity.WtOrder">
             <id property="id" column="order_id"/>
             <result property="userId" column="user_id"/>
         </collection>
@@ -42,14 +42,14 @@
         select id, name
         from wt_user
     </select>
-    <resultMap id="queryUserOrder2Map" type="com.wt.myspringcloud.demo.pojo.WtUserOrderVo">
+    <resultMap id="queryUserOrder2Map" type="com.wt.myspringcloud.demo.pojo.resp.WtUserOrderVo">
         <id property="userId" column="id"/>
         <result property="name" column="name"/>
         <!-- collection中的column定义的字段值，取自上面的select，然后传给下面的select作参数 -->
         <!-- 可以使用column="{prop1=col1,prop2=col2}"来指定多个传递给嵌套 Select 查询语句的列名 -->
         <collection property="orders" select="queryOrderByUserId" column="id"/>
     </resultMap>
-    <select id="queryOrderByUserId" resultType="com.wt.myspringcloud.demo.pojo.WtOrder">
+    <select id="queryOrderByUserId" resultType="com.wt.myspringcloud.demo.pojo.entity.WtOrder">
         select id, user_id userId, amount
         from wt_order
         where user_id = #{id}
@@ -67,17 +67,17 @@
         left join menu m6 on m6.parent_menu_id = m5.menu_id
         where m.menu_id = 1
     </select>
-    <resultMap id="queryMenu" type="com.wt.myspringcloud.demo.pojo.Menu">
+    <resultMap id="queryMenu" type="com.wt.myspringcloud.demo.pojo.entity.Menu">
         <id column="menu_id" property="menuId"/>
-        <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
+        <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.entity.Menu">
             <id column="menu_id2" property="menuId"/>
-            <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
+            <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.entity.Menu">
                 <id column="menu_id3" property="menuId"/>
-                <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
+                <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.entity.Menu">
                     <id column="menu_id4" property="menuId"/>
-                    <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
+                    <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.entity.Menu">
                         <id column="menu_id5" property="menuId"/>
-                        <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.Menu">
+                        <collection property="childMenuList" ofType="com.wt.myspringcloud.demo.pojo.entity.Menu">
                             <id column="menu_id6" property="menuId"/>
                         </collection>
                     </collection>

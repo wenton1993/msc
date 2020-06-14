@@ -3,8 +3,8 @@ package com.wt.myspringcloud.demo.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.wt.myspringcloud.common.pojo.entity.WtUser;
-import com.wt.myspringcloud.demo.pojo.Menu;
-import com.wt.myspringcloud.demo.pojo.WtUserOrderVo;
+import com.wt.myspringcloud.demo.pojo.entity.Menu;
+import com.wt.myspringcloud.demo.pojo.resp.WtUserOrderVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
