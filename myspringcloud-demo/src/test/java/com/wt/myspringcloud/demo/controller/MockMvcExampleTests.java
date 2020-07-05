@@ -56,8 +56,8 @@ public class MockMvcExampleTests {
         WtUser user = new WtUser();
         user.setId(1L);
         RequestBuilder request = MockMvcRequestBuilders.post("/sys/urlInfoList")
-                .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
                 .content(JacksonUtils.getMapper().writeValueAsString(user));
         MvcResult result = mockMvc.perform(request)
                 .andExpect(MockMvcResultMatchers.status().isOk())

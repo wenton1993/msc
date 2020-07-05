@@ -5,12 +5,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.common.pojo.entity.WtUser;
 import com.wt.myspringcloud.demo.BaseTest;
 import com.wt.myspringcloud.demo.mapper.UserMapper;
-import com.wt.myspringcloud.demo.pojo.resp.WtUserOrderVo;
 import com.wt.myspringcloud.demo.pojo.entity.Menu;
+import com.wt.myspringcloud.demo.pojo.resp.WtUserOrderVo;
 import com.wt.myspringcloud.demo.service.UserService;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,9 +19,9 @@ import java.util.List;
  */
 public class MapperTest extends BaseTest {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
-    @Autowired
+    @Resource
     private UserService userService;
 
     /**
@@ -31,6 +31,7 @@ public class MapperTest extends BaseTest {
     public void testQueryUserById() {
         System.out.println(userMapper.queryUserById(1L));
     }
+
     /**
      * 测试Mapper.xml中的${param}
      */

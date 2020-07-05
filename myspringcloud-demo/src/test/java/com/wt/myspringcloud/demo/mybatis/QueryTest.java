@@ -1,12 +1,11 @@
-package com.wt.myspringcloud.demo.mapper;
+package com.wt.myspringcloud.demo.mybatis;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.demo.BaseTest;
+import com.wt.myspringcloud.demo.mapper.MybatisDemoMapper;
 import com.wt.myspringcloud.demo.pojo.entity.MybatisDemo;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Before;
@@ -23,7 +22,7 @@ import java.util.List;
  * @author 文通
  * @since 2020/6/14
  */
-public class MybatisMapperTest extends BaseTest {
+public class QueryTest extends BaseTest {
 
     @Resource
     private MybatisDemoMapper mapper;
@@ -38,9 +37,9 @@ public class MybatisMapperTest extends BaseTest {
             demo.setId(null);
             demo.setDemoNo(String.valueOf(i));
             demo.setCustName("文通" + i);
-            demo.setCustAge(RandomUtils.nextInt(18, 30));
-            demo.setCreateDatetime(LocalDateTime.now().minusDays(RandomUtils.nextInt(0, 7)));
-            demo.setDeleted(0);
+            demo.setCustAge(RandomUtils.nextInt(18, 30));// 年龄:18-30
+            demo.setCreateDatetime(LocalDateTime.now().minusDays(RandomUtils.nextInt(0, 7)));// 创建日期:过去一周内
+            demo.setDeleted(0);// 未删除
             demo.setVersion(new Timestamp(Instant.now().toEpochMilli()));
             mapper.insert(demo);
         }
@@ -57,6 +56,7 @@ public class MybatisMapperTest extends BaseTest {
                 .lambda()
                 // 指定查询字段
                 .select(MybatisDemo::getDemoNo, MybatisDemo::getCustName, MybatisDemo::getCustAge, MybatisDemo::getCreateDatetime)
+                // 指定年龄条件
                 .eq(MybatisDemo::getCustAge, 18)
                 // 指定时间条件
                 .ge(MybatisDemo::getCreateDatetime, LocalDate.now().minusDays(3))
@@ -155,6 +155,22 @@ public class MybatisMapperTest extends BaseTest {
                 System.out.println("version" + i + ":" + mapper.selectById(demo.getId()).getVersion());
             }
         }
+    }
+
+    @Test
+    public void updateWrapperTest() {
+        MybatisDemo demo = mapper.selectById("4");
+        // where
+        MybatisDemo queryEntity = new MybatisDemo();
+        queryEntity.setId(demo.getId());
+        Wrapper<MybatisDemo> wrapper = new QueryWrapper<>(queryEntity);
+        // set
+        MybatisDemo updateEntity = new MybatisDemo();
+        updateEntity.setCustName("欧敏娜");
+        // 执行
+        /*demoMapper.update(updateEntity, wrapper);*/
+        MybatisDemo newDemo = mapper.selectById("4");
+        System.out.println("End");
     }
 
 }

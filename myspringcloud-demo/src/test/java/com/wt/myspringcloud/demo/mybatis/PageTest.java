@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @author 文通
  * @since 2020/4/24
  */
-public class SelectPageTest extends BaseTest {
+public class PageTest extends BaseTest {
 
     @Resource
     private UserMapper userMapper;

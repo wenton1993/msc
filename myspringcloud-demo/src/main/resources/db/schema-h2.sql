@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS mybatis_demo;
 CREATE TABLE mybatis_demo
 (
     id CHAR(32) NOT NULL COMMENT '主键ID',
-    demo_no VARCHAR(32) not null comment '唯一号码',
+    demo_no VARCHAR(32) not null UNIQUE comment '唯一号码',
     cust_name VARCHAR(32) COMMENT '姓名',
     cust_age INT(8) COMMENT '年龄',
     create_datetime DATE comment '创建时间',
