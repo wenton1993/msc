@@ -1,14 +1,16 @@
 -- CRUD Demo表
 DROP TABLE IF EXISTS mybatis_demo;
-CREATE TABLE mybatis_demo
+CREATE TABLE mybatis_demo_entity
 (
     id CHAR(32) NOT NULL COMMENT '主键ID',
-    demo_no VARCHAR(32) not null UNIQUE comment '唯一号码',
-    cust_name VARCHAR(32) COMMENT '姓名',
-    cust_age INT(8) COMMENT '年龄',
-    create_datetime DATE comment '创建时间',
-    deleted TINYINT(1) not null comment '是否删除:0-未删除 1-已删除',
-    version TIMESTAMP not null comment '记录的版本号',
+    demo_no VARCHAR(32) NOT NULL UNIQUE comment '唯一号码',
+    name VARCHAR(32) COMMENT '姓名',
+    age INT(8) COMMENT '年龄',
+    birthday DATE comment '出生日期',
+    create_datetime DATETIME comment '创建日期时间',
+    update_datetime DATETIME comment '更新日期时间',
+    deleted TINYINT(1) comment '是否删除:0-未删除 1-已删除',
+    version TIMESTAMP comment '记录的版本号',
     PRIMARY KEY (id)
 );
 -- 用户表，测试基础查询功能

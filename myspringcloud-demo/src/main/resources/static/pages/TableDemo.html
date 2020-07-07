@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../layui/layui.all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Table Demo</title>
+</head>
+<body>
+<div class="demoTable">
+    搜索ID：
+    <div class="layui-inline">
+        <input id="id" name="id" class="layui-input" autocomplete="off">
+    </div>
+    <button id="btn-search" lay-filter="btn-search" class="layui-btn" type="button">搜索</button>
+</div>
+<table id="table-demo" class="layui-hide"></table>
+</body>
+<script>
+    ;!function () {
+        var layer = layui.layer,
+            table = layui.table,
+            form = layui.form;
+
+        table.render({
+            id: 'table-demo',
+            elem: '#table-demo',
+            url: 'http://localhost:8771/mybatisDemo/page',
+            cellMinWidth: 160,// 全局定义常规单元格的最小宽度，layui 2.2.1 新增,
+            cols: [[
+                {field: 'rowNo', title: '序号', type: 'numbers'},
+                {checkbox: true},
+                {field: 'id', title: 'ID'},
+                {field: 'name', width: 80, title: '名称'},
+                {field: 'age', width: 80, title: '年龄'},
+            ]],
+            page: true,
+            parseData: function (r) {
+                return {
+                    "code": r.code,
+                    "msg": r.message,
+                    "count": r.total,
+                    "data": r.data.records
+                };
+            }
+        });
+
+    }();
+</script>
+</html>

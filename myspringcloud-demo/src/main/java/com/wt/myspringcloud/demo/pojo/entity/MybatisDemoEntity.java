@@ -15,27 +15,49 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class MybatisDemo {
+@TableName("mybatis_demo_entity")
+public class MybatisDemoEntity {
 
+    /**
+     * 主键
+     */
     @TableId(type = IdType.ASSIGN_UUID)
     private String id;
 
+    /**
+     * 编号
+     */
     @TableField("demo_no")
     private String demoNo;
 
-    @TableField("cust_name")
-    private String custName;
+    /**
+     * 名称
+     */
+    @TableField("name")
+    private String name;
 
-    @TableField("cust_age")
-    private Integer custAge;
+    /**
+     * 年龄
+     */
+    @TableField("age")
+    private Integer age;
 
+    /**
+     * 创建日期时间
+     */
     @TableField("create_datetime")
     private LocalDateTime createDatetime;
 
+    /**
+     * 是否已删除
+     */
     @TableLogic
     @TableField("deleted")
     private Integer deleted;
 
+    /**
+     * 版本号
+     */
     @Version
     @TableField("version")
     private Timestamp version;

@@ -4,48 +4,43 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.wt.myspringcloud.demo.BaseTest;
-import com.wt.myspringcloud.demo.mapper.MybatisDemoMapper;
-import com.wt.myspringcloud.demo.pojo.entity.MybatisDemo;
-import org.apache.commons.lang3.RandomUtils;
+import com.wt.myspringcloud.demo.mapper.MybatisDemoEntityMapper;
+import com.wt.myspringcloud.demo.pojo.entity.MybatisDemoEntity;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDateTime;
 
 /**
  * @author 文通
  * @since 2020/6/26
  */
-public class UpdateTest extends DataGenerator {
+public class UpdateTest extends BaseTest {
+
+    @Resource
+    private MybatisDemoEntityMapper mapper;
 
     /**
      * 使用 QueryWrapper+Entity 更新
      */
     @Test
     public void updateWrapperTest() {
-        MybatisDemo demo = mapper.selectOne(new QueryWrapper<MybatisDemo>()
+        MybatisDemoEntity demo = mapper.selectOne(new QueryWrapper<MybatisDemoEntity>()
                 .lambda()
-                .eq(MybatisDemo::getDemoNo, "4"));
+                .eq(MybatisDemoEntity::getDemoNo, "4"));
         // where
-        MybatisDemo queryEntity = new MybatisDemo();
+        MybatisDemoEntity queryEntity = new MybatisDemoEntity();
         queryEntity.setId(demo.getId());
-        queryEntity.setCustAge(null);
-        Wrapper<MybatisDemo> wrapper = new QueryWrapper<>(queryEntity);
+        queryEntity.setAge(null);
+        Wrapper<MybatisDemoEntity> wrapper = new QueryWrapper<>(queryEntity);
         // set
-        MybatisDemo updateEntity = new MybatisDemo();
-        updateEntity.setCustName("欧敏娜");
+        MybatisDemoEntity updateEntity = new MybatisDemoEntity();
+        updateEntity.setName("欧敏娜");
         // 执行
         mapper.update(updateEntity, wrapper);
-        MybatisDemo newDemo = mapper.selectById(demo.getId());
-        Assert.assertEquals("欧敏娜", newDemo.getCustName());
-        Assert.assertEquals(demo.getCustAge(), newDemo.getCustAge());
+        MybatisDemoEntity newDemo = mapper.selectById(demo.getId());
+        Assert.assertEquals("欧敏娜", newDemo.getName());
+        Assert.assertEquals(demo.getAge(), newDemo.getAge());
     }
 
     /**
@@ -53,23 +48,23 @@ public class UpdateTest extends DataGenerator {
      */
     @Test
     public void updateWrapperTest2() {
-        MybatisDemo demo = mapper.selectOne(new QueryWrapper<MybatisDemo>()
+        MybatisDemoEntity demo = mapper.selectOne(new QueryWrapper<MybatisDemoEntity>()
                 .lambda()
-                .eq(MybatisDemo::getDemoNo, "4"));
+                .eq(MybatisDemoEntity::getDemoNo, "4"));
         // where
-        MybatisDemo queryEntity = new MybatisDemo();
+        MybatisDemoEntity queryEntity = new MybatisDemoEntity();
         queryEntity.setId(demo.getId());
-        queryEntity.setCustAge(null);
+        queryEntity.setAge(null);
         // set
-        Wrapper<MybatisDemo> wrapper = new UpdateWrapper<>(queryEntity)
+        Wrapper<MybatisDemoEntity> wrapper = new UpdateWrapper<>(queryEntity)
                 .lambda()
-                .set(MybatisDemo::getCustName, "欧敏娜")
-                .set(MybatisDemo::getCustAge, null);
+                .set(MybatisDemoEntity::getName, "欧敏娜")
+                .set(MybatisDemoEntity::getAge, null);
 
         // 执行
         mapper.update(null, wrapper);
-        MybatisDemo newDemo = mapper.selectById(demo.getId());
-        Assert.assertEquals("欧敏娜", newDemo.getCustName());
-        Assert.assertNull(newDemo.getCustAge());
+        MybatisDemoEntity newDemo = mapper.selectById(demo.getId());
+        Assert.assertEquals("欧敏娜", newDemo.getName());
+        Assert.assertNull(newDemo.getAge());
     }
 }
