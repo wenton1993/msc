@@ -25,9 +25,9 @@ public class MybatisDemoDataRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         MybatisDemoEntity demo = new MybatisDemoEntity();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 1; i <= 100; i++) {
             demo.setId(null);
-            demo.setDemoNo(String.valueOf(i));// 0..99
+            demo.setDemoNo(String.valueOf(i));// i
             demo.setName("文通" + i);
             demo.setAge(RandomUtils.nextInt(18, 30));// 18..30
             demo.setCreateDatetime(LocalDateTime.now().minusDays(RandomUtils.nextInt(0, 7)));// 创建日期:过去一周内

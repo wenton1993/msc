@@ -5,25 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script src="../layui/layui.all.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
     <title>Table Demo</title>
+    <style>
+        .layui-form-item .layui-form-label {
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
-<div class="demoTable">
-    搜索ID：
-    <div class="layui-inline">
-        <input id="id" name="id" class="layui-input" autocomplete="off">
+<div class="layui-row" style="background-color: pink">
+    <span style="line-height: 38px; margin-left:10px; font-weight: bold; font-size: 16px">查询条件</span>
+    <div class="layui-btn-group" style="float: right;">
+        <button id="btn-search" class="layui-btn">搜索</button>
     </div>
-    <button id="btn-search" lay-filter="btn-search" class="layui-btn" type="button">搜索</button>
+</div>
+<form lay-filter="form-search" class="layui-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">ID:</label>
+            <div class="layui-input-inline">
+                <input name="id" type="text" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">姓名:</label>
+            <div class="layui-input-inline">
+                <input name="name" type="text" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">年龄:</label>
+            <div class="layui-input-inline">
+                <input name="age" type="number" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <!--范围-->
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">创建日期时间:</label>
+            <div class="layui-input-inline">
+                <input id="minCreateDatetime" name="minCreateDatetime" type="text" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid">-</div>
+            <div class="layui-input-inline">
+                <input id="maxCreateDatetime" name="maxCreateDatetime" type="text" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+</form>
+<div class="layui-row" style="background-color: pink">
+    <span style="line-height: 38px; margin-left:10px; font-weight: bold; font-size: 16px">列表</span>
+    <div class="layui-btn-group" style="float: right;">
+        <button id="btn-add" class="layui-btn">增加</button>
+        <button id="btn-edit" class="layui-btn">编辑</button>
+        <button id="delete" class="layui-btn">删除</button>
+        <button id="btn-getCheckData" class="layui-btn layui-btn-normal">获取选中行数据</button>
+    </div>
 </div>
 <table id="table-demo" class="layui-hide"></table>
 </body>
 <script>
+    // Layui
     ;!function () {
-        var layer = layui.layer,
+        var $ = layui.$,
+            layer = layui.layer,
+            form = layui.form,
             table = layui.table,
-            form = layui.form;
+            laydate = layui.laydate;
 
+        // 日期时间
+        layui.laydate.render({
+            elem: '#minCreateDatetime',
+            type: 'datetime',
+        });
+        layui.laydate.render({
+            elem: '#maxCreateDatetime',
+            type: 'datetime',
+        });
+
+        // 列表
         table.render({
             id: 'table-demo',
             elem: '#table-demo',
@@ -31,22 +96,52 @@
             cellMinWidth: 160,// 全局定义常规单元格的最小宽度，layui 2.2.1 新增,
             cols: [[
                 {field: 'rowNo', title: '序号', type: 'numbers'},
-                {checkbox: true},
+                // {checkbox: true},// 复选框
+                {type:'radio'},// 单选框
                 {field: 'id', title: 'ID'},
                 {field: 'name', width: 80, title: '名称'},
                 {field: 'age', width: 80, title: '年龄'},
             ]],
             page: true,
+            request: {
+                pageName: 'current',
+                limitName: 'size',
+            },
             parseData: function (r) {
                 return {
                     "code": r.code,
-                    "msg": r.message,
-                    "count": r.total,
+                    "msg": r.msg,
+                    "count": r.data.total,
                     "data": r.data.records
                 };
             }
+        });// 列表-结束
+
+        // 按钮
+        $('#btn-search').click(function () {
+            var data = form.val('form-search');
+            console.log(JSON.stringify(data));
+            table.reload('table-demo', {
+                where: data,
+            });
+        });
+        $('#btn-getCheckData').click(function () {
+            var checkStatus = table.checkStatus('table-demo');
+            var data = checkStatus.data;
+            if (data.length <= 0) {
+                layer.msg('请勾选至少一条数据');
+                return false;
+            }
+            layer.msg(JSON.stringify(data));
+        });
+        $('#btn-add').click(function () {
+            layer.open({
+                type: 2,
+                content: ['DemoInfo.html', 'no'],
+                area: '800px',
+            });
         });
 
-    }();
+    }();// Layui-结束
 </script>
 </html>

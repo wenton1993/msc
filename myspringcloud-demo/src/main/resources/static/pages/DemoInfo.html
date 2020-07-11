@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../layui/layui.all.js"></script>
+    <title>Demo Info</title>
+</head>
+<body>
+<div class="layui-row" style="background-color: pink">
+    <span style="line-height: 38px; margin-left:10px; font-weight: bold; font-size: 16px">Demo Info</span>
+    <div class="layui-btn-group" style="float: right;">
+        <button id="btn-save" class="layui-btn">保存</button>
+        <button id="btn-cancel" class="layui-btn">取消</button>
+    </div>
+</div>
+<form class="layui-form" style="margin-top: 10px">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">编号:</label>
+            <div class="layui-input-inline">
+                <input name="demoNo" type="text" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">姓名:</label>
+            <div class="layui-input-inline">
+                <input name="name" type="text" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">年龄:</label>
+            <div class="layui-input-inline">
+                <input name="age" type="number" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+<script>
+    // Layui
+    ;!function () {
+        var $ = layui.$,
+            layer = layui.layer,
+            form = layui.form,
+            table = layui.table,
+            laydate = layui.laydate;
+    }();// Layui-结束
+</script>
+</html>

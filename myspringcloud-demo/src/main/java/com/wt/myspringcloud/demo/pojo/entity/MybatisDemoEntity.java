@@ -1,7 +1,9 @@
 package com.wt.myspringcloud.demo.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -46,6 +48,8 @@ public class MybatisDemoEntity {
      * 创建日期时间
      */
     @TableField("create_datetime")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8:00")
     private LocalDateTime createDatetime;
 
     /**
@@ -61,4 +65,18 @@ public class MybatisDemoEntity {
     @Version
     @TableField("version")
     private Timestamp version;
+
+    // 非数据库字段
+    /**
+     * 最小创建日期时间
+     */
+    @TableField(exist = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8:00")
+    private LocalDateTime minCreateDatetime;
+
+    @TableField(exist = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8:00")
+    private LocalDateTime maxCreateDatetime;
 }
