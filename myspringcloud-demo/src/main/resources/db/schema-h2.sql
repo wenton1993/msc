@@ -4,7 +4,7 @@ CREATE TABLE mybatis_demo_entity
 (
     id CHAR(32) NOT NULL COMMENT '主键ID',
     demo_no VARCHAR(32) NOT NULL UNIQUE comment '唯一号码',
-    name VARCHAR(32) COMMENT '姓名',
+    name VARCHAR(32) COMMENT '名称',
     age INT(8) COMMENT '年龄',
     birthday DATE comment '出生日期',
     create_datetime DATETIME comment '创建日期时间',

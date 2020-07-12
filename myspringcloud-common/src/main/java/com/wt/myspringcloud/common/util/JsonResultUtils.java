@@ -34,7 +34,7 @@ public class JsonResultUtils {
     public static <T> JsonResult<T> success(int code, String msg) {
         JsonResult<T> result = getBaseJsonResult(true);
         result.setCode(code);
-        result.setMessage(msg);
+        result.setMsg(msg);
         return result;
     }
 
@@ -67,7 +67,7 @@ public class JsonResultUtils {
     public static <T> JsonResult<T> fail(int status, String msg) {
         JsonResult<T> result = getBaseJsonResult(false);
         result.setCode(status);
-        result.setMessage(msg);
+        result.setMsg(msg);
         return result;
     }
 

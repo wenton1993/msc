@@ -31,7 +31,7 @@ public class BaseController {
 	protected <T> JsonResult<T> renderSuccess(int code, String msg) {
 		JsonResult<T> result = getJsonResult(true);
 		result.setCode(code);
-		result.setMessage(msg);
+		result.setMsg(msg);
 		return result;
 	}
 
@@ -50,7 +50,7 @@ public class BaseController {
 	protected <T> JsonResult<T> renderError(int status, String msg) {
 		JsonResult<T> result = getJsonResult(false);
 		result.setCode(status);
-		result.setMessage(msg);
+		result.setMsg(msg);
 		return result;
 	}
 

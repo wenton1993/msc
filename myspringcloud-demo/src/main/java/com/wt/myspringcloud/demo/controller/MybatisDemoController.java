@@ -10,6 +10,7 @@ import com.wt.myspringcloud.demo.service.MybatisDemoEntityService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,5 +44,26 @@ public class MybatisDemoController {
     public R<IPage<MybatisDemoEntity>> pageByJson(Page<MybatisDemoEntity> page,
                                                   MybatisDemoEntity entityParams) {
         return R.ok(ds.page(page, new QueryWrapper<>(entityParams)));
+    }
+
+    @PostMapping("/save")
+    public R<Boolean> save(MybatisDemoEntity entity) {
+        return R.ok(ds.save(entity));
+    }
+
+    @GetMapping("/queryById")
+    public R<MybatisDemoEntity> queryById(String id) {
+        if (StringUtils.isBlank(id)) {
+            return R.failed("必填字段ID为空");
+        }
+        return R.ok(ds.getById(id));
+    }
+
+    @PostMapping("/updateById")
+    public R<Boolean> updateById(MybatisDemoEntity entity) {
+        if (Objects.isNull(entity) || StringUtils.isBlank(entity.getId())) {
+            return R.failed("必填字段ID为空");
+        }
+        return R.ok(ds.updateById(entity));
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script src="../layui/layui.all.js"></script>
+    <script src="../layui/myUtils.js"></script>
     <title>Demo Info</title>
 </head>
 <body>
@@ -12,21 +13,21 @@
     <span style="line-height: 38px; margin-left:10px; font-weight: bold; font-size: 16px">Demo Info</span>
     <div class="layui-btn-group" style="float: right;">
         <button id="btn-save" class="layui-btn">保存</button>
-        <button id="btn-cancel" class="layui-btn">取消</button>
+        <button onclick="closeCurrentIframe()" class="layui-btn">取消</button>
     </div>
 </div>
-<form class="layui-form" style="margin-top: 10px">
+<form id="form-demo" lay-filter="form-demo" class="layui-form" style="margin-top: 10px">
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">编号:</label>
             <div class="layui-input-inline">
-                <input name="demoNo" type="text" autocomplete="off" class="layui-input">
+                <input name="demoNo" lay-verify="required" type="text" autocomplete="off" class="layui-input">
             </div>
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">姓名:</label>
+            <label class="layui-form-label">名称:</label>
             <div class="layui-input-inline">
                 <input name="name" type="text" autocomplete="off" class="layui-input">
             </div>
@@ -41,6 +42,42 @@
 </form>
 </body>
 <script>
+    var event, id;
+    function child(params) {
+        console.log(params);
+        event = params.event;
+        id = params.id;
+        if (event == 'detail') {
+            console.log('设置输入框只读');
+            layui.$('#form-demo input').attr('readonly', 'readonly');
+            console.log('隐藏保存按钮')
+            layui.$('#btn-save').hide();
+        }
+        if (params && params.id) {
+            layui.$.ajax({
+                url: 'http://localhost:8771/mybatisDemo/queryById',
+                data: {
+                    id: params.id
+                },
+                success: function (r) {
+                    console.log('r:' + JSON.stringify(r));
+                    if (r.code == 0) {
+                        layui.form.val('form-demo', {
+                            demoNo: r.data.demoNo,
+                            name: r.data.name,
+                            age: r.data.age,
+                        });
+                    } else {
+                        layer.msg('找不到对应的Demo');
+                    }
+                },
+                error: function (r) {
+                    layer.msg('请求失败');
+                }
+            });
+        }
+    }
+
     // Layui
     ;!function () {
         var $ = layui.$,
@@ -48,6 +85,34 @@
             form = layui.form,
             table = layui.table,
             laydate = layui.laydate;
+
+        $('#btn-save').click(function () {
+            var demo = form.val('form-demo');
+            demo.id = id;
+            $.ajax({
+                url: event == 'add' ? 'http://localhost:8771/mybatisDemo/save' : 'http://localhost:8771/mybatisDemo/updateById',
+                data: demo,
+                type: 'POST',
+                success: function (r) {
+                    console.log(r);
+                    if (r.code == 0 && r.data == true) {
+                        console.log('操作成功');
+                        msgAndClose(r.msg);
+                    } else {
+                        console.log('操作失败');
+                        layer.msg(r.msg);
+                    }
+                },
+                error: function (r) {
+                    console.log('请求失败');
+                    layer.msg('请求失败');
+                }
+            });
+        });
+
     }();// Layui-结束
+
+
+
 </script>
 </html>
