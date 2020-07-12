@@ -62,8 +62,6 @@
     <span style="line-height: 38px; margin-left:10px; font-weight: bold; font-size: 16px">列表</span>
     <div class="layui-btn-group" style="float: right;">
         <button id="btn-add" class="layui-btn">增加</button>
-        <!--<button id="btn-edit" class="layui-btn">编辑</button>-->
-        <!--<button id="delete" class="layui-btn">删除</button>-->
         <button id="btn-getCheckData" class="layui-btn layui-btn-normal">获取选中行数据</button>
     </div>
 </div>
@@ -72,7 +70,7 @@
 <script type="text/html" id="toolbar-demo">
     <button class="layui-btn layui-btn-xs" lay-event="detail">查看</button>
     <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
-    <!--<button class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</button>-->
+    <button class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</button>
 </script>
 <script>
     // Layui
@@ -129,14 +127,41 @@
             let params = {};
             params.event = row.event;
             params.id = rowData.id;
-            layer.open({
-                type: 2,
-                content: ['DemoInfo.html', 'no'],
-                area: '800px',
-                success: function (layero, index) {
-                    window['layui-layer-iframe' + index].child(params);
-                }
-            });
+            if (params.event == 'detail' || params.event == 'edit') {
+                layer.open({
+                    type: 2,
+                    content: ['DemoInfo.html', 'no'],
+                    area: '800px',
+                    success: function (layero, index) {
+                        window['layui-layer-iframe' + index].child(params);
+                    },
+                    end: function () {
+                        if (params.event != 'detail') {
+                            console.log('刷新列表');
+                            table.reload('table-demo');
+                        }
+                    }
+                });
+            } else if (params.event == 'delete') {
+                layer.confirm('确认删除？', function(index){
+                    $.ajax({
+                        url: 'http://localhost:8771/mybatisDemo/removeById',
+                        type: 'POST',
+                        data: params,
+                        success: function (r) {
+                            table.reload('table-demo');
+                            layer.msg(r.msg, {time: 1500}, function () {
+                                layer.close(index);
+                            })
+                        },
+                        error: function (r) {
+                            layer.msg('操作时发生异常');
+                        }
+                    });
+
+                });
+            }
+
         });
 
         // 按钮
@@ -165,6 +190,10 @@
                 area: '800px',
                 success: function (layero, index) {
                     window['layui-layer-iframe' + index].child(params);
+                },
+                end: function () {
+                    console.log('刷新列表');
+                    table.reload('table-demo');
                 }
             });
         });

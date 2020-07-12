@@ -48,6 +48,12 @@ public class MybatisDemoController {
 
     @PostMapping("/save")
     public R<Boolean> save(MybatisDemoEntity entity) {
+        if (StringUtils.isBlank(entity.getDemoNo())) {
+            return R.failed("编号不能为空");
+        }
+        if (Objects.isNull(entity.getDeleted())) {
+            entity.setDeleted(0);
+        }
         return R.ok(ds.save(entity));
     }
 
@@ -61,9 +67,17 @@ public class MybatisDemoController {
 
     @PostMapping("/updateById")
     public R<Boolean> updateById(MybatisDemoEntity entity) {
-        if (Objects.isNull(entity) || StringUtils.isBlank(entity.getId())) {
+        if (StringUtils.isBlank(entity.getId())) {
             return R.failed("必填字段ID为空");
         }
         return R.ok(ds.updateById(entity));
+    }
+
+    @PostMapping("/removeById")
+    public R<Boolean> removeById(String id) {
+        if (StringUtils.isBlank(id)) {
+            return R.failed("必填字段ID为空");
+        }
+        return R.ok(ds.removeById(id));
     }
 }

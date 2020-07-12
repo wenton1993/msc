@@ -19,7 +19,7 @@
 <form id="form-demo" lay-filter="form-demo" class="layui-form" style="margin-top: 10px">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">编号:</label>
+            <label class="layui-form-label"><span style="color: red">*</span>编号:</label>
             <div class="layui-input-inline">
                 <input name="demoNo" lay-verify="required" type="text" autocomplete="off" class="layui-input">
             </div>
@@ -42,7 +42,9 @@
 </form>
 </body>
 <script>
+    // 创建页面的全局变量
     var event, id;
+    // 处理父页面传过来的参数
     function child(params) {
         console.log(params);
         event = params.event;
@@ -72,7 +74,7 @@
                     }
                 },
                 error: function (r) {
-                    layer.msg('请求失败');
+                    layer.msg('操作时发生异常');
                 }
             });
         }
@@ -95,7 +97,7 @@
                 type: 'POST',
                 success: function (r) {
                     console.log(r);
-                    if (r.code == 0 && r.data == true) {
+                    if (r.code == 0) {
                         console.log('操作成功');
                         msgAndClose(r.msg);
                     } else {
@@ -104,15 +106,12 @@
                     }
                 },
                 error: function (r) {
-                    console.log('请求失败');
-                    layer.msg('请求失败');
+                    layer.msg('操作时发生异常');
                 }
             });
         });
 
     }();// Layui-结束
-
-
 
 </script>
 </html>
