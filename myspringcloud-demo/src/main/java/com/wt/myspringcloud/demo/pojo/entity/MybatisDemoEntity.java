@@ -2,9 +2,12 @@ package com.wt.myspringcloud.demo.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.wt.myspringcloud.demo.action.Insert;
+import com.wt.myspringcloud.demo.action.Update;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotEmpty;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -24,12 +27,14 @@ public class MybatisDemoEntity {
      * 主键
      */
     @TableId(type = IdType.ASSIGN_UUID)
+    @NotEmpty(message = "主键不能为空", groups = {Update.class})
     private String id;
 
     /**
      * 编号
      */
     @TableField("demo_no")
+    @NotEmpty(message = "编号不能为空", groups = {Insert.class})
     private String demoNo;
 
     /**

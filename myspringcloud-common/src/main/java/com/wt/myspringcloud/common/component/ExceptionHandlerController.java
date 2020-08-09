@@ -1,10 +1,11 @@
 package com.wt.myspringcloud.common.component;
 
-import com.wt.myspringcloud.common.enumeration.result.CommonResultCode;
 import com.wt.myspringcloud.common.core.JsonResult;
+import com.wt.myspringcloud.common.enumeration.result.CommonResultCode;
 import com.wt.myspringcloud.common.exception.BusinessException;
 import com.wt.myspringcloud.common.util.JsonResultUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,7 +32,13 @@ public class ExceptionHandlerController {
     public JsonResult<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error("参数错误:{}", e.getBindingResult().getFieldError().getDefaultMessage());
         return JsonResultUtils.fail(CommonResultCode.PARAM_ERROR.getCode(), e.getBindingResult().getFieldError().getDefaultMessage());
+    }
 
+    @ExceptionHandler(value = BindException.class)
+    @ResponseBody
+    public JsonResult<?> handleBindException(BindException e) {
+        log.error("参数错误:{}", e.getBindingResult().getFieldError().getDefaultMessage());
+        return JsonResultUtils.fail(CommonResultCode.PARAM_ERROR.getCode(), e.getBindingResult().getFieldError().getDefaultMessage());
     }
 
     @ExceptionHandler(value = BusinessException.class)

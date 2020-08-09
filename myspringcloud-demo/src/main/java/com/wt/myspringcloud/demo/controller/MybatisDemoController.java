@@ -5,12 +5,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wt.myspringcloud.demo.action.Insert;
+import com.wt.myspringcloud.demo.action.Update;
 import com.wt.myspringcloud.demo.pojo.entity.MybatisDemoEntity;
 import com.wt.myspringcloud.demo.pojo.req.MybatisDemoReqResp;
 import com.wt.myspringcloud.demo.service.MybatisDemoEntityService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,7 +53,7 @@ public class MybatisDemoController {
     }
 
     @PostMapping("/save")
-    public R<Boolean> save(MybatisDemoEntity entity) {
+    public R<Boolean> save(@Validated({Insert.class}) MybatisDemoEntity entity) {
         if (StringUtils.isBlank(entity.getDemoNo())) {
             return R.failed("编号不能为空");
         }
@@ -69,7 +72,7 @@ public class MybatisDemoController {
     }
 
     @PostMapping("/updateById")
-    public R<Boolean> updateById(MybatisDemoEntity entity) {
+    public R<Boolean> updateById(@Validated({Update.class}) MybatisDemoEntity entity) {
         if (StringUtils.isBlank(entity.getId())) {
             return R.failed("必填字段ID为空");
         }
