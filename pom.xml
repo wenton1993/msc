@@ -24,6 +24,7 @@
         <module>myspringcloud-batch</module>
         <module>myspringcloud-mall</module>
         <module>myspringcloud-flowable</module>
+        <module>data</module>
     </modules>
     <packaging>pom</packaging>
 

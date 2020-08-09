@@ -79,4 +79,5 @@ public class MybatisDemoEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8:00")
     private LocalDateTime maxCreateDatetime;
+
 }

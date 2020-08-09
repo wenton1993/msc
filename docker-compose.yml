@@ -1,0 +1,7 @@
+version: '3'
+services:
+  myspringcloud-demo:
+    build: ./myspringcloud-demo/
+    image: 'wenton1993/myspringcloud-demo:1.0-SNAPSHOT'
+    ports:
+    - '8771:8771'

@@ -6,7 +6,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.demo.pojo.entity.MybatisDemoEntity;
+import com.wt.myspringcloud.demo.pojo.req.MybatisDemoReqResp;
 import com.wt.myspringcloud.demo.service.MybatisDemoEntityService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,7 @@ import java.util.Objects;
  * @author 文通
  * @since 2020/7/7
  */
+@Slf4j
 @RestController
 @RequestMapping("/mybatisDemo")
 public class MybatisDemoController {
@@ -79,5 +82,11 @@ public class MybatisDemoController {
             return R.failed("必填字段ID为空");
         }
         return R.ok(ds.removeById(id));
+    }
+
+    @PostMapping("/testReq")
+    public R<MybatisDemoReqResp> testReq(MybatisDemoReqResp req) {
+        log.info(req.toString());
+        return R.ok(req);
     }
 }

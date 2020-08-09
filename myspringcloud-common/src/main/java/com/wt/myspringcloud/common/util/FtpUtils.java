@@ -100,24 +100,4 @@ public class FtpUtils {
             ftpClient.storeFile(remotePath, inputStream);
         }
     }
-
-    /**
-     * 测试demo
-     */
-    public static void main(String[] args) {
-        FTPClient ftpClient = new FTPClient();
-        try {
-            // 连接服务器
-            ftpClient.connect("hostname");
-            // 输入账号和密码
-            ftpClient.login("username", "password");
-            if (!FTPReply.isPositiveCompletion(ftpClient.getReply())) {
-                // 连接失败
-                ftpClient.disconnect();
-            }
-        } catch (IOException e) {
-            // 发生异常，连接失败
-            e.printStackTrace();
-        }
-    }
 }

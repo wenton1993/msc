@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script src="../layui/layui.all.js"></script>
     <script src="../layui/myUtils.js"></script>
-    <title>Demo Info</title>
+    <title>请求和响应测试</title>
 </head>
 <body>
 <div class="layui-row" style="background-color: pink">
@@ -40,55 +40,16 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">原始复选框</label>
+        <label class="layui-form-label">兴趣:</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作">
-            <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读">
-            <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏">
+            <input class="interest" value="01" type="checkbox" title="写作">
+            <input class="interest" value="02" type="checkbox" title="阅读">
+            <input class="interest" value="03" type="checkbox" title="游戏">
         </div>
     </div>
 </form>
 </body>
 <script>
-    // 创建页面的全局变量
-    var event, id;
-    // 处理父页面传过来的参数
-    function child(params) {
-        console.log(params);
-        event = params.event;
-        id = params.id;
-        if (event == 'detail') {
-            console.log('设置输入框只读');
-            layui.$('#form-demo input').attr('readonly', 'readonly');
-            console.log('隐藏保存按钮')
-            layui.$('#btn-save').hide();
-        }
-        if (params && params.id) {
-            layui.$.ajax({
-                url: 'http://localhost:8771/mybatisDemo/queryById',
-                data: {
-                    id: params.id
-                },
-                success: function (r) {
-                    console.log('r:' + JSON.stringify(r));
-                    if (r.code == 0) {
-                        layui.form.val('form-demo', {
-                            demoNo: r.data.demoNo,
-                            name: r.data.name,
-                            age: r.data.age,
-                        });
-                    } else {
-                        layer.msg('找不到对应的Demo');
-                    }
-                },
-                error: function (r) {
-                    layer.msg('操作时发生异常');
-                }
-            });
-        }
-    }
-
-    // Layui
     ;!function () {
         var $ = layui.$,
             layer = layui.layer,
@@ -97,25 +58,32 @@
             laydate = layui.laydate;
         form.render();
 
-        $('#btn-save').click(function () {
-            var demo = form.val('form-demo');
-            demo.id = id;
+        $("#btn-save").click(function () {
+            // 表单值
+            var demo = form.val("form-demo");
+            // 复选框值
+            var interests =[];
+            $("input.interest:checked").each(function () {
+                interests.push($(this).val());
+            });
+            demo.interests = interests;
             $.ajax({
-                url: event == 'add' ? 'http://localhost:8771/mybatisDemo/save' : 'http://localhost:8771/mybatisDemo/updateById',
+                url: "http://localhost:8771/mybatisDemo/testReq",
+                type: "POST",
                 data: demo,
-                type: 'POST',
+                traditional: true,// 发送数组时
                 success: function (r) {
                     console.log(r);
                     if (r.code == 0) {
-                        console.log('操作成功');
+                        console.log("操作成功");
                         msgAndClose(r.msg);
                     } else {
-                        console.log('操作失败');
+                        console.log("操作失败");
                         layer.msg(r.msg);
                     }
                 },
                 error: function (r) {
-                    layer.msg('操作时发生异常');
+                    layer.msg("操作时发生异常");
                 }
             });
         });

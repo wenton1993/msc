@@ -130,7 +130,7 @@
             if (params.event == 'detail' || params.event == 'edit') {
                 layer.open({
                     type: 2,
-                    content: ['DemoInfo.html', 'no'],
+                    content: 'DemoInfo.html',
                     area: '800px',
                     success: function (layero, index) {
                         window['layui-layer-iframe' + index].child(params);
@@ -165,11 +165,15 @@
         });
 
         // 按钮
+        // 搜索
         $('#btn-search').click(function () {
             var data = form.val('form-search');
             console.log(JSON.stringify(data));
             table.reload('table-demo', {
                 where: data,
+                page: {
+                    curr: 1
+                }
             });
         });
         $('#btn-getCheckData').click(function () {
@@ -187,7 +191,7 @@
             layer.open({
                 type: 2,
                 content: ['DemoInfo.html', 'no'],
-                area: '800px',
+                area: ["800px", "600px"],
                 success: function (layero, index) {
                     window['layui-layer-iframe' + index].child(params);
                 },

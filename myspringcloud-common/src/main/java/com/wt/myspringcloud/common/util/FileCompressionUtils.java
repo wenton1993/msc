@@ -59,8 +59,4 @@ public class FileCompressionUtils {
             }
         }
     }
-
-    public static void main(String[] args) throws IOException {
-        extractFormZip("D:\\wento\\Desktop\\bank\\test\\wt-test.zip");
-    }
 }
