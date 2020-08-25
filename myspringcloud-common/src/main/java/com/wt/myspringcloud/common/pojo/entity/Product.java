@@ -72,9 +72,15 @@ public class Product implements Serializable {
         /**
          * 递归查找一个分类下所有的子分类,并返回一个Node对象
          *
-         * @param category 递归查找该分类下所有的子分类
-         * @param categoryList 所有分类的列表
-         * @return Node对象
+         * 步骤：
+         * 1. 将传入的实体类转化为一个 Node
+         * 2. 筛选出该 Node 的所有下级
+         * 3. 递归地将下级实体类转化为 Node
+         * 4. 在递归出口将筛选出的下级组合成 List 放入到 Node 的 children 属性中
+         *
+         * @param category 目录
+         * @param categoryList 所有目录
+         * @return category 对应的节点
          */
         public static ProductCategoryNode covert(ProductCategory category, List<ProductCategory> categoryList) {
             ProductCategoryNode node = new ProductCategoryNode();
