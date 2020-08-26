@@ -89,7 +89,7 @@ public class Product implements Serializable {
                     .filter(c -> c.getParentId().equals(category.getId()))
                     .map(c -> covert(c, categoryList))
                     .collect(Collectors.toList());
-            node.setChildren(nodeList);
+            node.setChildren(nodeList.size() > 0 ? nodeList : null);
             return node;
         }
 
