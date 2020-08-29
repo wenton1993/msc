@@ -2,8 +2,8 @@ package com.wt.myspringcloud.demo.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.wt.myspringcloud.demo.action.Insert;
-import com.wt.myspringcloud.demo.action.Update;
+import com.wt.myspringcloud.demo.validation.type.Insert;
+import com.wt.myspringcloud.demo.validation.type.Update;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 

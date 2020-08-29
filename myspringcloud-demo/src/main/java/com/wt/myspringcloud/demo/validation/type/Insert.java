@@ -1,4 +1,4 @@
-package com.wt.myspringcloud.demo.action;
+package com.wt.myspringcloud.demo.validation.type;
 
 /**
  * @author 文通
