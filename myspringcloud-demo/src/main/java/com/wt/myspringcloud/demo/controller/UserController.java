@@ -44,9 +44,9 @@ public class UserController extends BaseController implements UserServiceApi {
     @Transactional
     @Override
     public JsonResult<WtUser> queryUserById(@RequestBody UserReq userReq) {
-        if (8 == userReq.getId()) {
+        if (userReq.getId() == 8) {
             throw new BusinessException("queryUserById 发生异常！");
-        } else if (9 == userReq.getId()) {
+        } else if (userReq.getId() == 9) {
             throw new RuntimeException("queryUserById 发生异常！");
         }
         WtUser user;

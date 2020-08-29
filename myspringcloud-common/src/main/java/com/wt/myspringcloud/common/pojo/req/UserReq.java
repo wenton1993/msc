@@ -12,7 +12,7 @@ import java.util.StringJoiner;
 public class UserReq extends BaseReq {
 
     @ApiModelProperty(value = "用户ID", example = "1")
-    private Long id;
+    private long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateTime;
@@ -25,11 +25,11 @@ public class UserReq extends BaseReq {
                 .toString();
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
