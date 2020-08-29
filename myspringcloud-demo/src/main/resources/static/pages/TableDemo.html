@@ -92,10 +92,14 @@
         });
 
         // 列表
+        var doneParams = [];
         table.render({
             id: 'table-demo',
             elem: '#table-demo',
             url: 'http://localhost:8771/mybatisDemo/page',
+            where: {
+                "doneParams": doneParams
+            },
             cellMinWidth: 160,// 全局定义常规单元格的最小宽度，layui 2.2.1 新增,
             cols: [[
                 {field: 'rowNo', title: '序号', type: 'numbers'},
@@ -107,7 +111,9 @@
                 {field: 'age', title: '年龄'},
                 {fixed: 'right', title:'操作', toolbar: '#toolbar-demo'},
             ]],
-            page: true,
+            page: {
+                layout: ['prev', 'page', 'next', 'count', 'limit']
+            },
             request: {
                 pageName: 'current',
                 limitName: 'size',
@@ -119,6 +125,10 @@
                     "count": r.data.total,
                     "data": r.data.records
                 };
+            },
+            done: function (res, current, count) {
+                console.log("current", current);
+                doneParams[current] = count;
             }
         });// 列表-结束
         // 列表-操作按钮
