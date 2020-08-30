@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.wt.myspringcloud.demo.BaseTest;
 import com.wt.myspringcloud.demo.mapper.MybatisDemoEntityMapper;
-import com.wt.myspringcloud.demo.pojo.entity.MybatisDemoEntity;
+import com.wt.myspringcloud.demo.pojo.entity.Demo;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,20 +25,20 @@ public class UpdateTest extends BaseTest {
      */
     @Test
     public void updateWrapperTest() {
-        MybatisDemoEntity demo = mapper.selectOne(new QueryWrapper<MybatisDemoEntity>()
+        Demo demo = mapper.selectOne(new QueryWrapper<Demo>()
                 .lambda()
-                .eq(MybatisDemoEntity::getDemoNo, "4"));
+                .eq(Demo::getId, "4"));
         // where
-        MybatisDemoEntity queryEntity = new MybatisDemoEntity();
+        Demo queryEntity = new Demo();
         queryEntity.setId(demo.getId());
         queryEntity.setAge(null);
-        Wrapper<MybatisDemoEntity> wrapper = new QueryWrapper<>(queryEntity);
+        Wrapper<Demo> wrapper = new QueryWrapper<>(queryEntity);
         // set
-        MybatisDemoEntity updateEntity = new MybatisDemoEntity();
+        Demo updateEntity = new Demo();
         updateEntity.setName("欧敏娜");
         // 执行
         mapper.update(updateEntity, wrapper);
-        MybatisDemoEntity newDemo = mapper.selectById(demo.getId());
+        Demo newDemo = mapper.selectById(demo.getId());
         Assert.assertEquals("欧敏娜", newDemo.getName());
         Assert.assertEquals(demo.getAge(), newDemo.getAge());
     }
@@ -48,22 +48,22 @@ public class UpdateTest extends BaseTest {
      */
     @Test
     public void updateWrapperTest2() {
-        MybatisDemoEntity demo = mapper.selectOne(new QueryWrapper<MybatisDemoEntity>()
+        Demo demo = mapper.selectOne(new QueryWrapper<Demo>()
                 .lambda()
-                .eq(MybatisDemoEntity::getDemoNo, "4"));
+                .eq(Demo::getId, "4"));
         // where
-        MybatisDemoEntity queryEntity = new MybatisDemoEntity();
+        Demo queryEntity = new Demo();
         queryEntity.setId(demo.getId());
         queryEntity.setAge(null);
         // set
-        Wrapper<MybatisDemoEntity> wrapper = new UpdateWrapper<>(queryEntity)
+        Wrapper<Demo> wrapper = new UpdateWrapper<>(queryEntity)
                 .lambda()
-                .set(MybatisDemoEntity::getName, "欧敏娜")
-                .set(MybatisDemoEntity::getAge, null);
+                .set(Demo::getName, "欧敏娜")
+                .set(Demo::getAge, null);
 
         // 执行
         mapper.update(null, wrapper);
-        MybatisDemoEntity newDemo = mapper.selectById(demo.getId());
+        Demo newDemo = mapper.selectById(demo.getId());
         Assert.assertEquals("欧敏娜", newDemo.getName());
         Assert.assertNull(newDemo.getAge());
     }

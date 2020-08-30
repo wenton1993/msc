@@ -18,24 +18,14 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@TableName("mybatis_demo_entity")
-public class MybatisDemoEntity {
+@TableName(schema = "local", value = "demo")
+public class Demo {
 
     /**
      * 主键
      */
-    @TableId(type = IdType.ASSIGN_UUID)
-    @NotEmpty(message = "主键不能为空", groups = {Update.class})
-    private String id;
-
-    /**
-     * 编号
-     */
-    @TableField("demo_no")
-    @NotEmpty(message = "编号不能为空", groups = {Insert.class})
-    private String demoNo;
+    @TableId(type = IdType.ASSIGN_ID)
+    private Long id;
 
     /**
      * 名称
@@ -61,15 +51,15 @@ public class MybatisDemoEntity {
      * 是否已删除
      */
     @TableLogic
-    @TableField("deleted")
-    private Integer deleted;
+    @TableField("delete_status")
+    private Integer delete_status;
 
     /**
      * 版本号
      */
     @Version
     @TableField("version")
-    private Timestamp version;
+    private Long version;
 
     // 非数据库字段
     /**

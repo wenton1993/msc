@@ -1,6 +1,6 @@
 package com.wt.myspringcloud.demo.pojo.req;
 
-import com.wt.myspringcloud.demo.pojo.entity.MybatisDemoEntity;
+import com.wt.myspringcloud.demo.pojo.entity.Demo;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class MybatisDemoReqResp extends MybatisDemoEntity {
+public class DemoReqResp extends Demo {
 
     private List<String> interests;
 

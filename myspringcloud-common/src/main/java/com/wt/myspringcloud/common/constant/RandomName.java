@@ -11,10 +11,10 @@ import java.util.Random;
  */
 public enum RandomName {
 
-    Abigal, Alice, Alison,
-    Baey, Bella,
+    Alex, Alice, Alison,
+    Bache, Bella,
     Carol, Cassie, Cristina,
-
+    Dan, Daniel
     ;
 
     private static final List<RandomName> NAME_LIST = Arrays.asList(values());

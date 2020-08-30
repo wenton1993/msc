@@ -1,20 +1,17 @@
 eureka:
-  instance:
-    # Use its IP Address rather than its hostname to registers with eureka.
-    preferIpAddress: true
   client:
-    serviceUrl:
-      # defaultZone: http://localhost:8761/eureka/
-      defaultZone: http://eureka.didispace.com/eureka/
     # 是否向 Eureka 获取其它服务的信息
     fetch-registry: false
     # 是否向 Eureka 注册自身
     register-with-eureka: false
 
+# DataSource Config
 spring:
   datasource:
-    schema: classpath:db/schema-h2.sql
-    data: classpath:db/data-h2.sql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306
+    username: root
+    password: root
 
 # 测试接收自定义属性
 custom:

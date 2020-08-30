@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.demo.BaseTest;
 import com.wt.myspringcloud.demo.mapper.MybatisDemoEntityMapper;
-import com.wt.myspringcloud.demo.pojo.entity.MybatisDemoEntity;
+import com.wt.myspringcloud.demo.pojo.entity.Demo;
 import org.junit.Test;
 
 import javax.annotation.Resource;
@@ -30,14 +30,14 @@ public class QueryTest extends BaseTest {
      */
     @Test
     public void selectTest() {
-        List<MybatisDemoEntity> demoList = mapper.selectList(new QueryWrapper<MybatisDemoEntity>()
+        List<Demo> demoList = mapper.selectList(new QueryWrapper<Demo>()
                 .lambda()
                 // 指定查询字段
-                .select(MybatisDemoEntity::getDemoNo, MybatisDemoEntity::getName, MybatisDemoEntity::getAge, MybatisDemoEntity::getCreateDatetime)
+                .select(Demo::getId, Demo::getName, Demo::getAge, Demo::getCreateDatetime)
                 // 指定年龄条件
-                .eq(MybatisDemoEntity::getAge, 18)
+                .eq(Demo::getAge, 18)
                 // 指定时间条件
-                .ge(MybatisDemoEntity::getCreateDatetime, LocalDate.now().minusDays(3))
+                .ge(Demo::getCreateDatetime, LocalDate.now().minusDays(3))
         );
         System.out.println("End");
     }
@@ -48,13 +48,13 @@ public class QueryTest extends BaseTest {
     @Test
     public void selectFirstOne() {
         // 设置分页条件, 每页 1 条, 当前页为 1
-        Page<MybatisDemoEntity> page = new Page<>();
+        Page<Demo> page = new Page<>();
         page.setSize(1);
         page.setCurrent(1);
         // 设置查询条件
-        Wrapper<MybatisDemoEntity> wrapper = new QueryWrapper<MybatisDemoEntity>()
+        Wrapper<Demo> wrapper = new QueryWrapper<Demo>()
                 .lambda()
-                .eq(MybatisDemoEntity::getAge, 18);
+                .eq(Demo::getAge, 18);
         // 查询数据库
         mapper.selectPage(page, wrapper);
         System.out.println("End");
@@ -65,7 +65,7 @@ public class QueryTest extends BaseTest {
      */
     @Test
     public void selectFirstOne2() {
-        QueryWrapper<MybatisDemoEntity> wrapper = new QueryWrapper<MybatisDemoEntity>()
+        QueryWrapper<Demo> wrapper = new QueryWrapper<Demo>()
                 .ge("create_datetime", LocalDateTime.now().minusDays(3))
                 .last("rownum <= 1");
         mapper.selectList(wrapper);
@@ -74,9 +74,9 @@ public class QueryTest extends BaseTest {
 
     @Test
     public void selectOneByNotId() {
-        List<MybatisDemoEntity> demoList = mapper.selectList(new QueryWrapper<MybatisDemoEntity>()
+        List<Demo> demoList = mapper.selectList(new QueryWrapper<Demo>()
                 .lambda()
-                .eq(MybatisDemoEntity::getDemoNo, "4"));
+                .eq(Demo::getId, "4"));
         if (demoList.size() > 0) {
             System.out.println(demoList.get(0));
         }
@@ -84,13 +84,13 @@ public class QueryTest extends BaseTest {
 
     @Test
     public void deleteLogically() {
-        QueryWrapper<MybatisDemoEntity> wrapper = new QueryWrapper<>();
+        QueryWrapper<Demo> wrapper = new QueryWrapper<>();
         wrapper.eq("demo_no", "4");
-        List<MybatisDemoEntity> demoList = mapper.selectList(wrapper);
+        List<Demo> demoList = mapper.selectList(wrapper);
         if (demoList.size() > 0) {
-            MybatisDemoEntity demo = demoList.get(0);
+            Demo demo = demoList.get(0);
             mapper.deleteById(demo.getId());// 删除时不会 delete, 而是 set delete=1
-            MybatisDemoEntity demo2 = mapper.selectById(demo.getId());// 查询时自动增加条件 delete=0
+            Demo demo2 = mapper.selectById(demo.getId());// 查询时自动增加条件 delete=0
             System.out.println(demo2);
         }
     }
@@ -100,19 +100,19 @@ public class QueryTest extends BaseTest {
      */
     @Test
     public void updateByNotId() {
-        List<MybatisDemoEntity> demoList = mapper.selectList(new QueryWrapper<MybatisDemoEntity>()
+        List<Demo> demoList = mapper.selectList(new QueryWrapper<Demo>()
                 .lambda()
-                .eq(MybatisDemoEntity::getDemoNo, "4"));
+                .eq(Demo::getId, "4"));
         if (demoList.size() > 0) {
-            MybatisDemoEntity demo = demoList.get(0);
+            Demo demo = demoList.get(0);
             System.out.println(demo);
-            Wrapper<MybatisDemoEntity> wragger = new UpdateWrapper<MybatisDemoEntity>()
+            Wrapper<Demo> wragger = new UpdateWrapper<Demo>()
                     .lambda()
-                    .eq(MybatisDemoEntity::getDemoNo, demo.getDemoNo());
-            MybatisDemoEntity updateEntity = new MybatisDemoEntity();
+                    .eq(Demo::getId, demo.getId());
+            Demo updateEntity = new Demo();
             updateEntity.setName("欧敏娜");
             mapper.update(updateEntity, wragger);
-            MybatisDemoEntity newDemo = mapper.selectById(demo.getId());
+            Demo newDemo = mapper.selectById(demo.getId());
             System.out.println("newDemo");
         }
 
@@ -120,11 +120,11 @@ public class QueryTest extends BaseTest {
 
     @Test
     public void updateByIdWithVersion() {
-        QueryWrapper<MybatisDemoEntity> wrapper = new QueryWrapper<>();
+        QueryWrapper<Demo> wrapper = new QueryWrapper<>();
         wrapper.eq("demo_no", "4");
-        List<MybatisDemoEntity> demoList = mapper.selectList(wrapper);
+        List<Demo> demoList = mapper.selectList(wrapper);
         if (demoList.size() > 0) {
-            MybatisDemoEntity demo = demoList.get(0);
+            Demo demo = demoList.get(0);
             System.out.println(demo.getVersion());
             for (int i = 0; i < 5; i++) {
                 demo.setAge(i);
@@ -137,17 +137,17 @@ public class QueryTest extends BaseTest {
 
     @Test
     public void updateWrapperTest() {
-        MybatisDemoEntity demo = mapper.selectById("4");
+        Demo demo = mapper.selectById("4");
         // where
-        MybatisDemoEntity queryEntity = new MybatisDemoEntity();
+        Demo queryEntity = new Demo();
         queryEntity.setId(demo.getId());
-        Wrapper<MybatisDemoEntity> wrapper = new QueryWrapper<>(queryEntity);
+        Wrapper<Demo> wrapper = new QueryWrapper<>(queryEntity);
         // set
-        MybatisDemoEntity updateEntity = new MybatisDemoEntity();
+        Demo updateEntity = new Demo();
         updateEntity.setName("欧敏娜");
         // 执行
         /*demoMapper.update(updateEntity, wrapper);*/
-        MybatisDemoEntity newDemo = mapper.selectById("4");
+        Demo newDemo = mapper.selectById("4");
         System.out.println("End");
     }
 
