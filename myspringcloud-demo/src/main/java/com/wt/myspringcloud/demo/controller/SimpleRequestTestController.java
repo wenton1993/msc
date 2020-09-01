@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
  * @since 2020/4/21
  */
 @RestController
-@RequestMapping("/test")
-public class TestSimpleRequestController extends BaseController {
+@RequestMapping("/simpleRequestTest")
+public class SimpleRequestTestController extends BaseController {
 
     /**
      * 测试使用 @RequestParam 接收 POST 请求中的表单数据

@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
  * 2.@JsonFormat 只能用于序列化和反序列化请求体中 JSON 格式的时间信息
  */
 @RestController
-@RequestMapping("/reqRespTest")
-public class TestRequestFormAndJsonDataController extends BaseController {
+@RequestMapping("/requestFormAndJsonDataTest")
+public class RequestFormAndJsonDataTestController extends BaseController {
 
     /**
      * 测试使用 @RequestParam 接收请求体中的参数
