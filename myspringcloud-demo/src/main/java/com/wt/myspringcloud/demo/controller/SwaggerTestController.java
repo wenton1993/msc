@@ -1,9 +1,8 @@
 package com.wt.myspringcloud.demo.controller;
 
-import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
-import com.wt.myspringcloud.demo.pojo.req.SwaggerTestReq;
-import com.wt.myspringcloud.demo.pojo.resp.SwaggerTestResp;
+import com.wt.myspringcloud.demo.pojo.req.SwaggerDemoReq;
+import com.wt.myspringcloud.demo.pojo.resp.SwaggerDemoResp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
@@ -23,16 +22,16 @@ public class SwaggerTestController {
 
     @ApiOperation(value = "测试", notes = "仅供测试")
     @PostMapping("/testForm")
-    public R<SwaggerTestResp> testForm(SwaggerTestReq req) {
-        SwaggerTestResp resp = new SwaggerTestResp();
+    public R<SwaggerDemoResp> testForm(SwaggerDemoReq req) {
+        SwaggerDemoResp resp = new SwaggerDemoResp();
         BeanUtils.copyProperties(req, resp);
         return R.ok(resp);
     }
 
     @ApiOperation(value = "测试", notes = "仅供测试")
     @PostMapping("/testJson")
-    public R<SwaggerTestResp> testJson(@RequestBody SwaggerTestReq req) {
-        SwaggerTestResp resp = new SwaggerTestResp();
+    public R<SwaggerDemoResp> testJson(@RequestBody SwaggerDemoReq req) {
+        SwaggerDemoResp resp = new SwaggerDemoResp();
         BeanUtils.copyProperties(req, resp);
         return R.ok(resp);
     }

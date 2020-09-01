@@ -1,13 +1,11 @@
 package com.wt.myspringcloud.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wt.myspringcloud.common.pojo.entity.WtUser;
-import org.apache.ibatis.annotations.Param;
+import com.wt.myspringcloud.demo.pojo.entity.Demo;
 
-import java.util.List;
-
-public interface DemoMapper extends BaseMapper<WtUser> {
-
-    List<WtUser> testForeach(@Param("nameList") List<String> nameList);
-
+/**
+ * @author 文通
+ * @since 2020/6/14
+ */
+public interface DemoMapper extends BaseMapper<Demo> {
 }

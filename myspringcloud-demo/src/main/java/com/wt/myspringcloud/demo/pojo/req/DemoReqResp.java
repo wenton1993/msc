@@ -8,6 +8,8 @@ import lombok.ToString;
 import java.util.List;
 
 /**
+ * 同时作为请求和返回对象
+ *
  * @author 文通
  * @since 2020/7/19
  */

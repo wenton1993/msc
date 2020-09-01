@@ -21,7 +21,7 @@ import java.util.Date;
 @Setter
 @ToString
 @ApiModel(description = "响应结果对象")
-public class RespTestResp {
+public class DemoResp {
 
     @ApiModelProperty(value = "请求ID")
     private String id;

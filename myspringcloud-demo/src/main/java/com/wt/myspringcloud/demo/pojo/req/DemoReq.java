@@ -21,7 +21,7 @@ import java.util.Date;
 @Setter
 @ToString
 @ApiModel(description = "请求参数对象")
-public class ReqTestReq {
+public class DemoReq {
 
     @ApiModelProperty(value = "请求ID", required = true, example = "1024")
     private String id;

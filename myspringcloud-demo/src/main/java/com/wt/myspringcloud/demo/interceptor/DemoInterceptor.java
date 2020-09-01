@@ -16,19 +16,28 @@ import javax.servlet.http.HttpServletResponse;
 @Log
 public class DemoInterceptor implements HandlerInterceptor {
 
+    /**
+     * 处理前
+     */
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         log.info("DemoInterceptor::preHandle");
         return true;
     }
 
+    /**
+     * 返回前
+     */
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
         log.info("DemoInterceptor::postHandle");
     }
 
+    /**
+     * 返回后
+     */
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         log.info("DemoInterceptor::afterCompletion");
     }
 }

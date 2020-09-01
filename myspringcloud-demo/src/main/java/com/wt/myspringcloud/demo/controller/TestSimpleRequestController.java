@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/test")
-public class TestController extends BaseController {
+public class TestSimpleRequestController extends BaseController {
 
     /**
      * 测试使用 @RequestParam 接收 POST 请求中的表单数据

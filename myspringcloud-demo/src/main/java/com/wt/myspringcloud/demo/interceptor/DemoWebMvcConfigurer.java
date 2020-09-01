@@ -9,8 +9,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @since 2020/1/29
  */
 @Configuration
-public class UserWebMvcConfigurer implements WebMvcConfigurer {
+public class DemoWebMvcConfigurer implements WebMvcConfigurer {
 
+    /**
+     * 在处理请求的过程中增加拦截器
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new DemoInterceptor());

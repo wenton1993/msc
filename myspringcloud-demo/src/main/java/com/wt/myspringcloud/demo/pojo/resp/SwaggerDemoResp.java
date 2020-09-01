@@ -12,12 +12,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class SwaggerTestResp {
+public class SwaggerDemoResp {
 
     @ApiModelProperty(value = "Swagger ID", required = true, example = "1024")
     private String id;
 
     @ApiModelProperty(value = "返回字段对象", required = false)
-    private RespTestResp respTestResp;
+    private DemoResp respTestResp;
 
 }

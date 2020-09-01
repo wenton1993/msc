@@ -1,5 +1,8 @@
 package com.wt.myspringcloud.demo.config;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +16,9 @@ import java.util.StringJoiner;
  * @author 文通
  * @since 2020/5/19
  */
+@Getter
+@Setter
+@ToString
 @Component
 @ConfigurationProperties(prefix = "custom.wt")
 public class CustomParams {
@@ -25,45 +31,4 @@ public class CustomParams {
 
     private Map<String, String> aMap;
 
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", CustomParams.class.getSimpleName() + "[", "]")
-                .add("id='" + id + "'")
-                .add("name='" + name + "'")
-                .add("aList=" + aList)
-                .add("aMap=" + aMap)
-                .toString();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<String> getaList() {
-        return aList;
-    }
-
-    public void setaList(List<String> aList) {
-        this.aList = aList;
-    }
-
-    public Map<String, String> getaMap() {
-        return aMap;
-    }
-
-    public void setaMap(Map<String, String> aMap) {
-        this.aMap = aMap;
-    }
 }

@@ -1,5 +1,7 @@
 package com.wt.myspringcloud.common.constant;
 
+import org.apache.commons.lang3.RandomUtils;
+
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -18,23 +20,15 @@ public enum RandomName {
     ;
 
     private static final List<RandomName> NAME_LIST = Arrays.asList(values());
-    private static final Random RANDOM = new Random();
     // 获取一个随机的名字
     public static RandomName getRandomName()  {
-        return NAME_LIST.get(RANDOM.nextInt(NAME_LIST.size()));
+        return NAME_LIST.get(RandomUtils.nextInt(0, NAME_LIST.size()));
     }
 
     public static void main(String[] args) {
-        /*RandomName randomName = RandomName.getRandomName();
-        System.out.println(randomName.toString());*/
-        GregorianCalendar gc = new GregorianCalendar();
-        int year = 2032 + RANDOM.nextInt(6);
-        gc.set(gc.YEAR, year);
-        int dayOfYear = RANDOM.nextInt(gc.getActualMaximum(gc.DAY_OF_YEAR));
-
-
+        // 测试
         for (int i = 0; i < 100; i++) {
-            System.out.println(String.valueOf(2032 + RANDOM.nextInt(6)));
+            System.out.println(getRandomName());
         }
     }
 }

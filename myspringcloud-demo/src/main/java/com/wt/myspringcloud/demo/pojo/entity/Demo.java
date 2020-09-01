@@ -61,7 +61,7 @@ public class Demo {
     @TableField("version")
     private Long version;
 
-    // 非数据库字段
+    // 非数据库字段 - 开始
     /**
      * 最小创建日期时间
      */

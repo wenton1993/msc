@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../layui/css/layui.css">
-    <script src="../layui/layui.all.js"></script>
+    <script src="../layui/layui.js"></script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
     <title>Table Demo</title>
     <style>
@@ -49,11 +49,11 @@
         <div class="layui-inline">
             <label class="layui-form-label">创建日期时间:</label>
             <div class="layui-input-inline">
-                <input id="minCreateDatetime" name="minCreateDatetime" type="text" autocomplete="off" class="layui-input">
+                <input id="minCreateDatetime" name="minCreateDatetime" class="layui-input" type="text" autocomplete="off">
             </div>
             <div class="layui-form-mid">-</div>
             <div class="layui-input-inline">
-                <input id="maxCreateDatetime" name="maxCreateDatetime" type="text" autocomplete="off" class="layui-input">
+                <input id="maxCreateDatetime" name="maxCreateDatetime" class="layui-input" type="text" autocomplete="off">
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@
 </script>
 <script>
     // Layui
-    ;!function () {
+    layui.use(["layer", "form", "table", 'laydate'], function () {
         var $ = layui.$,
             layer = layui.layer,
             form = layui.form,
@@ -82,55 +82,70 @@
             laydate = layui.laydate;
 
         // 日期时间
-        layui.laydate.render({
-            elem: '#minCreateDatetime',
+        laydate.render({
+            elem: "#minCreateDatetime",
             type: 'datetime',
         });
-        layui.laydate.render({
+        laydate.render({
             elem: '#maxCreateDatetime',
             type: 'datetime',
+            value: new Date(),
+/*            done: function (value, date, endDate) {
+                // form.val("form-search", {"maxCreateDatetime": value});// 赋初始值时不生效
+                form.val("form-search", {"maxCreateDatetime": $("#maxCreateDatetime").val()});
+                console.log("form-search:", form.val("form-search"));
+            }*/
         });
+
+        console.log("form-search:", form.val("form-search"));
 
         // 列表
         var doneParams = [];
-        table.render({
-            id: 'table-demo',
-            elem: '#table-demo',
-            url: 'http://localhost:8771/mybatisDemo/page',
-            where: {
-                "doneParams": doneParams
-            },
-            cellMinWidth: 160,// 全局定义常规单元格的最小宽度，layui 2.2.1 新增,
-            cols: [[
-                {field: 'rowNo', title: '序号', type: 'numbers'},
-                // {checkbox: true},// 复选框
-                {type:'radio'},// 单选框
-                {field: 'id', title: 'ID', hide: true},
-                {field: 'demoNo', title: '编号'},
-                {field: 'name', title: '名称', templet: '#templet-name'},
-                {field: 'age', title: '年龄'},
-                {fixed: 'right', title:'操作', toolbar: '#toolbar-demo'},
-            ]],
-            page: {
-                layout: ['prev', 'page', 'next', 'count', 'limit']
-            },
-            request: {
-                pageName: 'current',
-                limitName: 'size',
-            },
-            parseData: function (r) {
-                return {
-                    "code": r.code,
-                    "msg": r.msg,
-                    "count": r.data.total,
-                    "data": r.data.records
-                };
-            },
-            done: function (res, current, count) {
-                console.log("current", current);
-                doneParams[current] = count;
-            }
-        });// 列表-结束
+        // 按钮
+        // 搜索
+        $('#btn-search').click(function () {
+            var data = form.val('form-search');
+            data.doneParams = doneParams;
+            console.log(data);
+            table.render({
+                id: 'table-demo',
+                elem: '#table-demo',
+                url: 'http://localhost:8771/mybatisDemo/page',
+                where: data,
+                cellMinWidth: 160,// 全局定义常规单元格的最小宽度，layui 2.2.1 新增,
+                cols: [[
+                    {field: 'rowNo', title: '序号', type: 'numbers'},
+                    // {checkbox: true},// 复选框
+                    {type: 'radio'},// 单选框
+                    {field: 'id', title: 'ID', hide: true},
+                    {field: 'demoNo', title: '编号'},
+                    {field: 'name', title: '名称', templet: '#templet-name'},
+                    {field: 'age', title: '年龄'},
+                    {fixed: 'right', title: '操作', toolbar: '#toolbar-demo'},
+                ]],
+                page: {
+                    layout: ['prev', 'page', 'next', 'count', 'limit']
+                },
+                request: {
+                    pageName: 'current',
+                    limitName: 'size',
+                },
+                parseData: function (r) {
+                    return {
+                        "code": r.code,
+                        "msg": r.msg,
+                        "count": r.data.total,
+                        "data": r.data.records
+                    };
+                },
+                done: function (res, current, count) {
+                    console.log("current", current);
+                    doneParams[current] = count;
+                }
+            });
+        });
+        $('#btn-search').click();// 打开页面时自动渲染
+
         // 列表-操作按钮
         table.on('tool(table-demo)', function (row) {
             var rowData = row.data;
@@ -153,7 +168,7 @@
                     }
                 });
             } else if (params.event == 'delete') {
-                layer.confirm('确认删除？', function(index){
+                layer.confirm('确认删除？', function (index) {
                     $.ajax({
                         url: 'http://localhost:8771/mybatisDemo/removeById',
                         type: 'POST',
@@ -174,18 +189,6 @@
 
         });
 
-        // 按钮
-        // 搜索
-        $('#btn-search').click(function () {
-            var data = form.val('form-search');
-            console.log(JSON.stringify(data));
-            table.reload('table-demo', {
-                where: data,
-                page: {
-                    curr: 1
-                }
-            });
-        });
         $('#btn-getCheckData').click(function () {
             var checkStatus = table.checkStatus('table-demo');
             var data = checkStatus.data;
@@ -211,6 +214,6 @@
                 }
             });
         });
-    }();// Layui-结束
+    });// Layui-结束
 </script>
 </html>
