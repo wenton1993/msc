@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script src="../layui/layui.js"></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
     <title>Table Demo</title>
     <style>
         .layui-form-item .layui-form-label {
@@ -104,15 +103,14 @@
         // 按钮
         // 搜索
         $('#btn-search').click(function () {
-            var data = form.val('form-search');
-            data.doneParams = doneParams;
-            console.log(data);
+            var searchParams = form.val('form-search');
+            searchParams.doneParams = doneParams;
+            console.log(searchParams);
             table.render({
                 id: 'table-demo',
                 elem: '#table-demo',
                 url: 'http://localhost:8771/mybatisDemo/page',
-                where: data,
-                cellMinWidth: 160,// 全局定义常规单元格的最小宽度，layui 2.2.1 新增,
+                where: searchParams,
                 cols: [[
                     {field: 'rowNo', title: '序号', type: 'numbers'},
                     // {checkbox: true},// 复选框
@@ -123,6 +121,7 @@
                     {field: 'age', title: '年龄'},
                     {fixed: 'right', title: '操作', toolbar: '#toolbar-demo'},
                 ]],
+                cellMinWidth: 160,
                 page: {
                     layout: ['prev', 'page', 'next', 'count', 'limit']
                 },
