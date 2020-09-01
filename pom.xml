@@ -37,7 +37,7 @@
         <!--Docker-->
         <docker.image.prefix>springboot</docker.image.prefix>
         <!--Other-->
-        <mybatis-plus.version>3.3.2</mybatis-plus.version>
+        <mybatis-plus.version>3.4.0</mybatis-plus.version>
         <swagger.version>2.9.2</swagger.version>
     </properties>
 
