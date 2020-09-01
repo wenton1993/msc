@@ -34,8 +34,7 @@ public class DemoController {
     private DemoService ds;
 
     @GetMapping("/page")
-    public R<IPage<Demo>> page(Page<Demo> page,
-                               Demo params) {
+    public R<IPage<Demo>> page(Page<Demo> page, Demo params) {
         Wrapper<Demo> wrapper = new QueryWrapper<Demo>().lambda()
                 .eq(Demo::getId, params.getId())
                 .like(StringUtils.isNotBlank(params.getName()), Demo::getName, params.getName())
@@ -47,23 +46,19 @@ public class DemoController {
     }
 
     @GetMapping("/pageByJson")
-    public R<IPage<Demo>> pageByJson(Page<Demo> page,
-                                     Demo entityParams) {
+    public R<IPage<Demo>> pageByJson(Page<Demo> page, Demo entityParams) {
         return R.ok(ds.page(page, new QueryWrapper<>(entityParams)));
     }
 
     @PostMapping("/save")
     public R<Boolean> save(@Validated({Insert.class}) Demo entity) {
-        if (Objects.isNull(entity.getDelete_status())) {
-            entity.setDelete_status(0);
-        }
         return R.ok(ds.save(entity));
     }
 
     @GetMapping("/queryById")
     public R<Demo> queryById(String id) {
         if (StringUtils.isBlank(id)) {
-            return R.failed("必填字段ID为空");
+            return R.failed("必填字段ID不能为空");
         }
         return R.ok(ds.getById(id));
     }
