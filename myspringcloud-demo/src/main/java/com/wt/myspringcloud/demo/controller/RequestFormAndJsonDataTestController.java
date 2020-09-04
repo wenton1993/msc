@@ -45,7 +45,7 @@ public class RequestFormAndJsonDataTestController extends BaseController {
      * 2. @JsonFormat 可以按格式序列化请求体中的 String 类型的时间
      * 3. @JsonFormat 可以将 Date 和 LocalDateTime 按格式反序列化成 String
      */
-    @PostMapping("/testAcceptJsonData")
+    @PostMapping("/testRequestJsonData")
     public JsonResult<DemoResp> testRequestJsonData(@RequestBody DemoReq req) {
         System.out.println(req.getFormDate());
         System.out.println(req.getJsonDate());
