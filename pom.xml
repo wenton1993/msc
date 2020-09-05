@@ -25,6 +25,7 @@
         <module>myspringcloud-mall</module>
         <module>myspringcloud-flowable</module>
         <module>data</module>
+        <!--<module>reactor</module>-->
     </modules>
     <packaging>pom</packaging>
 
