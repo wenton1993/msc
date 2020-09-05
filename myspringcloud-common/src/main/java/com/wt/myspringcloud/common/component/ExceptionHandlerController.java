@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 异常统一处理类 *
+ * 异常处理
  *
  * @author xiaoh
  * @create 2018-09-10 9:40
