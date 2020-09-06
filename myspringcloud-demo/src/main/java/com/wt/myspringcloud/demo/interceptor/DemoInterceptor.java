@@ -1,6 +1,7 @@
 package com.wt.myspringcloud.demo.interceptor;
 
 import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author 文通
  * @since 2020/1/29
  */
-@Log
+@Slf4j
 public class DemoInterceptor implements HandlerInterceptor {
 
     /**
@@ -21,7 +22,7 @@ public class DemoInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        log.info("DemoInterceptor::preHandle");
+        log.info("DemoInterceptor::preHandle, {}", request.toString());
         return true;
     }
 
@@ -30,7 +31,7 @@ public class DemoInterceptor implements HandlerInterceptor {
      */
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
-        log.info("DemoInterceptor::postHandle");
+        log.info("DemoInterceptor::postHandle, {}", response.toString());
     }
 
     /**

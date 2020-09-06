@@ -29,41 +29,41 @@ import java.util.Objects;
 public class DemoController {
 
     @Autowired
-    private DemoService ds;
+    private DemoService demoService;
 
     @GetMapping("/queryById")
     public R<Demo> queryById(String id) {
         if (StringUtils.isBlank(id)) {
             return R.failed("必填字段ID不能为空");
         }
-        return R.ok(ds.getById(id));
+        return R.ok(demoService.getById(id));
     }
 
     @GetMapping("/page")
     public R<IPage<Demo>> page(Page<Demo> page, PageDemoReq params) {
         Wrapper<Demo> wrapper = new QueryWrapper<Demo>().lambda()
-                .eq(Demo::getId, params.getId())
+                .eq(Objects.nonNull(params.getId()), Demo::getId, params.getId())
                 .like(StringUtils.isNotBlank(params.getName()), Demo::getName, params.getName())
                 .eq(Objects.nonNull(params.getAge()), Demo::getAge, params.getAge())
                 .ge(Objects.nonNull(params.getMinCreateDatetime()), Demo::getCreateDatetime, params.getMinCreateDatetime())
                 .le(Objects.nonNull(params.getMaxCreateDatetime()), Demo::getCreateDatetime, params.getMaxCreateDatetime())
                 .orderByAsc(Demo::getId);
-        return R.ok(ds.page(page, wrapper));
+        return R.ok(demoService.page(page, wrapper));
     }
 
     @PostMapping("/pageByJson")
     public R<IPage<Demo>> pageByJson(@RequestBody PageDemoReq req) {
-        return R.ok(ds.page(req.getPage(), new QueryWrapper<>(req)));
+        return R.ok(demoService.page(req.getPage(), new QueryWrapper<>(req)));
     }
 
     @PostMapping("/save")
     public R<Boolean> save(@Validated({Insert.class}) Demo entity) {
-        return R.ok(ds.save(entity));
+        return R.ok(demoService.save(entity));
     }
 
     @PostMapping("/updateById")
     public R<Boolean> updateById(@Validated({Update.class}) Demo entity) {
-        return R.ok(ds.updateById(entity));
+        return R.ok(demoService.updateById(entity));
     }
 
     @PostMapping("/removeById")
@@ -71,7 +71,7 @@ public class DemoController {
         if (StringUtils.isBlank(id)) {
             return R.failed("必填字段ID为空");
         }
-        return R.ok(ds.removeById(id));
+        return R.ok(demoService.removeById(id));
     }
 
     @PostMapping("/testReq")

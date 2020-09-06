@@ -2,13 +2,13 @@ package com.wt.myspringcloud.demo.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.wt.myspringcloud.demo.validation.type.Insert;
-import com.wt.myspringcloud.demo.validation.type.Update;
-import lombok.*;
+import com.wt.myspringcloud.demo.mybatis.MoneyTypeHandler;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.joda.money.Money;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotEmpty;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /**
@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-@TableName(schema = "local", value = "demo")
+@TableName(schema = "local", value = "demo", autoResultMap = true)
 public class Demo {
 
     /**
@@ -40,11 +40,19 @@ public class Demo {
     private Integer age;
 
     /**
+     * 价格
+     */
+    /*@TableField("price")
+    private Long price;*/
+    @TableField(value = "price", typeHandler = MoneyTypeHandler.class)
+    private Money price;
+
+    /**
      * 创建日期时间
      */
-    @TableField("create_datetime")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8:00")
+    @TableField("create_datetime")
     private LocalDateTime createDatetime;
 
     /**
@@ -52,7 +60,7 @@ public class Demo {
      */
     @TableLogic
     @TableField("delete_status")
-    private Integer delete_status;
+    private Integer deleteStatus;
 
     /**
      * 版本号
