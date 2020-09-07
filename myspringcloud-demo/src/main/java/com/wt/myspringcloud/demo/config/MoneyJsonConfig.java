@@ -11,14 +11,13 @@ import org.joda.money.Money;
 import org.springframework.boot.jackson.JsonComponent;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 
 /**
  * @author 文通
  * @since 2020/9/6
  */
 @JsonComponent
-public class JsonConfig {
+public class MoneyJsonConfig {
 
     public static class MoneySerializer extends JsonSerializer<Money> {
 

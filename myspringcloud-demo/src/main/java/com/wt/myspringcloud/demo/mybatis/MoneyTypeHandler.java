@@ -5,6 +5,7 @@ import org.apache.ibatis.type.JdbcType;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 
+import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ public class MoneyTypeHandler extends BaseTypeHandler<Money> {
 
     @Override
     public void setNonNullParameter(PreparedStatement preparedStatement, int i, Money money, JdbcType jdbcType) throws SQLException {
-        preparedStatement.setLong(i, money.getAmountMajorLong());
+        preparedStatement.setLong(i, money.getAmount().multiply(BigDecimal.valueOf(100)).longValue());
     }
 
     @Override

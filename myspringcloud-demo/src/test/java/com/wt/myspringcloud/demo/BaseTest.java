@@ -37,7 +37,7 @@ public class BaseTest {
             demo.setId(null);
             demo.setName(RandomName.getRandomName().toString());
             demo.setAge(RandomUtils.nextInt(18, 30));// 18..30
-            demo.setPrice(Money.of(CurrencyUnit.of("CNY"), RandomUtils.nextLong(10_00, 100_00)));// 价格从10块到100块
+            demo.setPrice(Money.of(CurrencyUnit.of("CNY"), RandomUtils.nextLong(10_00, 100_00) / 100.0));// 价格从10块到100块
             demo.setCreateDatetime(LocalDateTime.now().minusDays(RandomUtils.nextInt(0, 7)));// 创建日期:过去一周内
             demo.setDeleteStatus(0);
             demo.setVersion(0L);

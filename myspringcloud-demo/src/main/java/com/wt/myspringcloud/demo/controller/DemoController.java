@@ -61,11 +61,19 @@ public class DemoController {
         return R.ok(demoService.save(entity));
     }
 
+    /**
+     * 更新(带版本)
+     */
     @PostMapping("/updateById")
     public R<Boolean> updateById(@Validated({Update.class}) Demo entity) {
+        Demo oldDemo = demoService.getById(entity.getId());
+        entity.setVersion(oldDemo.getVersion());
         return R.ok(demoService.updateById(entity));
     }
 
+    /**
+     * 逻辑删除
+     */
     @PostMapping("/removeById")
     public R<Boolean> removeById(String id) {
         if (StringUtils.isBlank(id)) {
