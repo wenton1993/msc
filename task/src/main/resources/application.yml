@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: task
+  profiles:
+    active: local
+
+server:
+  # listen port for incoming HTTP requests
+  port: 8775
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+
+mybatis-plus:
+  mapper-locations:
+    - classpath:/mapper/*Mapper.xml
+
+logging:
+  level:
+    com.wt.myspringcloud.demo.mapper: debug
