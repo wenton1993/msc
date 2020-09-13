@@ -6,6 +6,8 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
+ * 用于获取 ApplicationContext
+ *
  * @author 文通
  * @since 2020/9/8
  */

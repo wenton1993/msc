@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.pojo.entity.Product;
 import com.wt.myspringcloud.common.pojo.req.ProductReq;
-import com.wt.myspringcloud.common.util.JsonResultUtils;
 import com.wt.myspringcloud.mall.mapper.ProductMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,7 +36,7 @@ public class ProductController {
         BeanUtils.copyProperties(req, params);
         Page<Product> page = req.getPage();
         page = productMapper.selectPage(page, new QueryWrapper<>(params));
-        return JsonResultUtils.successWithData(page);
+        return JsonResult.success(page);
     }
 
 }

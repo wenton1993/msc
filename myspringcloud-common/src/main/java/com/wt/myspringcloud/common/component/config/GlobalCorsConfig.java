@@ -19,4 +19,5 @@ public class GlobalCorsConfig implements WebMvcConfigurer {
                 .allowedOrigins("*")
                 .allowedMethods("GET", "POST");
     }
+
 }

@@ -7,7 +7,6 @@ import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.common.pojo.entity.Product;
 import com.wt.myspringcloud.common.pojo.entity.ProductCategory;
 import com.wt.myspringcloud.common.pojo.req.ProductCategoryReq;
-import com.wt.myspringcloud.common.util.JsonResultUtils;
 import com.wt.myspringcloud.mall.mapper.ProductCategoryMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,7 +39,7 @@ public class ProductCategoryController {
         BeanUtils.copyProperties(req, params);
         Page<ProductCategory> page = req.getPage();
         page = productCategoryMapper.selectPage(page, new QueryWrapper<>(params));
-        return JsonResultUtils.successWithData(page);
+        return JsonResult.success(page);
     }
 
     @ApiOperation(value = "查询商品分类树")
@@ -51,7 +50,7 @@ public class ProductCategoryController {
                 .filter(c -> c.getLevel() == 1)
                 .map(c -> Product.ProductCategoryNode.covert(c, categoryList))
                 .collect(Collectors.toList());
-        return JsonResultUtils.successWithData(nodeList);
+        return JsonResult.success(nodeList);
     }
 
 }
