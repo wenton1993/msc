@@ -1,6 +1,5 @@
 package com.wt.mysrpingcloud.batch.controller;
 
-import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2019/12/30
  */
 @RestController
-public class JobLauncherController extends BaseController {
+public class JobLauncherController {
     @Autowired
     private JobLauncher jobLauncher;
 
@@ -22,8 +21,8 @@ public class JobLauncherController extends BaseController {
     private Job importUserJob;
 
     @PostMapping("/importUserJob")
-    public JsonResult<Void> importUserJob() throws Exception{
+    public JsonResult<Void> importUserJob() throws Exception {
         jobLauncher.run(importUserJob, new JobParameters());
-        return renderSuccess();
+        return JsonResult.success();
     }
 }

@@ -22,6 +22,10 @@
         <!-- other modules end -->
 
         <!-- spring cloud dependencies -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <!-- spring cloud dependencies end -->
 
         <!-- spring boot dependencies -->

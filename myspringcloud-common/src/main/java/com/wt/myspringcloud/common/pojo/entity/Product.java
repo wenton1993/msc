@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @ToString
-@TableName(value = "product")
 public class Product implements Serializable {
 
     @ApiModelProperty(value = "商品ID")

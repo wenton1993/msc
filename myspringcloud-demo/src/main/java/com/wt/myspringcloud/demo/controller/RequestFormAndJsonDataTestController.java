@@ -1,6 +1,5 @@
 package com.wt.myspringcloud.demo.controller;
 
-import com.wt.myspringcloud.common.core.BaseController;
 import com.wt.myspringcloud.common.core.JsonResult;
 import com.wt.myspringcloud.demo.pojo.req.DemoReq;
 import com.wt.myspringcloud.demo.pojo.resp.DemoResp;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/requestFormAndJsonDataTest")
-public class RequestFormAndJsonDataTestController extends BaseController {
+public class RequestFormAndJsonDataTestController {
 
     /**
      * 测试使用 @RequestParam 接收请求体中的参数
@@ -35,7 +34,7 @@ public class RequestFormAndJsonDataTestController extends BaseController {
         System.out.println(req.getJsonLocalDateTime());
         DemoResp resp = new DemoResp();
         BeanUtils.copyProperties(req, resp);
-        return renderSuccessWithData(resp);
+        return JsonResult.success(resp);
     }
 
     /**
@@ -53,7 +52,7 @@ public class RequestFormAndJsonDataTestController extends BaseController {
         System.out.println(req.getJsonLocalDateTime());
         DemoResp resp = new DemoResp();
         BeanUtils.copyProperties(req, resp);
-        return renderSuccessWithData(resp);
+        return JsonResult.success(resp);
     }
 
 }
