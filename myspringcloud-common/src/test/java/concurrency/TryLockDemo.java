@@ -5,10 +5,12 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * 读不阻塞读，但是阻塞写；写阻塞读和写
+ *
  * @author 文通
  * @since 2019/6/30
  */
-public class LockTest {
+public class TryLockDemo {
     static class Friend {
         private final String name;
         private final Lock lock = new ReentrantLock();
