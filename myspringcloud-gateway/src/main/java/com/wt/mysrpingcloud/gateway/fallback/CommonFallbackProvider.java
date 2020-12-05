@@ -1,5 +1,6 @@
 package com.wt.mysrpingcloud.gateway.fallback;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.netflix.hystrix.exception.HystrixTimeoutException;
 import com.wt.myspringcloud.common.enumeration.result.CommonResultCode;
 import com.wt.myspringcloud.common.core.JsonResult;
@@ -68,8 +69,7 @@ public class CommonFallbackProvider implements FallbackProvider {
             @Override
             public @NonNull
             InputStream getBody() throws IOException {
-                JsonResult result = new JsonResult(false, CommonResultCode.SERVICE_DISABLED);
-                return new ByteArrayInputStream(JacksonUtils.getMapper().writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
+                return new ByteArrayInputStream(JacksonUtils.getMapper().writeValueAsString(R.failed("请求的服务不可用")).getBytes(StandardCharsets.UTF_8));
             }
 
             @Override
