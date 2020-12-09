@@ -36,3 +36,7 @@ hs_err_pid*
 # VSCode
 .vscode/
 .factorypath
+
+# gradle
+.gradle
+build
