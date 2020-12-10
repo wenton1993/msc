@@ -3,15 +3,15 @@
  */
 
 plugins {
-    id 'com.wt.myspringcloud.java-conventions'
+    id 'com.wt.msc.java-conventions'
 }
 
 dependencies {
-    implementation project(':myspringcloud-common')
+    implementation project(':msc-common')
     implementation 'org.springframework.boot:spring-boot-starter-batch:2.2.8.RELEASE'
     runtimeOnly 'org.hsqldb:hsqldb:2.5.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.8.RELEASE'
     testImplementation 'org.springframework.batch:spring-batch-test:4.2.4.RELEASE'
 }
 
-description = 'myspringcloud-batch'
+description = 'msc-batch'

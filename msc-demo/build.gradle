@@ -3,15 +3,16 @@
  */
 
 plugins {
-    id 'com.wt.myspringcloud.java-conventions'
+    id 'com.wt.msc.java-conventions'
+    id 'org.springframework.boot' version '2.4.0'
 }
 
 dependencies {
-    implementation project(':myspringcloud-common')
+    implementation project(':msc-common')
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:2.2.3.RELEASE'
     implementation 'org.joda:joda-money:1.0.1'
     implementation 'mysql:mysql-connector-java:8.0.21'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.8.RELEASE'
 }
 
-description = 'myspringcloud-demo'
+description = 'msc-demo'

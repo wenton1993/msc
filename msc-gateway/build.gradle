@@ -3,11 +3,11 @@
  */
 
 plugins {
-    id 'com.wt.myspringcloud.java-conventions'
+    id 'com.wt.msc.java-conventions'
 }
 
 dependencies {
-    implementation project(':myspringcloud-common')
+    implementation project(':msc-common')
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul:2.2.3.RELEASE'
 }
 

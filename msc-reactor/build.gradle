@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id 'com.wt.myspringcloud.java-conventions'
+    id 'com.wt.msc.java-conventions'
 }
 
 dependencies {
