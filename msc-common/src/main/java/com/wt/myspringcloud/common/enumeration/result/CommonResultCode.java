@@ -16,19 +16,19 @@ public enum CommonResultCode implements IResultCode {
 	;
 
 	private int code;
-	private String message;
+	private String msg;
 
-	CommonResultCode(int code, String message) {
+	CommonResultCode(int code, String msg) {
 		this.code = code;
-		this.message = message;
+		this.msg = msg;
 	}
 
 	public int getCode() {
 		return code;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getMsg() {
+		return msg;
 	}
 
 }

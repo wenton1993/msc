@@ -49,11 +49,11 @@ public class JsonResult<T> {
     }
 
     public static <T> JsonResult<T> success() {
-        return new JsonResult<>(true, CommonResultCode.SUCCESS.getCode(), CommonResultCode.SUCCESS.getMessage(), null);
+        return new JsonResult<>(true, CommonResultCode.SUCCESS.getCode(), CommonResultCode.SUCCESS.getMsg(), null);
     }
 
     public static <T> JsonResult<T> success(T data) {
-        return new JsonResult<>(true, CommonResultCode.SUCCESS.getCode(), CommonResultCode.SUCCESS.getMessage(), data);
+        return new JsonResult<>(true, CommonResultCode.SUCCESS.getCode(), CommonResultCode.SUCCESS.getMsg(), data);
     }
 
     /**
@@ -69,7 +69,7 @@ public class JsonResult<T> {
     }
 
     public static <T> JsonResult<T> fail() {
-        return new JsonResult<>(false, CommonResultCode.ERROR.getCode(), CommonResultCode.ERROR.getMessage(), null);
+        return new JsonResult<>(false, CommonResultCode.ERROR.getCode(), CommonResultCode.ERROR.getMsg(), null);
     }
 
     public static <T> JsonResult<T> fail(String msg) {
@@ -77,7 +77,7 @@ public class JsonResult<T> {
     }
 
     public static <T> JsonResult<T> fail(IResultCode resultCode) {
-        return new JsonResult<>(false, resultCode.getCode(), resultCode.getMessage(), null);
+        return new JsonResult<>(false, resultCode.getCode(), resultCode.getMsg(), null);
     }
 
 }

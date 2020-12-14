@@ -8,5 +8,5 @@ public interface IResultCode {
 
     int getCode();
 
-    String getMessage();
+    String getMsg();
 }
