@@ -1,7 +1,7 @@
 # myspringcloud
 学习项目
 
-## 常用命令
+## 常用 Maven 命令(已废弃)
 ### myspringcloud-demo
 构建、运行和推送镜像
 ```
