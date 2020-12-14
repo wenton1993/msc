@@ -15,3 +15,5 @@ include(':msc-rabbitmq')
 include(':msc-flowable')
 include(':msc-demo')
 include(':msc-reactor')
+
+include(':msc-common-new:msc-common-feign')

@@ -10,7 +10,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 // [Swagger配置]
 @EnableSwagger2
 @EnableConfigurationProperties
-@EnableFeignClients
 @ComponentScan(basePackages = "com.wt.myspringcloud.common.component")
 @ComponentScan(basePackages = "com.wt.myspringcloud.demo")
 @SpringCloudApplication

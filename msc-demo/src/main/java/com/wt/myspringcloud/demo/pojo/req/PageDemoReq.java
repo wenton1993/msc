@@ -1,7 +1,5 @@
 package com.wt.myspringcloud.demo.pojo.req;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wt.myspringcloud.demo.pojo.entity.Demo;

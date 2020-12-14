@@ -16,17 +16,21 @@ public enum RandomName {
     Alex, Alice, Alison,
     Bache, Bella,
     Carol, Cassie, Cristina,
-    Dan, Daniel
-    ;
+    Dan, Daniel;
 
     private static final List<RandomName> NAME_LIST = Arrays.asList(values());
-    // 获取一个随机的名字
-    public static RandomName getRandomName()  {
+
+    /**
+     * 获取一个随机的名字
+     */
+    public static RandomName getRandomName() {
         return NAME_LIST.get(RandomUtils.nextInt(0, NAME_LIST.size()));
     }
 
+    /**
+     * 测试
+     */
     public static void main(String[] args) {
-        // 测试
         for (int i = 0; i < 100; i++) {
             System.out.println(getRandomName());
         }

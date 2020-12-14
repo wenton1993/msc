@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wt.myspringcloud.demo.BaseTest;
-import com.wt.myspringcloud.demo.mapper.DemoMapper;
 import com.wt.myspringcloud.demo.pojo.entity.Demo;
 import org.junit.Test;
 

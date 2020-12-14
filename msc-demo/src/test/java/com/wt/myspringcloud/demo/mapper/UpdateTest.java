@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.wt.myspringcloud.demo.BaseTest;
-import com.wt.myspringcloud.demo.mapper.DemoMapper;
 import com.wt.myspringcloud.demo.pojo.entity.Demo;
 import org.junit.Assert;
 import org.junit.Test;

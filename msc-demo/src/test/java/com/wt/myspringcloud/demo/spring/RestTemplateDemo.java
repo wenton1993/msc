@@ -14,7 +14,6 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.annotation.Resource;
 import java.net.URI;
 
 /**
