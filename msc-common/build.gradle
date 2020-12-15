@@ -7,22 +7,25 @@ plugins {
 }
 
 dependencies {
+    // 注解处理器
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.2.8.RELEASE'
 
-    api 'org.springframework.cloud:spring-cloud-starter-sleuth'
-    api 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    api 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+    // spring-boot
     api 'org.springframework.boot:spring-boot-starter-actuator'
     api 'org.springframework.boot:spring-boot-starter-web'
     api 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.2.8.RELEASE'
     api 'org.springframework.boot:spring-boot-starter-test'
+
+    // spring-cloud
+    api 'org.springframework.cloud:spring-cloud-starter-sleuth'
+    api 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    api 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+
+    api 'org.projectlombok:lombok'
     api 'com.baomidou:mybatis-plus-boot-starter:3.4.0'
-
-    api 'org.projectlombok:lombok:1.18.2'
-    annotationProcessor 'org.projectlombok:lombok:1.18.2'
-
-    api 'org.apache.commons:commons-lang3:3.9'
-    api 'org.apache.httpcomponents:httpclient:4.5.12'
+    api 'org.apache.commons:commons-lang3'
+    api 'org.apache.httpcomponents:httpclient'
     api 'com.jcraft:jsch:0.1.54'
     api 'commons-io:commons-io:2.6'
     api 'commons-net:commons-net:3.6'

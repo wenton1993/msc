@@ -4,16 +4,15 @@
 
 plugins {
     id 'java-conventions'
-    id 'org.springframework.boot' version '2.4.0'
 }
 
 dependencies {
     // 模块依赖
     implementation project(':msc-common')
 
-    // 处理注解
+    // 注解处理器
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.2.8.RELEASE'
-    annotationProcessor 'org.projectlombok:lombok:1.18.2'
 
     // 其它依赖
     implementation 'org.joda:joda-money:1.0.1'
