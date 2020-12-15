@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id 'com.wt.msc.java-conventions'
+    id 'java-conventions'
     id 'org.springframework.boot' version '2.4.0'
 }
 
