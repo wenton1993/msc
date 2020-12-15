@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
     implementation 'org.flowable:flowable-spring-boot-starter:6.3.0'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.0.0.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
     implementation 'org.projectlombok:lombok:1.18.12'
     runtimeOnly 'com.h2database:h2:1.4.200'
