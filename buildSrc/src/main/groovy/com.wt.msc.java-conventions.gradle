@@ -3,6 +3,7 @@
  */
 
 plugins {
+    id 'java'
     id 'java-library'
     id 'maven-publish'
 }
@@ -10,10 +11,10 @@ plugins {
 repositories {
     mavenLocal()
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
     maven {
         url = uri('https://repo.maven.apache.org/maven2/')
     }
+    jcenter()
 }
 
 group = 'com.wt.myspringcloud'
@@ -35,12 +36,4 @@ tasks.withType(JavaCompile) {
 dependencies {
     implementation platform('org.springframework.boot:spring-boot-dependencies:2.2.8.RELEASE')
     implementation platform('org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR6')
-
-    // lombok
-    annotationProcessor 'org.projectlombok:lombok:1.18.2'
-    compileOnly 'org.projectlombok:lombok:1.18.2'
-    testCompileOnly 'org.projectlombok:lombok:1.18.2'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
-    // spring-boot-starter-test
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

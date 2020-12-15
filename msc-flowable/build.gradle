@@ -12,7 +12,6 @@ dependencies {
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
     implementation 'org.projectlombok:lombok:1.18.12'
     runtimeOnly 'com.h2database:h2:1.4.200'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.8.RELEASE'
 }
 
 description = 'myspringcloud-flowable'

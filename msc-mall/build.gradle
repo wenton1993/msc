@@ -9,7 +9,6 @@ plugins {
 dependencies {
     implementation project(':msc-common')
     runtimeOnly 'com.h2database:h2:1.4.200'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.8.RELEASE'
 }
 
 description = 'myspringcloud-mall'

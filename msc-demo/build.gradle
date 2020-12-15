@@ -8,11 +8,16 @@ plugins {
 }
 
 dependencies {
+    // 模块依赖
     implementation project(':msc-common')
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:2.2.3.RELEASE'
+
+    // 处理注解
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.2.8.RELEASE'
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
+
+    // 其它依赖
     implementation 'org.joda:joda-money:1.0.1'
     implementation 'mysql:mysql-connector-java:8.0.21'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.8.RELEASE'
 }
 
 description = 'msc-demo'
