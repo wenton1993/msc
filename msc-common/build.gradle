@@ -10,7 +10,7 @@ plugins {
 dependencies {
     // 注解处理器
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.4.1'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.3.7.RELEASE'
 
     // spring-boot
     api 'org.springframework.boot:spring-boot-starter-actuator'
