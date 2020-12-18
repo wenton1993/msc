@@ -14,4 +14,4 @@ dependencies {
     runtimeOnly 'com.h2database:h2:1.4.200'
 }
 
-description = 'myspringcloud-flowable'
+description = 'msc-flowable'

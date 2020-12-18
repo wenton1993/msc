@@ -11,4 +11,4 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul:2.2.3.RELEASE'
 }
 
-description = 'myspringcloud-gateway'
+description = 'msc-gateway'

@@ -11,4 +11,4 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-amqp:2.2.8.RELEASE'
 }
 
-description = 'myspringcloud-rabbitmq'
+description = 'msc-rabbitmq'
