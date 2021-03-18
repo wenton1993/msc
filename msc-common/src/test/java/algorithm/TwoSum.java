@@ -1,10 +1,10 @@
 package algorithm;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
+ * 两数之和
+ *
  * @author 文通
  * @since 2019/7/4
  */
@@ -43,7 +43,7 @@ public class TwoSum {
                 return new int[]{i, map.get(another)};
             }
         }
-        throw new IllegalArgumentException("No two sum solution");
+        throw new IllegalArgumentException("No solution.");
     }
 
     // 一遍哈希表
@@ -58,6 +58,6 @@ public class TwoSum {
             // 将元素和下标放入到一个新的 Map
             map.put(nums[i], i);
         }
-        throw new IllegalArgumentException("No two sum solution");
+        throw new IllegalArgumentException("No solution.");
     }
 }
