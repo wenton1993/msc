@@ -13,18 +13,60 @@ import java.util.Arrays;
  * @author 文通
  * @since 2020/1/24
  */
-public class SpiralMatrix {
+public class Matrix {
 
     public static void main(String[] args) {
-        // generate(5);
-        generate2(5);
+        compute(5);
+        // compute2(5);
+    }
+
+    /**
+     * 特点：
+     *  1.定义了4个边界值，组合这四个边界值可以直接得到边界坐标
+     */
+    private static void compute(int n) {
+        int max = n * n;
+        int count = 1;
+        int a = 0, b = 0, c = 0, d = 0;// 上下左右每条线路各跑了几次
+        int[][] mat = new int[n][n];
+        while (count <= max) {
+            // 从左往右
+            for (int i = d; i < n - b; i++) {
+                mat[a][i] = count++;
+                System.out.println(count);
+            }
+            a++;
+            // 从上往下
+            for (int i = a; i < n - c; i++) {
+                mat[i][n - b - 1] = count++;
+                System.out.println(count);
+            }
+            b++;
+            // 从右往左
+            for (int i = n - b - 1; i >= d; i--) {
+                mat[n - c - 1][i] = count++;
+                System.out.println(count);
+            }
+            c++;
+            // 从下往上
+            for (int i = n - c - 1; i >= a; i--) {
+                mat[i][d] = count++;
+                System.out.println(count);
+            }
+            d++;
+        }
+
+        printMatrix(mat);
     }
 
     /**
      * 我的方法
-     * 特点：1.手动拐弯
+     *
+     * 特点：
+     *  1.手动拐弯
+     *  2.相比方法 1，只定义了 2 个控制变量，分别用来表示下次横向和纵向移动的方向
      */
-    private static void generate2(int n) {
+    private static void compute2(int n) {
         // 定义变量
         int num = 1;// 累加数
         int max = n * n;// 最大值，控制是否继续循环
@@ -66,37 +108,16 @@ public class SpiralMatrix {
             x++;y++;
         }
 
-        System.out.println("打印二维数组");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.print(mat[i][j] + " ");
-            }
-            System.out.println();
-        }
+        printMatrix(mat);
     }
 
-    // 别人的方法
-    private static void generate(int n) {
-        // 定义变量
-        int num = 1;// 累加数
-        int tar = n * n;// 最大值
-        int l = 0, r = n - 1, t = 0, b = n - 1;// 边界值
-        // 创建数组
-        int[][] mat = new int[n][n];
-        while (num <= tar) {
-            for (int i = l; i <= r; i++) mat[t][i] = num++; // left to right.
-            t++;
-            for (int i = t; i <= b; i++) mat[i][r] = num++; // top to bottom.
-            r--;
-            for (int i = r; i >= l; i--) mat[b][i] = num++; // right to left.
-            b--;
-            for (int i = b; i >= t; i--) mat[i][l] = num++; // bottom to top.
-            l++;
-        }
-
+    /**
+     * 打印二维数组
+     */
+    private static void printMatrix(int[][] mat) {
         System.out.println("打印二维数组");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat.length; j++) {
                 System.out.print(mat[i][j] + " ");
             }
             System.out.println();
