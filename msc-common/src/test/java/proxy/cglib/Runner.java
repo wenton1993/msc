@@ -1,7 +1,7 @@
 package proxy.cglib;
 
-import proxy.TestImpl;
-import proxy.TestLogService;
+import proxy.statical.TestUserImpl;
+import proxy.statical.TestUserService;
 
 /**
  * @author 文通
@@ -12,7 +12,7 @@ public class Runner {
     public static void main(String[] args) {
         TestInterceptor proxy = new TestInterceptor();
         // 通过生成子类的方式创建代理类
-        TestLogService proxyImp = (TestLogService) proxy.getProxy(TestImpl.class);
-        proxyImp.print();
+        TestUserService proxyImp = (TestUserService) proxy.getProxy(TestUserImpl.class);
+        proxyImp.query();
     }
 }
